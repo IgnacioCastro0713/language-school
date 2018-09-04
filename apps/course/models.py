@@ -13,7 +13,7 @@ class Course(models.Model):
     day = models.CharField(max_length=10)  #
     start = models.TimeField()
     end = models.TimeField()
-    description = models.TextField(pow(80, 20))  #
+    description = models.TextField()
     classroom = models.ManyToManyField(Classroom, blank=True)
     language = models.ForeignKey(Language, null=True, blank=True, on_delete=models.CASCADE)
 

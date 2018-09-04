@@ -14,7 +14,7 @@ class User(models.Model):
     apaterno = models.CharField(max_length=25)
     amaterno = models.CharField(max_length=25)
     email = models.EmailField()
-    address = models.TextField()
+    address = models.CharField(max_length=45)
     phone = models.CharField(max_length=15)
     role = models.ForeignKey(Role, null=True, blank=True, on_delete=models.CASCADE)
     course = models.ManyToManyField(Course)
