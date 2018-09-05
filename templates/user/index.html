@@ -6,90 +6,19 @@
     <div class="wrapper">
         <div class="page-header page-header-small">
             <div class="page-header-image" data-parallax="true" style="background-image: url({% static 'img/bg6.jpg' %});"></div>
-                <div class="container text-left">
-                    <br>
-                    <h1 class="title">Administración de usuario.</h1>
-                    <div class="text-left">
-                        <h4 class="">Usuarios registrados</h4>
-                    </div>
+            <div class="container text-left"><br>
+                <h1 class="title">Administración de usuario.</h1>
+                <div class="text-left">
+                    <h4 class="">Usuarios registrados.</h4>
                 </div>
             </div>
+        </div>
     </div>
     <div class="section">
         <div class="container">
+            {% include 'base/search.html' %}
             <div class="row">
-                <div class="card card-blog col-md-12 ml-auto mr-auto">
-                    <div class="card-body">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th class="text-center">#</th>
-                                <th>Name</th>
-                                <th>Job Position</th>
-                                <th>Since</th>
-                                <th class="text-right">Salary</th>
-                                <th class="text-right">Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="text-center">1</td>
-                                <td>Andrew Mike</td>
-                                <td>Develop</td>
-                                <td>2013</td>
-                                <td class="text-right">&euro; 99,225</td>
-                                <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" class="btn btn-info">
-                                        <i class="now-ui-icons users_single-02"></i>
-                                    </button>
-                                    <button type="button" rel="tooltip" class="btn btn-success">
-                                        <i class="now-ui-icons ui-2_settings-90"></i>
-                                    </button>
-                                    <button type="button" rel="tooltip" class="btn btn-danger">
-                                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">2</td>
-                                <td>John Doe</td>
-                                <td>Design</td>
-                                <td>2012</td>
-                                <td class="text-right">&euro; 89,241</td>
-                                <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" class="btn btn-info">
-                                        <i class="now-ui-icons users_single-02"></i>
-                                    </button>
-                                    <button type="button" rel="tooltip" class="btn btn-success">
-                                        <i class="now-ui-icons ui-2_settings-90"></i>
-                                    </button>
-                                    <button type="button" rel="tooltip" class="btn btn-danger">
-                                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">3</td>
-                                <td>Alex Mike</td>
-                                <td>Design</td>
-                                <td>2010</td>
-                                <td class="text-right">&euro; 92,144</td>
-                                <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" class="btn btn-info">
-                                        <i class="now-ui-icons users_single-02"></i>
-                                    </button>
-                                    <button type="button" rel="tooltip" class="btn btn-success">
-                                        <i class="now-ui-icons ui-2_settings-90"></i>
-                                    </button>
-                                    <button type="button" rel="tooltip" class="btn btn-danger">
-                                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                {% include 'user/table.html' %}
             </div>
         </div>
     </div>
