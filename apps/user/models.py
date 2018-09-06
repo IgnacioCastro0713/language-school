@@ -18,4 +18,3 @@ class User(models.Model):
     phone = models.CharField(max_length=15)
     role = models.ForeignKey(Role, null=True, blank=True, on_delete=models.CASCADE)
     course = models.ManyToManyField(Course)
-
