@@ -2,7 +2,7 @@ from django import forms
 from apps.user.models import User
 
 
-class FormUser(forms.ModelForm):
+class UserForm(forms.ModelForm):
     class Meta:
 
         model = User
@@ -21,7 +21,7 @@ class FormUser(forms.ModelForm):
                 'class': 'clase_css',
                 'id': 'id_name',
                 'name': 'name_name',
-                'placeholder': 'Código...'
+                'placeholder': 'Código...',
             }),
             'nombre': forms.TextInput(attrs={
                 'class': 'clase_css',
