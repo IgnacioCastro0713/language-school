@@ -88,7 +88,7 @@
   {% block content  %}
 
   {% endblock %}
-  <footer class="footer" data-background-color="black">
+  <footer class="footer">
       <div class="container">
           <nav>
               <ul>
@@ -133,20 +133,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
   <script src="{% static 'js/now-ui-kit.js' %}?v=1.2.0" type="text/javascript"></script>
-  <script>
-    $(document).ready(function() {
-      // the body of this function is in assets/js/now-ui-kit.js
-      nowuiKit.initSliders();
-    });
 
-    function scrollToDownload() {
-
-      if ($('.section-download').length != 0) {
-        $("html, body").animate({
-          scrollTop: $('.section-download').offset().top
-        }, 1000);
-      }
-    }
-  </script>
 </body>
 </html>

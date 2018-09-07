@@ -1,7 +1,46 @@
 {% extends 'base/main.html' %}
 {% load staticfiles %}
 {% block title %} Crear usuario {% endblock %}
-{% block type %}  {% endblock %}
+{% block type %} singup-page sidebar-collapse {% endblock %}
 {% block content %}
-
+    <div class="page-header header-filter" >
+        <div class="page-header-image" style="background-image:url({% static 'img/bg8.jpg' %})"></div>
+        <div class="content">
+            <div class="container">
+                <div class="col-md-10 ml-auto mr-auto">
+                    <div class="card card-contact card-raised">
+                        <form role="form" id="contact-form1" method="post">
+                            <div class="card-header text-center"><h4 class="card-title" style="color: #1d2124">Registrar usuario</h4></div>
+                            <div class="card-body text-left">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="txtnombre" style="color: #1d2124">Nombre</label>
+                                        {{ form.nombre }}
+                                    </div>
+                                    <div class="col-md-6 pl-2">
+                                        <div class="form-group"><label style="color: #1d2124">Last name</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="now-ui-icons text_caps-small"></i></span></div>
+                                                <input type="text" class="form-control" placeholder="Last Name..." aria-label="Last Name..." autocomplete="family-name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label style="color: #1d2124">Email address</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
+                                        </div>
+                                        <input type="email" name="ccc" class="form-control" placeholder="Email Here..." autocomplete="email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <button type="submit" class="btn btn-lg  btn-primary btn-round pull-right">Registrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 {% endblock %}

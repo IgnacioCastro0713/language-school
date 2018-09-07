@@ -15,42 +15,46 @@ class UserForm(forms.ModelForm):
             'email',
             'address',
             'phone',
+            'role',
         ]
         widgets = {
             'code': forms.TextInput(attrs={
-                'class': 'clase_css',
-                'id': 'id_name',
-                'name': 'name_name',
-                'placeholder': 'Código...',
+                'class': 'form-control',
+                'id': 'txtcode',
+                'placeholder': 'Código',
             }),
             'nombre': forms.TextInput(attrs={
-                'class': 'clase_css',
-                'id': 'id_name',
-                'name': 'name_name',
+                'class': 'form-control',
+                'id': 'txtnombre',
+                'placeholder': 'Nombre',
             }),
             'apaterno': forms.TextInput(attrs={
-                'class': 'clase_css',
-                'id': 'id_name',
-                'name': 'name_name',
+                'class': 'form-control',
+                'id': 'txtapaterno',
+                'placeholder': 'Apellido paterno',
             }),
             'amaterno': forms.TextInput(attrs={
-                'class': 'clase_css',
-                'id': 'id_name',
-                'name': 'name_name',
+                'class': 'form-control',
+                'id': 'txtamaterno',
+                'placeholder': 'Apellido materno',
             }),
             'email': forms.EmailInput(attrs={
-                'class': 'clase_css',
-                'id': 'id_name',
-                'name': 'name_name',
+                'class': 'form-control',
+                'id': 'txtxemail',
+                'placeholder': 'Correo electrónico',
             }),
             'address': forms.TextInput(attrs={
-                'class': 'clase_css',
-                'id': 'id_name',
-                'name': 'name_name',
+                'class': 'form-control',
+                'id': 'txtaddress',
+                'placeholder': 'Dirección',
             }),
             'phone': forms.TextInput(attrs={
-                'class': 'clase_css',
-                'id': 'id_name',
-                'name': 'name_name',
+                'class': 'form-control',
+                'id': 'txtphone',
+                'placeholder': 'Telefono',
             }),
+            'role': forms.RadioSelect(attrs={
+                'class': 'form-control',
+                'id': 'role'
+            })
         }
