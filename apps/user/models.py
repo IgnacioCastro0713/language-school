@@ -10,6 +10,7 @@ class Role(models.Model):
 
 class User(models.Model):
     code = models.CharField(max_length=10, primary_key=True)
+    password = models.CharField(max_length=45)
     nombre = models.CharField(max_length=45)
     apaterno = models.CharField(max_length=25)
     amaterno = models.CharField(max_length=25)

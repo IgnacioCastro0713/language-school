@@ -9,6 +9,7 @@ class UserForm(forms.ModelForm):
 
         fields = [
             'code',
+            'password',
             'nombre',
             'apaterno',
             'amaterno',
@@ -22,6 +23,11 @@ class UserForm(forms.ModelForm):
                 'class': 'form-control',
                 'id': 'txtcode',
                 'placeholder': 'Código',
+            }),
+            'password': forms.PasswordInput(attrs={
+                'class': 'form-control',
+                'id': 'txtpass',
+                'placeholder': 'Contraseña',
             }),
             'nombre': forms.TextInput(attrs={
                 'class': 'form-control',
