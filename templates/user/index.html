@@ -3,6 +3,10 @@
 {% block title %} Usuarios {% endblock %}
 {% block type %} landing-page sidebar-collapse {% endblock %}
 {% block content %}
+    <script type="text/javascript">
+        let table ='{% url 'user:table' %}';
+        let search = {% url 'user:search' %};
+    </script>
     <div class="wrapper">
         <div class="page-header page-header-small">
             <div class="page-header-image" data-parallax="true" style="background-image: url({% static 'img/bg6.jpg' %});"></div>

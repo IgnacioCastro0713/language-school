@@ -10,6 +10,7 @@
     <title>
         {%  block title %} {% endblock %} &ndash; Language School
     </title>
+    {% csrf_token %}
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -130,11 +131,10 @@
   <script src="{% static 'js/plugins/nouislider.min.js ' %}" type="text/javascript"></script>
   <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
   <script src="{% static '/js/plugins/bootstrap-datepicker.js' %}" type="text/javascript"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
   <script src="{% static 'js/now-ui-kit.js' %}?v=1.2.0" type="text/javascript"></script>
   <script src="https://unpkg.com/sweetalert2@7.22.2/dist/sweetalert2.all.js"></script>
+  <script src="{% static 'js/messages.js' %}" type="text/javascript"></script>
   {% load sweetify %} {% sweetify %}
 </body>
 </html>

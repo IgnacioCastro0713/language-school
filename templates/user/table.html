@@ -27,7 +27,7 @@
                             <button type="button" rel="tooltip" class="btn btn-success">
                                 <i class="now-ui-icons ui-2_settings-90"></i>
                             </button>
-                            <button href="" type="button" rel="tooltip" class="btn btn-danger">
+                            <button onclick="confirmDelete(event, '{{ user.nombre }}' ,'{% url 'user:delete' user.code %}')" type="button" rel="tooltip" class="btn btn-danger">
                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                             </button>
                         </td>
@@ -37,7 +37,13 @@
                 <td class="text-danger"><strong> No hay registros de usuario</strong></td>
             {% endif %}
             </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="3">
+                    {% include 'base/pagination.html' %}
+                </td>
+            </tr>
+            </tfoot>
         </table>
     </div>
 </div>
-{% include 'base/pagination.html' %}

@@ -8,7 +8,7 @@ const toast = swal.mixin({
     toast: true,
     position: 'top',
     showConfirmButton: false,
-    timer: 3000,
+    timer: 2000,
     showCloseButton: true
 });
 
@@ -46,18 +46,19 @@ function deleteInShow(e, name, url, index) {
 }
 
 function deleteElement(name, url, done, fail) {
+    var csrftoken = $("[name=csrfmiddlewaretoken]").val();
     swalMaterial({
         title: '¿Desea eliminar el elemento?',
         text: "Está apunto de eliminar el registro de "+name+".",
         type: 'warning',
         showCancelButton: true,
-        confirmButtonText: '<i class="material-icons">thumb_up</i>  Eliminar',
-        cancelButtonText: '<i class="material-icons">thumb_down</i>  Cancelar',
+        confirmButtonText: '<i class="now-ui-icons ui-1_check"></i>  Eliminar',
+        cancelButtonText: '<i class="now-ui-icons ui-1_simple-remove"></i>  Cancelar',
     }).then((result) => {
         if (result.value) {
             $.ajaxSetup({
                 headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    'X-CSRF-TOKEN': csrftoken
                 }
             });
             $.ajax({

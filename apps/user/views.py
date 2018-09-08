@@ -5,7 +5,7 @@ from apps.user.models import User
 from apps.user.form import UserForm
 from passlib.hash import pbkdf2_sha256
 import sweetify
-# Create your views here.
+from sweetify.views import SweetifySuccessMixin
 
 
 class Index(ListView):
@@ -13,7 +13,7 @@ class Index(ListView):
     template_name = 'user/index.html'
 
 
-def create(request):  # Se realizo así para poder encriptar
+def create(request):
     if request.method == 'POST':
         User.objects.create(
             code=request.POST['code'],
