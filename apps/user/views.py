@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-# from django.urls import reverse_lazy
+from django.urls import reverse_lazy
 from django.views.generic import DeleteView, ListView
 from apps.user.models import User
 from apps.user.form import UserForm
 from passlib.hash import pbkdf2_sha256
+import sweetify
 # Create your views here.
 
 
@@ -25,6 +26,7 @@ def create(request):  # Se realizo así para poder encriptar
             phone=request.POST['phone'],
             role_id=request.POST['role'],
         )
+        sweetify.success(request, 'Usuario guardado correctamente!', toast=True, position='top', timer=2000)
         return redirect('user:index')
     return render(request, 'user/create.html', {'form': UserForm})
 
@@ -37,8 +39,10 @@ def show(request):
     return
 
 
-class Destroy(DeleteView):
+class Delete(DeleteView):
     model = User
+    template_name = 'user/table.html'
+    success_url = reverse_lazy('user:index')
 
 
 class Table(ListView):

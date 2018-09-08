@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'apps.course',
     'apps.classroom',
     'apps.home',
+    'sweetify',
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
