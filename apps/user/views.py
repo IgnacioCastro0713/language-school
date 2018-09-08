@@ -1,8 +1,9 @@
-from django.shortcuts import render
-from django.urls import reverse_lazy  #
-from django.views.generic import CreateView
+from django.shortcuts import render, redirect
+# from django.urls import reverse_lazy
+from django.views.generic import DeleteView, ListView
 from apps.user.models import User
 from apps.user.form import UserForm
+from passlib.hash import pbkdf2_sha256
 # Create your views here.
 
 
@@ -10,8 +11,38 @@ def index(request):
     return render(request, 'user/index.html')
 
 
-class Create(CreateView):  # vista basada en clases
+def create(request):  # Se realizo así para poder encriptar
+    if request.method == 'POST':
+        User.objects.create(
+            code=request.POST['code'],
+            password=pbkdf2_sha256.encrypt(request.POST['password'], rounds=12000, salt_size=32),
+            nombre=request.POST['nombre'],
+            apaterno=request.POST['apaterno'],
+            amaterno=request.POST['amaterno'],
+            email=request.POST['email'],
+            address=request.POST['address'],
+            phone=request.POST['phone'],
+            role_id=request.POST['role'],
+        )
+        return redirect('user:index')
+    return render(request, 'user/create.html', {'form': UserForm})
+
+
+def edit(request):
+    return
+
+
+def show(request):
+    return
+
+
+class Destroy(DeleteView):
     model = User
-    form_class = UserForm
-    template_name = 'user/create.html'
-    success_url = reverse_lazy('user:index')
+
+
+class Table(ListView):
+    model = User
+
+
+def Search(request):
+    return

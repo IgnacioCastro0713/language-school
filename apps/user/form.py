@@ -60,7 +60,7 @@ class UserForm(forms.ModelForm):
                 'placeholder': 'Telefono',
             }),
             'role': forms.RadioSelect(attrs={
-                'class': 'form-control',
-                'id': 'role'
+                'class': 'form-check-input',
+                'id': 'role',
             })
         }
