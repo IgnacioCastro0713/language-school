@@ -7,8 +7,9 @@ from passlib.hash import pbkdf2_sha256
 # Create your views here.
 
 
-def index(request):
-    return render(request, 'user/index.html')
+class Index(ListView):
+    model = User
+    template_name = 'user/index.html'
 
 
 def create(request):  # Se realizo así para poder encriptar
@@ -42,7 +43,8 @@ class Destroy(DeleteView):
 
 class Table(ListView):
     model = User
+    template_name = 'user/index.html'
 
 
-def Search(request):
+def search(request):
     return
