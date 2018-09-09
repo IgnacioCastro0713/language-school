@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from apps.user.models import User
 from apps.user.form import UserForm
-from passlib.hash import pbkdf2_sha256
-import sweetify
+from passlib.hash import pbkdf2_sha256  # pip install passlib
+import sweetify  # pip install sweetify
 
 
 def index(request):
@@ -30,9 +30,11 @@ def create(request):
 
 def edit(request):
     if request.method == 'POST':
-        # content
-        sweetify.success(request, 'Cambios aplicados correctamente!', toast=True, position='top', timer=2000)
-        return redirect('user:index')
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            sweetify.success(request, 'Cambios aplicados correctamente!', toast=True, position='top', timer=2000)
+            return redirect('user:index')
     return render(request, 'user/edit.html', {'form': UserForm})
 
 
