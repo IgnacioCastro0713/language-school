@@ -3,6 +3,7 @@ from apps.user.models import User
 from apps.user.form import UserForm
 from passlib.hash import pbkdf2_sha256  # pip install passlib
 import sweetify  # pip install sweetify
+from django.db.models import Q
 
 
 def index(request):
@@ -54,5 +55,10 @@ def table(request):
 
 
 def search(request, find):
-    users = User.objects.filter(nombre__icontains=find)
+    users = User.objects.filter(
+        Q(code__icontains=find) |
+        Q(nombre__icontains=find) |
+        Q(email__icontains=find) |
+        Q(role__nombre__icontains=find)
+    )
     return render(request, 'user/table.html', {'object_list': users})
