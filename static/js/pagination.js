@@ -16,21 +16,20 @@ var currentUrl = table;
 
 function loadTable(e, doSearch) {
     e.preventDefault();
-    var csrftoken = $("[name=csrfmiddlewaretoken]").val();
     var param = $('#search').val();
     if (doSearch && param !== "")
-        currentUrl = search+''+param+'/';
+        currentUrl = search+param+'/';
     else
         currentUrl = table;
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': csrftoken,
+            'X-CSRF-TOKEN': $("[name=csrfmiddlewaretoken]").val(),
         }
     });
     $.ajax({
         url : currentUrl,
         method : 'get',
-        csrfmiddlewaretoken: csrftoken,
+        csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
     }).done(function (response) {
         currentUrl = search;
         $('#content').html(response);

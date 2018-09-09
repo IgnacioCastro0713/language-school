@@ -3,7 +3,6 @@ from apps.user.models import User
 from apps.user.form import UserForm
 from passlib.hash import pbkdf2_sha256
 import sweetify
-from sweetify.views import SweetifySuccessMixin
 
 
 def index(request):
@@ -52,11 +51,6 @@ def table(request):
     return render(request, 'user/table.html', {'object_list': user})
 
 
-def search(request):
-    user = User.objects. \
-        get(code__contains=request['search'],
-            nombre__contains=request['search'],
-            apaterno__contains=request['search'],
-            amaterno__contains=request['search'],
-            )
-    return render(request, 'user/table.html', {'object_list': user})
+def search(request, find):
+    users = User.objects.get(pk=find)
+    return render(request, 'user/table.html', {'object_list': users})
