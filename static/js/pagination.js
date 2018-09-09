@@ -19,7 +19,7 @@ function loadTable(e, doSearch) {
     var csrftoken = $("[name=csrfmiddlewaretoken]").val();
     var param = $('#search').val();
     if (doSearch && param !== "")
-        currentUrl = search+'/'+param+'/';
+        currentUrl = search+''+param+'/';
     else
         currentUrl = table;
     $.ajaxSetup({
@@ -30,7 +30,7 @@ function loadTable(e, doSearch) {
     $.ajax({
         url : currentUrl,
         method : 'get',
-        //csrfmiddlewaretoken: csrftoken,
+        csrfmiddlewaretoken: csrftoken,
     }).done(function (response) {
         currentUrl = search;
         $('#content').html(response);

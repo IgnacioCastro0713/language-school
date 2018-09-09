@@ -30,15 +30,21 @@ def create(request):
 
 
 def edit(request):
-    return
+    if request.method == 'POST':
+        # content
+        sweetify.success(request, 'Cambios aplicados correctamente!', toast=True, position='top', timer=2000)
+        return redirect('user:index')
+    return render(request, 'user/edit.html', {'form': UserForm})
 
 
-def show(request):
-    return
+def show(request, code):
+    user = User.objects.get(pk=code)
+    return render(request, 'user/show.html', {'object_list': user})
 
 
-def delete(request, id_user):
-    User.objects.get(id=id_user).delete()
+def delete(request, code):
+    User.objects.get(pk=code).delete()
+    return render(request, 'user/table.html')
 
 
 def table(request):
@@ -47,5 +53,10 @@ def table(request):
 
 
 def search(request):
-    user = User.objects.get(headline__contains=request['search'])
+    user = User.objects. \
+        get(code__contains=request['search'],
+            nombre__contains=request['search'],
+            apaterno__contains=request['search'],
+            amaterno__contains=request['search'],
+            )
     return render(request, 'user/table.html', {'object_list': user})

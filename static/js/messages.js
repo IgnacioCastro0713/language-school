@@ -20,7 +20,8 @@ function confirmDelete(e, name, url) {
             type: 'success'
         });
         loadTable(e, false);
-    }, function () {
+    },
+        function () {
         toast({
             title: 'No se ha podido eliminar el elemento.',
             type: 'error'
@@ -46,10 +47,9 @@ function deleteInShow(e, name, url, index) {
 }
 
 function deleteElement(name, url, done, fail) {
-    var csrftoken = $("[name=csrfmiddlewaretoken]").val();
     swalMaterial({
         title: '¿Desea eliminar el elemento?',
-        text: "Está apunto de eliminar el registro de "+csrftoken+".",
+        text: "Está apunto de eliminar el registro de "+name+".",
         type: 'warning',
         showCancelButton: true,
         confirmButtonText: '<i class="now-ui-icons ui-1_check"></i>  Eliminar',
@@ -58,13 +58,13 @@ function deleteElement(name, url, done, fail) {
         if (result.value) {
             $.ajaxSetup({
                 headers: {
-                    'X-CSRF-TOKEN': csrftoken
+                    'X-CSRF-TOKEN': $("[name=csrfmiddlewaretoken]").val()
                 }
             });
             $.ajax({
                 data: {
                     '_method' : 'DELETE',
-                    csrfmiddlewaretoken: csrftoken,
+                    csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
                 },
                 type: 'post',
                 url: url,

@@ -5,7 +5,7 @@ app_name = 'user'
 urlpatterns = [
     path('', index, name='index'),
     path('create/', create, name='create'),
-    path('delete/<slug:pk>/', delete, name='delete'),
+    path('delete/<slug:code>/', delete, name='delete'),
     path('table/', table, name='table'),
     path('search/', search, name='search'),
 ]
