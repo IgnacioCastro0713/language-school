@@ -7,5 +7,5 @@ urlpatterns = [
     path('create/', create, name='create'),
     path('delete/<slug:code>/', delete, name='delete'),
     path('table/', table, name='table'),
-    path('search/', search, name='search'),
+    path('search/<slug:find>/', search, name='search'),
 ]

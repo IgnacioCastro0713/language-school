@@ -52,5 +52,5 @@ def table(request):
 
 
 def search(request, find):
-    users = User.objects.get(pk=find)
+    users = User.objects.filter(nombre__icontains=find)
     return render(request, 'user/table.html', {'object_list': users})

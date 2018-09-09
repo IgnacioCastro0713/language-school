@@ -5,7 +5,7 @@
 {% block content %}
     <script type="text/javascript">
         let table ='{% url 'user:table' %}';
-        let search = '{% url 'user:search'%}';
+        let search = '{% url 'user:search' user %}';
     </script>
     <div class="wrapper">
         <div class="page-header page-header-small">
@@ -21,7 +21,7 @@
     <div class="section">
         <div class="container col-lg-10">
             {% include 'base/search.html' %}
-            <div class="row">
+            <div id="content" class="row">
                 {% include 'user/table.html' %}
             </div>
         </div>

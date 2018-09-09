@@ -14,12 +14,13 @@ function changePage(obj, e) {
 
 var currentUrl = table;
 
-function loadTable(e, doSearch) {
+function loadTable(e, doSearch, type) {
     e.preventDefault();
     var param = $('#search').val();
-    if (doSearch && param !== "")
-        currentUrl = search+param+'/';
-    else
+    if (doSearch && param !== "") {
+        var search = 'search/';
+        currentUrl = search + param + '/';
+    } else
         currentUrl = table;
     $.ajaxSetup({
         headers: {
@@ -31,7 +32,7 @@ function loadTable(e, doSearch) {
         method : 'get',
         csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
     }).done(function (response) {
-        currentUrl = search;
+        currentUrl = type+'/'+search;
         $('#content').html(response);
         if (doSearch)
             location.hash = $('#search').val();
