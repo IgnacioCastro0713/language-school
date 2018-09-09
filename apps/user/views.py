@@ -1,6 +1,4 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
-from django.views.generic import DeleteView, ListView
 from apps.user.models import User
 from apps.user.form import UserForm
 from passlib.hash import pbkdf2_sha256
@@ -8,9 +6,9 @@ import sweetify
 from sweetify.views import SweetifySuccessMixin
 
 
-class Index(ListView):
-    model = User
-    template_name = 'user/index.html'
+def index(request):
+    user = User.objects.all()
+    return render(request, 'user/index.html', {'object_list': user})
 
 
 def create(request):
@@ -39,16 +37,15 @@ def show(request):
     return
 
 
-class Delete(DeleteView):
-    model = User
-    template_name = 'user/table.html'
-    success_url = reverse_lazy('user:index')
+def delete(request, id_user):
+    User.objects.get(id=id_user).delete()
 
 
-class Table(ListView):
-    model = User
-    template_name = 'user/index.html'
+def table(request):
+    user = User.objects.all()
+    return render(request, 'user/table.html', {'object_list': user})
 
 
 def search(request):
-    return
+    user = User.objects.get(headline__contains=request['search'])
+    return render(request, 'user/table.html', {'object_list': user})

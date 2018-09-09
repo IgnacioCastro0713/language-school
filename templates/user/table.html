@@ -1,13 +1,14 @@
-<div class="card card-blog col-md-12 ml-auto mr-auto">
+<div class="card card-blog col-lg-12 ml-auto mr-auto">
     <div class="card-body">
         <table class="table">
             <thead>
             <tr>
                 <th>Código</th>
-                <th>Nombre</th>
+                <th>Nombre completo</th>
                 <th>Correo electrónico</th>
                 <th>Direción</th>
-                <th class="text-right">Telefono</th>
+                <th>Telefono</th>
+                <th>Tipo de usuario</th>
                 <th class="text-center">Actions</th>
             </tr>
             </thead>
@@ -19,7 +20,8 @@
                         <td>{{ user.nombre}} {{user.apaterno}} {{user.amaterno }}</td>
                         <td>{{ user.email }}</td>
                         <td>{{ user.address }}</td>
-                        <td class="text-right">{{ user.phone }}</td>
+                        <td>{{ user.phone }}</td>
+                        <td>{{ user.role.nombre }}</td>
                         <td class="td-actions text-center">
                             <button type="button" rel="tooltip" class="btn btn-info">
                                 <i class="now-ui-icons users_single-02"></i>
@@ -37,13 +39,6 @@
                 <td class="text-danger"><strong> No hay registros de usuario</strong></td>
             {% endif %}
             </tbody>
-            <tfoot>
-            <tr>
-                <td colspan="3">
-                    {% include 'base/pagination.html' %}
-                </td>
-            </tr>
-            </tfoot>
         </table>
     </div>
 </div>

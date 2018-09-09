@@ -15,8 +15,8 @@ function changePage(obj, e) {
 var currentUrl = table;
 
 function loadTable(e, doSearch) {
-    var csrftoken = $("[name=csrfmiddlewaretoken]").val();
     e.preventDefault();
+    var csrftoken = $("[name=csrfmiddlewaretoken]").val();
     var param = $('#search').val();
     if (doSearch && param !== "")
         currentUrl = search+'/'+param+'/';
@@ -29,7 +29,8 @@ function loadTable(e, doSearch) {
     });
     $.ajax({
         url : currentUrl,
-        method : 'get'
+        method : 'get',
+        //csrfmiddlewaretoken: csrftoken,
     }).done(function (response) {
         currentUrl = search;
         $('#content').html(response);

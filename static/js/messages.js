@@ -49,7 +49,7 @@ function deleteElement(name, url, done, fail) {
     var csrftoken = $("[name=csrfmiddlewaretoken]").val();
     swalMaterial({
         title: '¿Desea eliminar el elemento?',
-        text: "Está apunto de eliminar el registro de "+name+".",
+        text: "Está apunto de eliminar el registro de "+csrftoken+".",
         type: 'warning',
         showCancelButton: true,
         confirmButtonText: '<i class="now-ui-icons ui-1_check"></i>  Eliminar',
@@ -62,7 +62,10 @@ function deleteElement(name, url, done, fail) {
                 }
             });
             $.ajax({
-                data: { '_method' : 'DELETE' },
+                data: {
+                    '_method' : 'DELETE',
+                    csrfmiddlewaretoken: csrftoken,
+                },
                 type: 'post',
                 url: url,
             }).done(done).fail(fail)
