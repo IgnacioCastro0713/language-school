@@ -36,10 +36,10 @@
                                 <div class="form-check form-check-radio">
                                     {% for rol in form.role %}
                                         {% if rol.choice_label != '---------' %}
-                                    <label class="form-check-label" style="color: #1d2124">
-                                        {{ rol.tag }}
-                                        <span class="form-check-sign"></span>{{ rol.choice_label }}
-                                    </label>
+                                            <label class="form-check-label" style="color: #1d2124">
+                                                {{ rol.tag }}
+                                                <span class="form-check-sign"></span>{{ rol.choice_label }}
+                                            </label>
                                         {% endif %}
                                     {% endfor %}
                                 </div>
@@ -85,5 +85,6 @@
                     </div>
                 </div>
             </div>
-        </div><br>
+        </div>
+        <br>
 {% endblock %}

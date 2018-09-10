@@ -6,10 +6,10 @@
                 <th>Código</th>
                 <th>Nombre completo</th>
                 <th>Correo electrónico</th>
-                <th>Direción</th>
+                <th>Dirección</th>
                 <th>Telefono</th>
                 <th>Tipo de usuario</th>
-                <th class="text-center">Actions</th>
+                <th class="text-center">Acciones</th>
             </tr>
             </thead>
             <tbody>
@@ -23,20 +23,20 @@
                         <td>{{ user.phone }}</td>
                         <td>{{ user.role.nombre }}</td>
                         <td class="td-actions text-center">
-                            <button type="button" rel="tooltip" class="btn btn-info">
-                                <i class="now-ui-icons users_single-02"></i>
+                            <button type="button" rel="tooltip" class="btn btn-info" title="Detalles">
+                                <i class="now-ui-icons text_align-center"></i>
                             </button>
-                            <button type="button" rel="tooltip" class="btn btn-success">
+                            <button type="button" rel="tooltip" class="btn btn-success" title="Editar">
                                 <i class="now-ui-icons ui-2_settings-90"></i>
                             </button>
-                            <button onclick="confirmDelete(event, '{{ user.nombre }}' ,'{% url 'user:delete' user.code %}')" type="button" rel="tooltip" class="btn btn-danger">
+                            <button title="Eliminar" onclick="confirmDelete(event, '{{ user.nombre }}' ,'{% url 'user:delete' user.code %}')" type="button" rel="tooltip" class="btn btn-danger">
                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                             </button>
                         </td>
                     </tr>
                 {% endfor %}
             {% else %}
-                <td class="text-danger"><strong> No hay registros de usuario</strong></td>
+                <td class="text-danger"><strong> No hay registros de usuario. </strong></td>
             {% endif %}
             </tbody>
         </table>
