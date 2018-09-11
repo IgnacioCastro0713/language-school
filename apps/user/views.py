@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
 from apps.user.models import User
 from apps.user.form import UserForm
 from passlib.hash import pbkdf2_sha256  # pip install passlib
@@ -66,7 +66,8 @@ def search(request, find):
     users = User.objects.filter(
         Q(code__icontains=find) |
         Q(nombre__icontains=find) |
-        Q(email__icontains=find) |
+        Q(apaterno__icontains=find) |
+        Q(amaterno__icontains=find) |
         Q(role__nombre__icontains=find)
     )
     return render(request, 'user/table.html', {'object_list': users})
