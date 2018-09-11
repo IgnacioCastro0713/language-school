@@ -1,0 +1,97 @@
+{% extends 'base/main.html' %}
+{% load staticfiles %}
+{% block title %} Editar {% endblock %}
+{% block type %} profile-page sidebar-collapse {% endblock %}
+{% block content %}
+    <div class="">
+    <div class="page-header clear-filter" filter-color="orange">
+        <div class="page-header-image" data-parallax="true" style="background-image:url('{% static 'img/bg5.jpg' %}');">
+        </div>
+        <div class="container">
+            <div class="photo-container">
+                <img src="{% static 'img/ryan.jpg' %}" alt="">
+            </div>
+            <h3 class="title">{{ form.nombre.value }} {{ form.apaterno.value }} {{ form.amaterno.value }}</h3>
+        </div>
+    </div>
+    <div class="section" style="margin-top: -200px">
+        <div class="col-md-10 ml-auto mr-auto">
+            <div class="card card-contact card-raised">
+                <form role="form" id="contact-form1" method="post">
+                    {% csrf_token %}
+                    <div class="card-header text-center"><h4 class="card-title" style="color: #e8833b">Editar usuario</h4></div>
+                    <div class="card-body text-left">
+                        <p class="text-primary">Datos usuario</p>
+                        <div class="row">
+                            <div class="form-group col-md-2 pl-2">
+                                <label for="txtcode" style="color: #1d2124">Código</label>
+                                <br>
+                                <strong>{{ form.code.value }}</strong>
+                            </div>
+                            <div class="col-md-4 pl-2">
+                                <div class="form-group">
+                                    <label for="txtpassword" style="color: #1d2124">Contraseña</label>
+                                    {{ form.password }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 pl-2">
+                                <div class="form-group">
+                                    <label for="txtemail" style="color: #1d2124">Correo electrónico</label>
+                                    {{ form.email }}
+                                </div>
+                            </div>
+                        </div>
+                        <label style="color: #1d2124">Tipo de usuario</label>
+                        <div class="form-check form-check-radio">
+                            {% for rol in form.role %}
+                                {% if rol.choice_label != '---------' %}
+                                    <label class="form-check-label" style="color: #1d2124">
+                                        {{ rol.tag }}
+                                        <span class="form-check-sign"></span>{{ rol.choice_label }}
+                                    </label>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <br>
+                        <p class="text-primary">Datos personales</p>
+                        <div class="row">
+                            <div class="col-md-4 pl-2">
+                                <div class="form-group">
+                                    <label for="txtnombre" style="color: #1d2124">Nombre</label>
+                                    {{ form.nombre }}
+                                </div>
+                            </div>
+                            <div class="col-md-4 pl-2">
+                                <div class="form-group">
+                                    <label for="txtapaterno" style="color: #1d2124">Apellido paterno</label>
+                                    {{ form.apaterno }}
+                                </div>
+                            </div>
+                            <div class="col-md-4 pl-2">
+                                <div class="form-group">
+                                    <label for="txtamaterno" style="color: #1d2124">Apellido materno</label>
+                                    {{ form.amaterno }}
+                                </div>
+                            </div>
+                            <div class="col-md-7 pl-2">
+                                <div class="form-group">
+                                    <label for="txtaddress" style="color: #1d2124">Dirección</label>
+                                    {{ form.address }}
+                                </div>
+                            </div>
+                            <div class="col-md-5 pl-2">
+                                <div class="form-group">
+                                    <label for="txtphone" style="color: #1d2124">Telefono</label>
+                                    {{ form.phone }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <button type="submit" class="btn btn-lg  btn-primary btn-round pull-right">Registrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
