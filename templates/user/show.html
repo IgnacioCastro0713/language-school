@@ -3,5 +3,36 @@
 {% block title %} Detalles {% endblock %}
 {% block type %} profile-page sidebar-collapse {% endblock %}
 {% block content %}
-
+    <div class="wrapper">
+        <div class="page-header page-header-small clear-filter" filter-color="orange">
+            <div class="page-header-image" data-parallax="true" style="background-image:url({% static 'img/bg5.jpg' %});"></div>
+            <div class="container">
+                <div class="photo-container">
+                    <img src="{% static 'img/ryan.jpg' %}" alt="">
+                </div>
+                <h3 class="title">{{ object_list.nombre }} {{ object_list.apaterno }} {{ object_list.amaterno }}</h3>
+                <p class="category">{{ object_list.role.nombre }}</p>
+                <h6>Código:</h6>
+                <p>{{ object_list.code }}</p>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="button-container">
+                    <a href="#" class="btn btn-primary btn-round btn-lg" rel="tooltip" title="Contacto">
+                        <i class="now-ui-icons ui-1_email-85"></i> {{ object_list.email }}
+                    </a>
+                </div>
+                <br>
+                <div class="description text-center">
+                    <h6 style="color: #3C4858;">Dirección:</h6>
+                    <p>{{ object_list.address }}</p>
+                    <h6 style="color: #3C4858;">Telefono:</h6>
+                    <p>{{ object_list.phone }}</p>
+                </div>
+                <h3 class="title">About me</h3>
+                <h5 class="description">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</h5>
+            </div>
+        </div>
+    </div>
 {% endblock %}

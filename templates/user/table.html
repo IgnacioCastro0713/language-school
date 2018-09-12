@@ -26,17 +26,17 @@
                         <td>{{ user.phone }}</td>
                         <td>{{ user.role.nombre }}</td>
                         <td class="td-actions text-center">
-                            <a href="">
-                                <button type="button" rel="tooltip" class="btn btn-info" title="Detalles">
+                            <a href="{% url 'user:show' user.code%}">
+                                <button type="button" rel="tooltip" class="btn btn-info btn-icon" title="Detalles">
                                     <i class="now-ui-icons text_align-center"></i>
                                 </button>
                             </a>
                             <a href="{% url 'user:edit' user.code %}">
-                                <button type="button" rel="tooltip" class="btn btn-success" title="Editar">
+                                <button type="button" rel="tooltip" class="btn btn-success btn-icon" title="Editar">
                                     <i class="now-ui-icons ui-2_settings-90"></i>
                                 </button>
                             </a>
-                            <button title="Eliminar" onclick="confirmDelete(event, '{{ user.nombre }}' ,'{% url 'user:delete' user.code %}')" type="button" rel="tooltip" class="btn btn-danger">
+                            <button title="Eliminar" onclick="confirmDelete(event, '{{ user.nombre }}' ,'{% url 'user:delete' user.code %}')" type="button" rel="tooltip" class="btn btn-danger btn-icon">
                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                             </button>
                         </td>

@@ -3,8 +3,7 @@
 {% block title %} Editar {% endblock %}
 {% block type %} profile-page sidebar-collapse {% endblock %}
 {% block content %}
-    <div class="">
-    <div class="page-header clear-filter" filter-color="orange">
+    <div class="page-header page-header-small clear-filter" filter-color="orange">
         <div class="page-header-image" data-parallax="true" style="background-image:url('{% static 'img/bg5.jpg' %}');">
         </div>
         <div class="container">
@@ -14,7 +13,7 @@
             <h3 class="title">{{ form.nombre.value }} {{ form.apaterno.value }} {{ form.amaterno.value }}</h3>
         </div>
     </div>
-    <div class="section" style="margin-top: -200px">
+    <div class="section" style="margin-top: -100px; padding-top: 30px">
         <div class="col-md-10 ml-auto mr-auto">
             <div class="card card-contact card-raised">
                 <form role="form" id="contact-form1" method="post">
@@ -27,16 +26,16 @@
                                 <label for="txtcode" style="color: #1d2124">Código</label><br>
                                 <strong>{{ form.code.value }}</strong>
                             </div>
-                            <div class="col-md-4 pl-2">
-                                <div class="form-group">
-                                    <label for="txtpassword" style="color: #1d2124">Contraseña</label>
-                                    {{ form.password }}
-                                </div>
-                            </div>
                             <div class="col-md-6 pl-2">
                                 <div class="form-group">
                                     <label for="txtemail" style="color: #1d2124">Correo electrónico</label>
                                     {{ form.email }}
+                                </div>
+                            </div>
+                            <div class="col-md-4 pl-2">
+                                <div class="form-group">
+                                    <label for="txtpassword" style="color: #1d2124">Contraseña</label>
+                                    {{ form.password }}
                                 </div>
                             </div>
                         </div>
@@ -86,8 +85,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-7">
-                        <button type="submit" class="btn btn-lg  btn-primary btn-round pull-right">Editar</button>
+                    <div class="col-sm-7">
+                        <button type="submit" class="btn btn-lg  btn-primary pull-right">Guardar Cambios</button>
                     </div>
                 </form>
             </div>

@@ -35,6 +35,8 @@ def show(request, code):
 
 
 def edit(request, code):
+    user = User.objects.get(pk=code)
+
     if request.method == 'POST':
         User.objects.filter(pk=code).update(
             password=pbkdf2_sha256.encrypt(request.POST['password'], rounds=12000, salt_size=32),
@@ -48,7 +50,7 @@ def edit(request, code):
         )
         sweetify.success(request, 'Editado correctamente!', toast=True, position='top', timer=2000)
         return redirect('user:index')
-    user = User.objects.get(pk=code)
+
     return render(request, 'user/edit.html', {'form': UserForm(instance=user)})
 
 
