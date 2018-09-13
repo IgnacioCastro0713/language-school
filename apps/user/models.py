@@ -1,12 +1,13 @@
 from django.db import models
 from apps.course.models import Course
+# from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 
 class Role(models.Model):
     reference = models.CharField(max_length=25)
     nombre = models.CharField(max_length=25)
-
+    
     def __str__(self):
         return '{}'.format(self.nombre)
 

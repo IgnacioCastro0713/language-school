@@ -8,7 +8,7 @@
             <div class="page-header-image" data-parallax="true" style="background-image:url({% static 'img/bg5.jpg' %});"></div>
             <div class="container">
                 <div class="photo-container">
-                    <img src="{% static 'img/ryan.jpg' %}" alt="">
+                    <img src="{% static 'img/avatar.jpg' %}" alt="">
                 </div>
                 <h3 class="title">{{ object_list.nombre }} {{ object_list.apaterno }} {{ object_list.amaterno }}</h3>
                 <p class="category">{{ object_list.role.nombre }}</p>
@@ -29,9 +29,17 @@
                     <p>{{ object_list.address }}</p>
                     <h6 style="color: #3C4858;">Telefono:</h6>
                     <p>{{ object_list.phone }}</p>
+                    <a href="{% url 'user:edit' object_list.code %}">
+                        <button type="submit" class="btn btn-lg btn-success">
+                            <i class="now-ui-icons ui-2_settings-90"></i>  Editar
+                        </button>
+                    </a>
+                    <a onclick="deleteInShow(event, '{{ object_list.nombre }}', '{% url 'user:delete' object_list.code %}', '{% url 'user:index' %}')">
+                        <button type="submit" class="btn btn-lg btn-danger">
+                            <i class="now-ui-icons ui-1_simple-remove"></i> Eliminar
+                        </button>
+                    </a>
                 </div>
-                <h3 class="title">About me</h3>
-                <h5 class="description">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</h5>
             </div>
         </div>
     </div>
