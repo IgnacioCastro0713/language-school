@@ -20,7 +20,7 @@
                 {% for user in object_list %}
                     <tr>
                         <td class="text-center">{{ user.code }}</td>
-                        <td>{{ user.nombre}} {{user.apaterno}} {{user.amaterno }}</td>
+                        <td>{{ user.first_name}} {{user.last_name}} {{user.second_last_name }}</td>
                         <td>{{ user.email }}</td>
                         <td>{{ user.address }}</td>
                         <td>{{ user.phone }}</td>

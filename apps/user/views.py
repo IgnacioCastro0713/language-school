@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from apps.user.models import User
+from apps.user.models import User, AbstractUser
 from apps.user.form import UserForm
-from passlib.hash import pbkdf2_sha256  # pip install passlib
+# from passlib.hash import pbkdf2_sha256  # pip install passlib
 import sweetify  # pip install sweetify
 from django.db.models import Q
 
@@ -15,10 +15,10 @@ def create(request):
     if request.method == 'POST':
         User.objects.create(
             code=request.POST['code'],
-            password=pbkdf2_sha256.encrypt(request.POST['password'], rounds=12000, salt_size=32),
-            nombre=request.POST['nombre'],
-            apaterno=request.POST['apaterno'],
-            amaterno=request.POST['amaterno'],
+            password=request.POST['password'],
+            first_name=request.POST['first_name'],
+            last_name=request.POST['last_name'],
+            second_last_name=request.POST['second_last_name'],
             email=request.POST['email'],
             address=request.POST['address'],
             phone=request.POST['phone'],
@@ -39,10 +39,10 @@ def edit(request, code):
 
     if request.method == 'POST':
         User.objects.filter(pk=code).update(
-            password=pbkdf2_sha256.encrypt(request.POST['password'], rounds=12000, salt_size=32),
-            nombre=request.POST['nombre'],
-            apaterno=request.POST['apaterno'],
-            amaterno=request.POST['amaterno'],
+            password=request.POST['password'],
+            first_name=request.POST['first_name'],
+            last_name=request.POST['last_name'],
+            second_last_name=request.POST['second_last_name'],
             email=request.POST['email'],
             address=request.POST['address'],
             phone=request.POST['phone'],
@@ -67,9 +67,9 @@ def table(request):
 def search(request, find):
     users = User.objects.filter(
         Q(code__icontains=find) |
-        Q(nombre__icontains=find) |
-        Q(apaterno__icontains=find) |
-        Q(amaterno__icontains=find) |
+        Q(first_name__icontains=find) |
+        Q(last_name__icontains=find) |
+        Q(second_last_name__icontains=find) |
         Q(role__nombre__icontains=find)
     )
     return render(request, 'user/table.html', {'object_list': users})

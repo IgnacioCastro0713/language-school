@@ -10,7 +10,7 @@
                 <div class="photo-container">
                     <img src="{% static 'img/avatar.jpg' %}" alt="">
                 </div>
-                <h3 class="title">{{ object_list.nombre }} {{ object_list.apaterno }} {{ object_list.amaterno }}</h3>
+                <h3 class="title">{{ object_list.first_name }} {{ object_list.last_name }} {{ object_list.second_last_name }}</h3>
                 <p class="category">{{ object_list.role.nombre }}</p>
                 <h6>Código:</h6>
                 <p>{{ object_list.code }}</p>

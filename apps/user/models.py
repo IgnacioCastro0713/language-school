@@ -1,23 +1,22 @@
 from django.db import models
 from apps.course.models import Course
-# from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 
 class Role(models.Model):
     reference = models.CharField(max_length=25)
     nombre = models.CharField(max_length=25)
-    
+
     def __str__(self):
         return '{}'.format(self.nombre)
 
 
-class User(models.Model):
+class User(AbstractUser):
     code = models.CharField(max_length=10, primary_key=True)
-    password = models.CharField(max_length=245)
-    nombre = models.CharField(max_length=45)
-    apaterno = models.CharField(max_length=25)
-    amaterno = models.CharField(max_length=25)
+    first_name = models.CharField(max_length=45)  #
+    last_name = models.CharField(max_length=25)  #
+    second_last_name = models.CharField(max_length=25)  #
     email = models.EmailField()
     address = models.CharField(max_length=45)
     phone = models.CharField(max_length=15)

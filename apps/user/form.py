@@ -10,9 +10,9 @@ class UserForm(forms.ModelForm):
         fields = [
             'code',
             'password',
-            'nombre',
-            'apaterno',
-            'amaterno',
+            'first_name',
+            'last_name',
+            'second_last_name',
             'email',
             'address',
             'phone',
@@ -29,17 +29,17 @@ class UserForm(forms.ModelForm):
                 'id': 'txtpass',
                 'placeholder': 'Contraseña',
             }),
-            'nombre': forms.TextInput(attrs={
+            'first_name': forms.TextInput(attrs={
                 'class': 'form-control',
                 'id': 'txtnombre',
                 'placeholder': 'Nombre',
             }),
-            'apaterno': forms.TextInput(attrs={
+            'last_name': forms.TextInput(attrs={
                 'class': 'form-control',
                 'id': 'txtapaterno',
                 'placeholder': 'Apellido paterno',
             }),
-            'amaterno': forms.TextInput(attrs={
+            'second_last_name': forms.TextInput(attrs={
                 'class': 'form-control',
                 'id': 'txtamaterno',
                 'placeholder': 'Apellido materno',
