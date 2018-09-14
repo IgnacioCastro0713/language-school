@@ -21,7 +21,8 @@ def user_login(request):
             login(request, user)
             info(request, 'Bienvenido(a) '+request.user.first_name+'!', toast=True, position='top', timer=2000)
             return HttpResponseRedirect(render(request, 'home/index.html'))
-        warning(request, 'Ingresar datos correctos!'+str(user), toast=True, position='top', timer=2000)
+        else:
+            warning(request, 'Ingresar datos correctos!'+str(user), toast=True, position='top', timer=2000)
     return render(request, 'home/login.html')
 
 

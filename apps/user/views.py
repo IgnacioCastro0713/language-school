@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from apps.user.models import User, AbstractUser
 from apps.user.form import UserForm
-# from passlib.hash import pbkdf2_sha256  # pip install passlib
+from passlib.hash import pbkdf2_sha256  # pip install passlib
 import sweetify  # pip install sweetify
 from django.db.models import Q
 
@@ -16,7 +16,7 @@ def create(request):
         User.objects.create(
             code=request.POST['code'],
             username=request.POST['code'],
-            password=request.POST['password'],
+            password=pbkdf2_sha256.encrypt(request.POST['password'], rounds=12000, salt_size=32),
             first_name=request.POST['first_name'],
             last_name=request.POST['last_name'],
             second_last_name=request.POST['second_last_name'],
@@ -40,7 +40,7 @@ def edit(request, code):
 
     if request.method == 'POST':
         User.objects.filter(pk=code).update(
-            password=request.POST['password'],
+            password=pbkdf2_sha256.encrypt(request.POST['password'], rounds=12000, salt_size=32),
             first_name=request.POST['first_name'],
             last_name=request.POST['last_name'],
             second_last_name=request.POST['second_last_name'],
