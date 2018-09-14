@@ -10,7 +10,6 @@
                 <th>Nombre completo</th>
                 <th>Correo electrónico</th>
                 <th>Dirección</th>
-                <th>Telefono</th>
                 <th>Tipo de usuario</th>
                 <th class="text-center">Acciones</th>
             </tr>
@@ -23,7 +22,6 @@
                         <td>{{ user.first_name}} {{user.last_name}} {{user.second_last_name }}</td>
                         <td>{{ user.email }}</td>
                         <td>{{ user.address }}</td>
-                        <td>{{ user.phone }}</td>
                         <td>{{ user.role.nombre }}</td>
                         <td class="td-actions text-center">
                             <a href="{% url 'user:show' user.code%}">

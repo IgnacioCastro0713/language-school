@@ -15,6 +15,7 @@ def create(request):
     if request.method == 'POST':
         User.objects.create(
             code=request.POST['code'],
+            username=request.POST['code'],
             password=request.POST['password'],
             first_name=request.POST['first_name'],
             last_name=request.POST['last_name'],
