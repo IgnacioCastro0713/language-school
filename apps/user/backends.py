@@ -8,8 +8,6 @@ class CustomBackendUser(object):
     def authenticate(username=None, password=None):
         try:
             user = User.objects.get(username=username)
-            user.set_password(password)
-            user.save()
             if user.check_password(password):
                 return user
         except User.DoesNotExist:

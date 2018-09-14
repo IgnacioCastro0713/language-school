@@ -1,8 +1,7 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from apps.user.backends import CustomBackendUser as Auth
 from django.contrib.auth import login, logout
 from sweetify import *
-from django.contrib.auth.hashers import check_password, make_password
 # Create your views here.
 
 
@@ -18,7 +17,7 @@ def user_login(request):
         if user:
             login(request, user)
             info(request, 'Bienvenido(a) '+request.user.first_name+'!', toast=True, position='top', timer=2000)
-            return HttpResponseRedirect(render(request, 'home/index.html'))
+            return HttpResponseRedirect(reverse('home:index'))  # problema
         else:
             warning(request, 'Ingresar datos correctos!'+str(user), toast=True, position='top', timer=2000)
     return render(request, 'home/login.html')
