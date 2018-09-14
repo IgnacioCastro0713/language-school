@@ -44,6 +44,14 @@ INSTALLED_APPS = [
     'apps.home',
     'sweetify',
 ]
+
+
+AUTH_USER_MODEL = 'user.User'
+
+AUTHENTICATION_BACKENDS = [
+    'apps.user.backends.CustomBackendUser',
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -127,7 +135,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-
-AUTH_USER_MODEL = 'user.User'
-
-#LOGIN_REDIRECT_URL = reverse_lazy('home:index')
+# LOGIN_REDIRECT_URL = reverse_lazy('home:index')

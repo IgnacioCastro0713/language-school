@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login, logout, authenticate
+from apps.user.backends import CustomBackendUser as Auth
+from django.contrib.auth import login, logout
 from sweetify import *
 from django.contrib.auth.hashers import check_password, make_password
-from django.conf import settings
 # Create your views here.
 
 
@@ -16,7 +14,7 @@ def user_login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password1 = request.POST['password1']
-        user = authenticate(request, username=username, password=password1)
+        user = Auth.authenticate(username=username, password=password1)
         if user:
             login(request, user)
             info(request, 'Bienvenido(a) '+request.user.first_name+'!', toast=True, position='top', timer=2000)
