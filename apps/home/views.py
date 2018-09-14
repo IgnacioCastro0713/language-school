@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from sweetify import *
-from django.contrib.auth.hashers import check_password
+from django.contrib.auth.hashers import check_password, make_password
 from django.conf import settings
 # Create your views here.
 
