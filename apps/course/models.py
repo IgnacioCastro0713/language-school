@@ -16,4 +16,3 @@ class Course(models.Model):
     description = models.TextField()
     classroom = models.ManyToManyField(Classroom, blank=True)
     language = models.ForeignKey(Language, null=True, blank=True, on_delete=models.CASCADE)
-
