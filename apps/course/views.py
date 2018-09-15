@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from apps.course.models import Course
+from apps.course.models import Course, Classroom
 from django.db.models import Q
 # Create your views here.
 
@@ -24,6 +24,11 @@ def show(request):
 def delete(request, id_course):
     Course.objects.get(pk=id_course).delete()
     return render(request, 'course/table.html')
+
+
+def enroll(request, id_ins):
+    course = Course.objects.get().classroom.add()
+    pass
 
 
 def table(request):
