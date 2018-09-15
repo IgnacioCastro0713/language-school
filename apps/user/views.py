@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
-from apps.user.models import User, AbstractUser
+from apps.user.models import User
 from apps.user.form import UserForm
-from passlib.hash import pbkdf2_sha256  # pip install passlib
-import sweetify  # pip install sweetify
 from django.db.models import Q
+import sweetify
 
 
 def index(request):

@@ -132,4 +132,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-# LOGIN_REDIRECT_URL = reverse_lazy('home:index')
+LOGIN_URL = '/login/'  # Render to the login if you haven't sing in session
+LOGIN_REDIRECT_URL = '/'

@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
+from django.shortcuts import render, HttpResponseRedirect, reverse
 from apps.user.backends import CustomBackendUser as Auth
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from sweetify import *
 # Create your views here.
 
@@ -17,15 +17,15 @@ def user_login(request):
         if user:
             login(request, user)
             info(request, 'Bienvenido(a) '+request.user.first_name+'!', toast=True, position='top', timer=2000)
-            return HttpResponseRedirect(reverse('home:index'))  # problema
+            return HttpResponseRedirect(reverse('home:index'))
         else:
-            warning(request, 'Ingresar datos correctos!'+str(user), toast=True, position='top', timer=2000)
+            warning(request, 'Ingresar datos correctos!', toast=True, position='top', timer=2000)
+            return render(request, 'home/login.html')
     return render(request, 'home/login.html')
 
 
 def user_logout(request):
-    if request.method == 'POST':
-        logout(request)
-        info(request, 'Sesión finalizada!', toast=True, position='top', timer=2000)
-        return redirect('user:index')
+    logout(request)
+    info(request, 'Sesión finalizada!', toast=True, position='top', timer=2000)
+    return HttpResponseRedirect(reverse('home:index'))
 
