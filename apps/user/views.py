@@ -12,18 +12,7 @@ def index(request):
 
 def create(request):
     if request.method == 'POST':
-        user = User.objects.create(
-            code=request.POST['code'],
-            username=request.POST['code'],
-            password=request.POST['password'],
-            first_name=request.POST['first_name'],
-            last_name=request.POST['last_name'],
-            second_last_name=request.POST['second_last_name'],
-            email=request.POST['email'],
-            address=request.POST['address'],
-            phone=request.POST['phone'],
-            role_id=request.POST['role'],
-        )
+        user = UserForm(request.POST).save()
         user.set_password(request.POST['password'])
         user.save()
         sweetify.success(request, 'Usuario guardado correctamente!', toast=True, position='top', timer=2000)
@@ -38,23 +27,12 @@ def show(request, code):
 
 def edit(request, code):
     user = User.objects.get(pk=code)
-
     if request.method == 'POST':
-        user = User.objects.filter(pk=code).update(
-            password=request.POST['password'],
-            first_name=request.POST['first_name'],
-            last_name=request.POST['last_name'],
-            second_last_name=request.POST['second_last_name'],
-            email=request.POST['email'],
-            address=request.POST['address'],
-            phone=request.POST['phone'],
-            role_id=request.POST['role'],
-        )
+        user = UserForm(request.POST, instance=user).save()
         user.set_password(request.POST['password'])
         user.save()
         sweetify.success(request, 'Editado correctamente!', toast=True, position='top', timer=2000)
         return redirect('user:index')
-
     return render(request, 'user/edit.html', {'form': UserForm(instance=user)})
 
 
