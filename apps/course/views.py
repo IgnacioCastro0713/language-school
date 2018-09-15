@@ -9,6 +9,18 @@ def index(request):
     return render(request, 'course/index.html', {'object_list': courses})
 
 
+def create(request):
+    pass
+
+
+def edit(request):
+    pass
+
+
+def show(request):
+    pass
+
+
 def delete(request, id_course):
     Course.objects.get(pk=id_course).delete()
     return render(request, 'course/table.html')
