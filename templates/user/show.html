@@ -36,11 +36,13 @@
                             <i class="now-ui-icons ui-2_settings-90"></i>  Editar
                         </button>
                     </a>
-                    <a onclick="deleteInShow(event, '{{ object_list.nombre }}', '{% url 'user:delete' object_list.code %}', '{% url 'user:index' %}')">
-                        <button type="submit" class="btn btn-lg btn-danger">
-                            <i class="now-ui-icons ui-1_simple-remove"></i> Eliminar
-                        </button>
-                    </a>
+                    {% if user.code != object_list.code %}
+                        <a onclick="deleteInShow(event, '{{ object_list.nombre }}', '{% url 'user:delete' object_list.code %}', '{% url 'user:index' %}')">
+                            <button type="submit" class="btn btn-lg btn-danger">
+                                <i class="now-ui-icons ui-1_simple-remove"></i> Eliminar
+                            </button>
+                        </a>
+                    {% endif %}
                 </div>
             </div>
         </div>
