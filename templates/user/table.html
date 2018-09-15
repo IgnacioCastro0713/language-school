@@ -16,27 +16,29 @@
             </thead>
             <tbody>
             {% if object_list %}
-                {% for user in object_list %}
+                {% for users in object_list %}
                     <tr>
-                        <td class="text-center">{{ user.code }}</td>
-                        <td>{{ user.first_name}} {{user.last_name}} {{user.second_last_name }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.address }}</td>
-                        <td>{{ user.role.nombre }}</td>
+                        <td class="text-center">{{ users.code }}</td>
+                        <td>{{ users.first_name}} {{users.last_name}} {{users.second_last_name }}</td>
+                        <td>{{ users.email }}</td>
+                        <td>{{ users.address }}</td>
+                        <td>{{ users.role.nombre }}</td>
                         <td class="td-actions text-center">
-                            <a href="{% url 'user:show' user.code %}">
+                            <a href="{% url 'user:show' users.code %}">
                                 <button type="button" rel="tooltip" class="btn btn-info btn-icon" title="Detalles">
                                     <i class="now-ui-icons text_align-center"></i>
                                 </button>
                             </a>
-                            <a href="{% url 'user:edit' user.code %}">
+                            <a href="{% url 'user:edit' users.code %}">
                                 <button type="button" rel="tooltip" class="btn btn-success btn-icon" title="Editar">
                                     <i class="now-ui-icons ui-2_settings-90"></i>
                                 </button>
                             </a>
-                            <button title="Eliminar" onclick="confirmDelete(event, '{{ user.nombre }}' ,'{% url 'user:delete' user.code %}')" type="button" rel="tooltip" class="btn btn-danger btn-icon">
+                            {% if user.code != users.code %}
+                            <button title="Eliminar" onclick="confirmDelete(event, '{{ users.nombre }}' ,'{% url 'user:delete' users.code %}')" type="button" rel="tooltip" class="btn btn-danger btn-icon">
                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                             </button>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}
