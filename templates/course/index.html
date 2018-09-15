@@ -1,0 +1,29 @@
+{% extends 'base/main.html' %}
+{% load staticfiles %}
+{% block title %} Cursos {% endblock %}
+{% block type %} landing-page sidebar-collapse {% endblock %}
+{% block content %}
+    <script type="text/javascript">
+        let table = '{% url 'course:table' %}';
+        let search = 'search';
+    </script>
+    <div class="wrapper" style="margin-bottom: -100px">
+        <div class="page-header page-header-small">
+            <div class="page-header-image" data-parallax="true" style="background-image: url({% static 'img/bg6.jpg' %});"></div>
+            <div class="container text-left"><br>
+                <h1 class="title">Administración.</h1>
+                <div class="text-left">
+                    <h3>Cursos.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container col-lg-10">
+            {% include 'base/search.html' %}
+            <div id="content" class="row">
+                {% include 'course/table.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

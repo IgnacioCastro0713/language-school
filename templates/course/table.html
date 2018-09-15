@@ -1,0 +1,51 @@
+<div class="card card-blog col-lg-12 ml-auto mr-auto">
+    <div class="card-body">
+        <h6 class="text-info text-center">
+            Se ha(n) obtenido {{ object_list.count }} resultado(s).
+        </h6>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Día</th>
+                <th>Hora de inicio</th>
+                <th>Hora de fin</th>
+                <th>Idioma</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if object_list %}
+                {% for course in object_list %}
+                    <tr>
+                        <td class="text-center">{{ course.id}}</td>
+                        <td>{{ course.name}}</td>
+                        <td>{{ course.day }}</td>
+                        <td>{{ course.start }}</td>
+                        <td>{{ course.end }}</td>
+                        <td>{{ course.language.name }}</td>
+                        <td class="td-actions text-center">
+                            <a href="">
+                                <button type="button" rel="tooltip" class="btn btn-info btn-icon" title="Detalles">
+                                    <i class="now-ui-icons text_align-center"></i>
+                                </button>
+                            </a>
+                            <a href="">
+                                <button type="button" rel="tooltip" class="btn btn-success btn-icon" title="Editar">
+                                    <i class="now-ui-icons ui-2_settings-90"></i>
+                                </button>
+                            </a>
+                            <button title="Eliminar" onclick="confirmDelete(event, '{{ course.name }}' ,'{% url 'course:delete' course.id %}')" type="button" rel="tooltip" class="btn btn-danger btn-icon">
+                                <i class="now-ui-icons ui-1_simple-remove"></i>
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <td class="text-danger"><strong> No hay registros de usuario. </strong></td>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse
 from apps.user.backends import CustomBackendUser as Auth
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout
 from sweetify import *
 # Create your views here.
 
