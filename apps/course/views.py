@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from apps.course.models import Course, Classroom
+from apps.course.models import Course
+from apps.user.models import User
 from django.db.models import Q
 # Create your views here.
 
@@ -27,7 +28,7 @@ def delete(request, id_course):
 
 
 def enroll(request, id_ins):
-    course = Course.objects.get().classroom.add()
+    courses = User.course.add()
     pass
 
 

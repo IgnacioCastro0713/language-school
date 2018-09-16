@@ -10,6 +10,7 @@ def index(request):
 
 
 def user_login(request):
+    context = {}
     if request.method == 'POST':
         username = request.POST['username']
         password1 = request.POST['password1']
@@ -19,13 +20,14 @@ def user_login(request):
             info(request, 'Bienvenido(a) '+request.user.first_name+'!', toast=True, position='top', timer=2000)
             return HttpResponseRedirect(reverse('home:index'))
         else:
+            context['error'] = 'has-danger'
             warning(request, 'Ingresar datos correctos!', toast=True, position='top', timer=2000)
-            return render(request, 'home/login.html')
+            return render(request, 'home/login.html', context)
     return render(request, 'home/login.html')
 
 
 def user_logout(request):
     logout(request)
-    info(request, 'Sesión finalizada!', toast=True, position='top', timer=2000)
+    info(request, 'Se ha cerrado sesión', toast=True, position='top', timer=2000)
     return HttpResponseRedirect(reverse('home:index'))
 
