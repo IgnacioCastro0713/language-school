@@ -1,4 +1,5 @@
 from django.db import models
+from apps.user.models import User
 from apps.classroom.models import Classroom
 # Create your models here.
 
@@ -16,3 +17,4 @@ class Course(models.Model):
     description = models.TextField()
     classroom = models.ManyToManyField(Classroom, blank=True)
     language = models.ForeignKey(Language, null=True, blank=True, on_delete=models.CASCADE)
+    user = models.ManyToManyField(User)
