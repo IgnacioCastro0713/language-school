@@ -22,3 +22,6 @@ class User(AbstractUser):
     address = models.CharField(max_length=45)
     phone = models.CharField(max_length=15)
     role = models.ForeignKey(Role, null=True, blank=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '{} {} {}'.format(self.first_name, self.last_name, self.second_last_name)

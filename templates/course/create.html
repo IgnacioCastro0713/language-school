@@ -3,5 +3,93 @@
 {% block title %} Registrar {% endblock %}
 {% block type %} signup-page sidebar-collapse {% endblock %}
 {% block content %}
-
+    <div class="page-header header-filter" >
+        <div class="page-header-image" style="background-image:url({% static 'img/bg8.jpg' %})"></div>
+        <div class="content">
+            <div class="container">
+                <div class="col-md-10 ml-auto mr-auto">
+                    <div class="card card-contact card-raised">
+                        <form role="form" id="contact-form1" method="post">
+                            {% csrf_token %}
+                            <div class="card-header text-center"><h4 class="card-title" style="color: #e8833b">Registrar curso</h4></div>
+                            <div class="card-body text-left">
+                                <p class="text-primary">Datos del curso</p>
+                                <div class="row">
+                                    <div class="form-group col-md-4 pl-2">
+                                        <label for="txtcode" style="color: #1d2124">Nombre del curso</label>
+                                        {{ form.name }}
+                                    </div>
+                                    <div class="col-md-4 pl-2">
+                                        <div class="form-group">
+                                            <label for="txtemail" style="color: #1d2124">Idioma y nivel</label>
+                                            {{ form.language }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pl-2">
+                                        <div class="form-group">
+                                            <label for="prof" style="color: #1d2124">Profesor</label>
+                                            <select id="prof" class="form-control">
+                                                <option>Seleciona un profesor</option>
+                                                {% for teacher in form.user %}
+                                                        {{ teacher}}
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <label style="color: #1d2124">Tipo de usuario</label>
+                                <div class="form-check form-check-radio">
+                                    {% for rol in form.role %}
+                                        {% if rol.choice_label != '---------' %}
+                                            <label class="form-check-label" style="color: #1d2124">
+                                                {{ rol.tag }}
+                                                <span class="form-check-sign"></span>{{ rol.choice_label }}
+                                            </label>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <br>
+                                <p class="text-primary">Datos personales</p>
+                                <div class="row">
+                                    <div class="col-md-4 pl-2">
+                                        <div class="form-group">
+                                            <label for="txtnombre" style="color: #1d2124">Nombre</label>
+                                            {{ form.first_name }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pl-2">
+                                        <div class="form-group">
+                                            <label for="txtapaterno" style="color: #1d2124">Apellido paterno</label>
+                                            {{ form.last_name }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pl-2">
+                                        <div class="form-group">
+                                            <label for="txtamaterno" style="color: #1d2124">Apellido materno</label>
+                                            {{ form.second_last_name }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 pl-2">
+                                        <div class="form-group">
+                                            <label for="txtaddress" style="color: #1d2124">Dirección</label>
+                                            {{ form.address }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 pl-2">
+                                        <div class="form-group">
+                                            <label for="txtphone" style="color: #1d2124">Telefono</label>
+                                            {{ form.phone }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <button type="submit" class="btn btn-lg  btn-primary btn-round pull-right">Registrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
 {% endblock %}

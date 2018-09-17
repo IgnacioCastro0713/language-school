@@ -1,10 +1,14 @@
 from django import forms
-from apps.course.models import Course
+from apps.course.models import Course, User
 
 
 class CourseForm(forms.ModelForm):
-    class Meta:
 
+    def __init__(self, *args, **kwargs):  # Function to filter users type teachers
+        super(CourseForm, self).__init__(*args, **kwargs)
+        self.fields['user'].queryset = User.objects.filter(role__reference__exact='teacher')
+
+    class Meta:
         model = Course
 
         fields = [
@@ -15,7 +19,7 @@ class CourseForm(forms.ModelForm):
             'description',
             'language',
             'classroom',
-            'user'
+            'user',
         ]
         widgets = {
             'name': forms.TextInput(attrs={
@@ -36,12 +40,12 @@ class CourseForm(forms.ModelForm):
                 'class': 'form-control',
             }),
             'language': forms.Select(attrs={
-                'class': 'form-select-input'
+                'class': 'form-control'
             }),
             'classroom': forms.Select(attrs={
                 'class': 'form-select-input'
             }),
             'user': forms.Select(attrs={
-                'class': 'form-select-input'
+                'class': 'form-control'
             }),
         }
