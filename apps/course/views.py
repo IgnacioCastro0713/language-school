@@ -1,7 +1,8 @@
-from django.shortcuts import render
-from apps.course.models import Course
-from apps.user.models import User
+from django.shortcuts import render, redirect
+from apps.course.models import Course, User
+from apps.course.form import CourseForm
 from django.db.models import Q
+from sweetify import *
 # Create your views here.
 
 
@@ -11,7 +12,11 @@ def index(request):
 
 
 def create(request):
-    pass
+    if request.method == 'POST':
+        CourseForm(request.POST).save()
+        success(request, 'Curso guardado correctamente!', toast=True, position='top', timer=2000)
+        return redirect('course:index')
+    return render(request, 'course/create.html', {'form': CourseForm})
 
 
 def edit(request):
@@ -28,7 +33,7 @@ def delete(request, id_course):
 
 
 def enroll(request, id_ins):
-    courses = User.course.add()
+    courses = Course.user.add()
     pass
 
 
