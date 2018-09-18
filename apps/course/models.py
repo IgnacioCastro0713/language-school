@@ -1,7 +1,17 @@
 from django.db import models
 from apps.user.models import User
 from apps.classroom.models import Classroom
+
+
 # Create your models here.
+
+DAYS = (
+    ('lunes', 'Lunes'),
+    ('martes', 'Martes'),
+    ('miercoles', 'Miercoles'),
+    ('jueves', 'Jueves'),
+    ('viernes', 'Viernes'),
+)
 
 
 class Language(models.Model):
@@ -14,7 +24,7 @@ class Language(models.Model):
 
 class Course(models.Model):
     name = models.CharField(max_length=45)
-    day = models.CharField(max_length=10)  #
+    day = models.CharField(max_length=10, choices=DAYS)  #
     start = models.TimeField()
     end = models.TimeField()
     description = models.TextField()

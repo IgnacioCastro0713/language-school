@@ -21,7 +21,7 @@
                                     </div>
                                     <div class="col-md-4 pl-2">
                                         <div class="form-group">
-                                            <label for="txtemail" style="color: #1d2124">Idioma y nivel</label>
+                                            <label for="txtemail" style="color: #1d2124">Idioma y Nivel</label>
                                             {{ form.language }}
                                         </div>
                                     </div>
@@ -37,24 +37,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <label style="color: #1d2124">Tipo de usuario</label>
-                                <div class="form-check form-check-radio">
-                                    {% for rol in form.role %}
-                                        {% if rol.choice_label != '---------' %}
-                                            <label class="form-check-label" style="color: #1d2124">
-                                                {{ rol.tag }}
-                                                <span class="form-check-sign"></span>{{ rol.choice_label }}
-                                            </label>
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
-                                <br>
-                                <p class="text-primary">Datos personales</p>
+                                <p class="text-primary"></p>
                                 <div class="row">
                                     <div class="col-md-4 pl-2">
                                         <div class="form-group">
-                                            <label for="txtnombre" style="color: #1d2124">Nombre</label>
-                                            {{ form.first_name }}
+                                            <label for="txtnombre" style="color: #1d2124">Día</label>
+                                            {{ form.day }}
                                         </div>
                                     </div>
                                     <div class="col-md-4 pl-2">

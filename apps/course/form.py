@@ -1,5 +1,5 @@
 from django import forms
-from apps.course.models import Course, User
+from apps.course.models import Course, User, DAYS
 
 
 class CourseForm(forms.ModelForm):
@@ -21,15 +21,18 @@ class CourseForm(forms.ModelForm):
             'classroom',
             'user',
         ]
+
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Nombre curso',
             }),
-            'day': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Día',
-            }),
+            'day': forms.Select(
+                choices=DAYS,
+                attrs={
+                    'class': 'form-control',
+                }
+            ),
             'start': forms.TimeInput(attrs={
                 'class': 'form-control',
             }),
