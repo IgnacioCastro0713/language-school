@@ -4,9 +4,10 @@ from apps.course.models import Course, User
 
 class CourseForm(forms.ModelForm):
 
-    def __init__(self, *args, **kwargs):  # Function to filter users type teachers
+    def __init__(self, *args, **kwargs):
         super(CourseForm, self).__init__(*args, **kwargs)
         self.fields['user'].queryset = User.objects.filter(role__reference__exact='teacher')
+        self.fields['language'].empty_label = None
 
     class Meta:
         model = Course
@@ -17,6 +18,20 @@ class CourseForm(forms.ModelForm):
             ('miercoles', 'Miercoles'),
             ('jueves', 'Jueves'),
             ('viernes', 'Viernes'),
+        )
+
+        TIME = (
+            ('08:00', '8:00 am'),
+            ('09:00', '9:00 am'),
+            ('10:00', '10:00 am'),
+            ('11:00', '11:00 am'),
+            ('12:00', '12:00 pm'),
+            ('13:00', '1:00 pm'),
+            ('14:00', '2:00 pm'),
+            ('15:00', '3:00 pm'),
+            ('16:00', '4:00 pm'),
+            ('17:00', '5:00 pm'),
+            ('18:00', '6:00 pm'),
         )
 
         fields = [
@@ -41,11 +56,15 @@ class CourseForm(forms.ModelForm):
                     'class': 'form-control',
                 }
             ),
-            'start': forms.TimeInput(attrs={
-                'class': 'form-control',
-            }),
-            'end': forms.TimeInput(attrs={
-                'class': 'form-control',
+            'start': forms.Select(
+                choices=TIME,
+                attrs={
+                    'class': 'form-control',
+                }),
+            'end': forms.Select(
+                choices=TIME,
+                attrs={
+                    'class': 'form-control',
             }),
             'description': forms.Textarea(attrs={
                 'class': 'form-control',
@@ -54,7 +73,7 @@ class CourseForm(forms.ModelForm):
                 'class': 'form-control'
             }),
             'classroom': forms.Select(attrs={
-                'class': 'form-select-input'
+                'class': 'form-control'
             }),
             'user': forms.Select(attrs={
                 'class': 'form-control'
