@@ -1,5 +1,5 @@
 from django import forms
-from apps.course.models import Course, User, DAYS
+from apps.course.models import Course, User
 
 
 class CourseForm(forms.ModelForm):
@@ -10,6 +10,14 @@ class CourseForm(forms.ModelForm):
 
     class Meta:
         model = Course
+
+        DAYS = (
+            ('lunes', 'Lunes'),
+            ('martes', 'Martes'),
+            ('miercoles', 'Miercoles'),
+            ('jueves', 'Jueves'),
+            ('viernes', 'Viernes'),
+        )
 
         fields = [
             'name',

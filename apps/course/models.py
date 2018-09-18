@@ -5,14 +5,6 @@ from apps.classroom.models import Classroom
 
 # Create your models here.
 
-DAYS = (
-    ('lunes', 'Lunes'),
-    ('martes', 'Martes'),
-    ('miercoles', 'Miercoles'),
-    ('jueves', 'Jueves'),
-    ('viernes', 'Viernes'),
-)
-
 
 class Language(models.Model):
     name = models.CharField(max_length=25)
@@ -24,7 +16,7 @@ class Language(models.Model):
 
 class Course(models.Model):
     name = models.CharField(max_length=45)
-    day = models.CharField(max_length=10, choices=DAYS)  #
+    day = models.CharField(max_length=15)  #
     start = models.TimeField()
     end = models.TimeField()
     description = models.TextField()
