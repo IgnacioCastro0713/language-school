@@ -24,14 +24,14 @@
                         <td>{{ course.day }}</td>
                         <td>{{ course.start }}</td>
                         <td>{{ course.end }}</td>
-                        <td>{{ course.language.name }}</td>
+                        <td>{{ course.lan.name }}</td>
                         <td class="td-actions text-center">
                             <a href="">
                                 <button type="button" rel="tooltip" class="btn btn-info btn-icon" title="Detalles">
                                     <i class="now-ui-icons text_align-center"></i>
                                 </button>
                             </a>
-                            <a href="">
+                            <a href="{% url 'course:edit' course.id %}">
                                 <button type="button" rel="tooltip" class="btn btn-success btn-icon" title="Editar">
                                     <i class="now-ui-icons ui-2_settings-90"></i>
                                 </button>

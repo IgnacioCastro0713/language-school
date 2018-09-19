@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from apps.course.models import Course, User
+from apps.course.models import Course, Language, Classroom, User
 from apps.course.form import CourseForm
 from django.db.models import Q
 from sweetify import *
@@ -19,8 +19,13 @@ def create(request):
     return render(request, 'course/create.html', {'form': CourseForm})
 
 
-def edit(request):
-    pass
+def edit(request, id_course):
+    course = Course.objects.get(pk=id_course)
+    if request.method == 'POST':
+        CourseForm(request.POST, instance=course).save()
+        success(request, 'Editado correctamente!', toast=True, position='top', timer=2000)
+        return redirect('course:index')
+    return render(request, 'course/edit.html', {'form': CourseForm(instance=course)})
 
 
 def show(request):

@@ -22,23 +22,13 @@
                                     <div class="col-md-4 pl-2">
                                         <div class="form-group">
                                             <label for="selectlanguage" style="color: #1d2124">Idioma y Nivel</label>
-                                            <select id="selectlanguage" class="form-control" required>
-                                                <option value="0">Seleciona idioma y nivel</option>
-                                                {% for language in form.language %}
-                                                    {{ language }}
-                                                {% endfor %}
-                                            </select>
+                                            {{ form.lan }}
                                         </div>
                                     </div>
                                     <div class="col-md-4 pl-2">
                                         <div class="form-group">
                                             <label for="selectprof" style="color: #1d2124">Profesor</label>
-                                            <select id="selectprof" class="form-control" required>
-                                                <option>Seleciona un profesor</option>
-                                                {% for teacher in form.user %}
-                                                    {{ teacher}}
-                                                {% endfor %}
-                                            </select>
+                                            {{ form.user }}
                                         </div>
                                     </div>
                                 </div>
@@ -47,23 +37,13 @@
                                     <div class="col-md-4 pl-2">
                                         <div class="form-group">
                                             <label for="selectclassroom" style="color: #1d2124">Salón de clases</label>
-                                            <select id="selectclassroom" class="form-control" required>
-                                                <option>Seleciona un aula</option>
-                                                {% for room in form.classroom %}
-                                                    {{ room}}
-                                                {% endfor %}
-                                            </select>
+                                            {{ form.classroom }}
                                         </div>
                                     </div>
                                     <div class="col-md-4 pl-2">
                                         <div class="form-group">
                                             <label for="selectdia" style="color: #1d2124">Día</label>
-                                            <select id="selectdia" class="form-control" required>
-                                                <option value="0">Seleciona un día</option>
-                                                {% for day in form.day %}
-                                                    {{ day }}
-                                                {% endfor %}
-                                            </select>
+                                            {{ form.day }}
                                         </div>
                                     </div>
                                     <div class="col-md-2 pl-2">
@@ -75,7 +55,7 @@
                                     <div class="col-md-2 pl-2">
                                         <div class="form-group">
                                             <label for="selectend" style="color: #1d2124">Hora de fin</label>
-                                            {{ form.end}}
+                                            {{ form.end }}
                                         </div>
                                     </div>
                                     <div class="col-md-12 pl-2">

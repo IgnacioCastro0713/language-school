@@ -16,10 +16,10 @@ class Language(models.Model):
 
 class Course(models.Model):
     name = models.CharField(max_length=45)
-    day = models.CharField(max_length=15)  #
+    day = models.CharField(max_length=15)
     start = models.TimeField()
     end = models.TimeField()
-    description = models.TextField()
+    description = models.TextField(max_length=255)
+    lan = models.ForeignKey(Language, null=True, blank=True, on_delete=models.CASCADE)
     classroom = models.ManyToManyField(Classroom, blank=True)
-    language = models.ForeignKey(Language, null=True, blank=True, on_delete=models.CASCADE)
-    user = models.ManyToManyField(User)
+    user = models.ManyToManyField(User, blank=True)

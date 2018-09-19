@@ -7,7 +7,7 @@ class CourseForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(CourseForm, self).__init__(*args, **kwargs)
         self.fields['user'].queryset = User.objects.filter(role__reference__exact='teacher')
-        self.fields['language'].empty_label = None
+        self.fields['lan'].empty_label = None
 
     class Meta:
         model = Course
@@ -40,11 +40,10 @@ class CourseForm(forms.ModelForm):
             'start',
             'end',
             'description',
-            'language',
-            'classroom',
             'user',
+            'classroom',
+            'lan',
         ]
-
         widgets = {
             'name': forms.TextInput(
                 attrs={
@@ -71,16 +70,16 @@ class CourseForm(forms.ModelForm):
                 attrs={
                     'class': 'form-control',
                 }),
-            'language': forms.Select(
+            'user': forms.SelectMultiple(
                 attrs={
-                    'class': 'form-control'
+                    'class': 'form-control',
                 }),
-            'classroom': forms.Select(
+            'classroom': forms.SelectMultiple(
                 attrs={
-                    'class': 'form-control'
+                    'class': 'form-control',
                 }),
-            'user': forms.Select(
+            'lan': forms.Select(
                 attrs={
-                    'class': 'form-control'
+                    'class': 'form-control',
                 }),
         }
