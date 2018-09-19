@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from apps.course.models import Course, Language, Classroom, User
+from apps.course.models import Course
 from apps.course.form import CourseForm
 from django.db.models import Q
 from sweetify import *
