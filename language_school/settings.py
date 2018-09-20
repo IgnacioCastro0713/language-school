@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'sweetify',
 ]
 
-# AUTH #
+# Auth
+
 AUTH_USER_MODEL = 'user.User'
 AUTHENTICATION_BACKENDS = ['apps.user.backends.CustomBackendUser', ]
 LOGIN_URL = '/login/'  # Render to the login if you haven't sing in session
@@ -129,7 +130,8 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+# Password reset
