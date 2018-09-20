@@ -3,7 +3,6 @@ from apps.course.models import Course
 from apps.course.form import CourseForm
 from django.db.models import Q
 from sweetify import *
-# Create your views here.
 
 
 def index(request):
@@ -28,8 +27,9 @@ def edit(request, id_course):
     return render(request, 'course/edit.html', {'form': CourseForm(instance=course)})
 
 
-def show(request):
-    pass
+def show(request, id_course):
+    course = Course.objects.get(pk=id_course)
+    return render(request, 'course/show.html', {'object_list': course})
 
 
 def delete(request, id_course):
@@ -38,8 +38,7 @@ def delete(request, id_course):
 
 
 def enroll(request, id_ins):
-    courses = Course.user.add()
-    pass
+    return request
 
 
 def table(request):

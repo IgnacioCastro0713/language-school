@@ -26,7 +26,7 @@
                         <td>{{ course.end }}</td>
                         <td>{{ course.lan.name }}</td>
                         <td class="td-actions text-center">
-                            <a href="">
+                            <a href="{% url 'course:show' course.id %}">
                                 <button type="button" rel="tooltip" class="btn btn-info btn-icon" title="Detalles">
                                     <i class="now-ui-icons text_align-center"></i>
                                 </button>

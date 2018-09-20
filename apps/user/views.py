@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from apps.user.models import User
 from apps.user.form import UserForm
 from django.db.models import Q
-import sweetify
+from sweetify import *
 
 
 def index(request):
@@ -15,7 +15,7 @@ def create(request):
         user = UserForm(request.POST).save()
         user.set_password(request.POST['password'])
         user.save()
-        sweetify.success(request, 'Usuario guardado correctamente!', toast=True, position='top', timer=2000)
+        success(request, 'Usuario guardado correctamente!', toast=True, position='top', timer=2000)
         return redirect('user:index')
     return render(request, 'user/create.html', {'form': UserForm})
 
@@ -31,7 +31,7 @@ def edit(request, code):
         user = UserForm(request.POST, instance=user).save()
         user.set_password(request.POST['password'])
         user.save()
-        sweetify.success(request, 'Editado correctamente!', toast=True, position='top', timer=2000)
+        success(request, 'Editado correctamente!', toast=True, position='top', timer=2000)
         return redirect('user:index')
     return render(request, 'user/edit.html', {'form': UserForm(instance=user)})
 
@@ -52,6 +52,5 @@ def search(request, find):
         Q(first_name__icontains=find) |
         Q(last_name__icontains=find) |
         Q(second_last_name__icontains=find) |
-        Q(role__nombre__icontains=find)
-    )
+        Q(role__nombre__icontains=find))
     return render(request, 'user/table.html', {'object_list': users})
