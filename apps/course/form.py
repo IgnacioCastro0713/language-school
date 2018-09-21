@@ -7,7 +7,8 @@ class CourseForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(CourseForm, self).__init__(*args, **kwargs)
         self.fields['user'].queryset = User.objects.filter(role__reference__exact='teacher')
-        self.fields['lan'].empty_label = None
+        self.fields['lan'].empty_label = '-- Seleciona idioma y nivel --'
+        self.fields['classroom'].empty_label = '-- Seleciona aula --'
 
     class Meta:
         model = Course
@@ -74,7 +75,7 @@ class CourseForm(forms.ModelForm):
                 attrs={
                     'class': 'form-control',
                 }),
-            'classroom': forms.SelectMultiple(
+            'classroom': forms.Select(
                 attrs={
                     'class': 'form-control',
                 }),

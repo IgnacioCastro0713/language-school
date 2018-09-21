@@ -21,5 +21,5 @@ class Course(models.Model):
     end = models.TimeField()
     description = models.TextField(max_length=255)
     lan = models.ForeignKey(Language, null=True, blank=True, on_delete=models.CASCADE)
-    classroom = models.ManyToManyField(Classroom, blank=True)
+    classroom = models.ForeignKey(Classroom, null=True, blank=True, on_delete=models.CASCADE)
     user = models.ManyToManyField(User, blank=True)

@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'sweetify',
 ]
 
-# Auth
+# Authentication
 
 AUTH_USER_MODEL = 'user.User'
 AUTHENTICATION_BACKENDS = ['apps.user.backends.CustomBackendUser', ]
