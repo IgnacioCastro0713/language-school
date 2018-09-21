@@ -3,15 +3,12 @@ from apps.user.models import User
 from apps.classroom.models import Classroom
 
 
-# Create your models here.
-
-
 class Language(models.Model):
     name = models.CharField(max_length=25)
     level = models.CharField(max_length=25)
 
     def __str__(self):
-        return '{} {}'.format(self.name, self.level)
+        return '{} ({})'.format(self.name, self.level)
 
 
 class Course(models.Model):

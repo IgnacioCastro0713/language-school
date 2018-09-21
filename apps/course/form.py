@@ -16,7 +16,7 @@ class CourseForm(forms.ModelForm):
         DAYS = (
             ('lunes', 'Lunes'),
             ('martes', 'Martes'),
-            ('miercoles', 'Miercoles'),
+            ('miercoles', 'Miércoles'),
             ('jueves', 'Jueves'),
             ('viernes', 'Viernes'),
         )

@@ -3,5 +3,52 @@
 {% block title %} Detalles {% endblock %}
 {% block type %} profile-page sidebar-collapse {% endblock %}
 {% block content %}
-
+    <div class="wrapper">
+        <div class="page-header page-header-small clear-filter" filter-color="orange">
+            <div class="page-header-image" data-parallax="true" style="background-image:url({% static 'img/bg5.jpg' %});"></div>
+            <div class="container">
+                <h2 class="title">CURSO DE {{ object_list.name.upper}}</h2>
+                <h6>Profesor:</h6>
+                <p class="category">
+                    {% for user in object_list.user.all %}
+                        {{ user }}
+                    {% endfor %}
+                </p>
+                <h6>Idioma</h6>
+                <p>{{ object_list.lan.name }} {{ object_list.lan.level }}</p>
+                <h6>Horario</h6>
+                <p>{{ object_list.start|time:"g:i A" }}  -  {{ object_list.end|time:"g:i A" }} </p>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="button-container">
+                    <a href="https://www.google.com/gmail" target="_blank" class="btn btn-primary btn-round btn-lg" rel="tooltip" title="Contacto Profesor">
+                        <i class="now-ui-icons ui-1_email-85"></i>
+                        {% for user in object_list.user.all %}
+                            {{ user.email }}
+                        {% endfor %}
+                    </a>
+                </div>
+                <h6 class="text-center">UBICACIÓN</h6>
+                <p class="text-center">Aula: {{ object_list.classroom.name }}, {{ object_list.classroom.building }}</p>
+                <h3 class="title">DESCRIPCIÓN</h3>
+                <h5 class="description">{{ object_list.description }}.</h5>
+                <div class="text-center">
+                    <a href="{% url 'course:edit' object_list.id %}">
+                        <button type="submit" class="btn btn-lg btn-success">
+                            <i class="now-ui-icons ui-2_settings-90"></i>  Editar
+                        </button>
+                    </a>
+                    {% if user.code != object_list.code %}
+                        <a onclick="deleteInShow(event, '{{ object_list.name }}', '{% url 'course:delete' object_list.id %}', '{% url 'course:index' %}')">
+                            <button type="submit" class="btn btn-lg btn-danger">
+                                <i class="now-ui-icons ui-1_simple-remove"></i> Eliminar
+                            </button>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
