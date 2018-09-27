@@ -7,7 +7,10 @@ from sweetify import *
 
 def index(request):
     courses = Course.objects.all()
-    return render(request, 'course/index.html', {'object_list': courses})
+    return render(request, 'course/index.html', {
+        'object_list': courses,
+        'title': 'Cursos',
+    })
 
 
 def create(request):
@@ -15,7 +18,11 @@ def create(request):
         CourseForm(request.POST).save()
         success(request, 'Curso guardado correctamente!', toast=True, position='top', timer=2000)
         return redirect('course:index')
-    return render(request, 'course/create.html', {'form': CourseForm})
+
+    return render(request, 'course/create.html', {
+        'form': CourseForm,
+        'title': 'Registrar',
+    })
 
 
 def edit(request, id_course):
@@ -24,7 +31,11 @@ def edit(request, id_course):
         CourseForm(request.POST, instance=course).save()
         success(request, 'Editado correctamente!', toast=True, position='top', timer=2000)
         return redirect('course:index')
-    return render(request, 'course/edit.html', {'form': CourseForm(instance=course)})
+
+    return render(request, 'course/edit.html', {
+        'form': CourseForm(instance=course),
+        'title': 'Editar',
+    })
 
 
 def show(request, id_course):
@@ -35,10 +46,6 @@ def show(request, id_course):
 def delete(request, id_course):
     Course.objects.get(pk=id_course).delete()
     return render(request, 'course/table.html')
-
-
-def enroll(request, id_ins):
-    return request
 
 
 def table(request):
