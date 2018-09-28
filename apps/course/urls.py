@@ -6,9 +6,9 @@ app_name = 'course'
 urlpatterns = [
     path('', auth(index), name='index'),
     path('create/', auth(create), name='create'),
-    path('edit/<int:id_course>', auth(edit), name='edit'),
-    path('show/<int:id_course>', auth(show), name='show'),
-    path('delete/<int:id_course>', auth(delete), name='delete'),
-    path('search/<slug:find>', auth(search), name='search'),
+    path('edit/<int:id_course>/', auth(edit), name='edit'),
+    path('show/<int:id_course>/', auth(show), name='show'),
+    path('delete/<int:id_course>/', auth(delete), name='delete'),
+    path('search/<slug:find>/', auth(search), name='search'),
     path('table/', auth(table), name='table'),
 ]

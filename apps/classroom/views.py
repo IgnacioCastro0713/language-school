@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from apps.classroom.models import Classroom
 from apps.classroom.form import ClassroomForm
+from django.db.models import Q
 from sweetify import *
 
 
@@ -46,3 +47,9 @@ def table(request):
     classrooms = Classroom.objects.all()
     return render(request, 'classroom/table.html', {'object_list': classrooms})
 
+
+def search(request, find):
+    classrooms = Classroom.objects.filter(
+        Q(name__icontains=find) |
+        Q(building__icontains=find))
+    return render(request, 'classroom/table.html', {'object_list': classrooms})

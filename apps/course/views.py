@@ -55,7 +55,5 @@ def table(request):
 
 def search(request, find):
     courses = Course.objects.filter(
-        Q(name__icontains=find) |
-        Q(language__course__name__contains=find)
-    )
+        Q(name__icontains=find))
     return render(request, 'course/table.html', {'object_list': courses})

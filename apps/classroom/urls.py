@@ -7,8 +7,8 @@ app_name = 'classroom'
 urlpatterns = [
     path('', auth(index), name='index'),
     path('create/', auth(create), name='create'),
-    path('edit/<int:id_class>', auth(edit), name='edit'),
-    path('delete/<int:id_class>', auth(delete), name='delete'),
-    path('search/<slug:find>', auth(), name='search'),
+    path('edit/<int:id_class>/', auth(edit), name='edit'),
+    path('delete/<int:id_class>/', auth(delete), name='delete'),
+    path('search/<slug:find>/', auth(search), name='search'),
     path('table/', auth(table), name='table'),
 ]
