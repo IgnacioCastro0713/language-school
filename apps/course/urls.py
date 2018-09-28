@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required as auth
 from apps.course.views import *
 
 app_name = 'course'
+
 urlpatterns = [
     path('', auth(index), name='index'),
     path('create/', auth(create), name='create'),
