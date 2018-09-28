@@ -8,7 +8,6 @@ urlpatterns = [
     path('', auth(index), name='index'),
     path('create/', auth(create), name='create'),
     path('edit/<int:id_class>', auth(), name='edit'),
-    path('show/<int:id_class>', auth(), name='show'),
     path('delete/<int:id_class>', auth(delete), name='delete'),
     path('search/<slug:find>', auth(), name='search'),
     path('table/', auth(table), name='table'),
