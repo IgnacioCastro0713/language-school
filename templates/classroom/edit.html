@@ -1,10 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'base/main.html' %}
+{% load staticfiles %}
+{% block title %} {{ title }} {% endblock %}
+{% block type %} signup-page sidebar-collapse {% endblock %}
+{% block content %}
+    <div class="page-header header-filter" >
+        <div class="page-header-image" style="background-image:url({% static 'img/bg8.jpg' %})"></div>
+        <div class="content">
+            <div class="container">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <div class="card card-contact card-raised">
+                        <form role="form" id="contact-form1" method="post">
+                            {% csrf_token %}
+                            <div class="card-header text-center"><h4 class="card-title" style="color: #e8833b">Editar Aula</h4></div>
+                            <div class="card-body text-left">
+                                <p class="text-primary">Datos del aula</p>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 pl-2">
+                                        <div class="form-group">
+                                            <label for="txtnombre" style="color: #1d2124">Nombre</label>
+                                            {{ form.name }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pl-2">
+                                        <div class="form-group">
+                                            <label for="txtaula" style="color: #1d2124">Edificio</label>
+                                            {{ form.building }}
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-lg  btn-primary btn-round pull-right">Registrar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+{% endblock %}

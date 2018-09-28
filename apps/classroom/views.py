@@ -25,11 +25,16 @@ def create(request):
 
 
 def edit(request, id_class):
-    pass
+    classrooms = Classroom.objects.get(pk=id_class)
+    if request.method == 'POST':
+        ClassroomForm(request.POST, instance=classrooms).save()
+        success(request, 'Editado correctamente!', toast=True, position='top', timer=2000)
+        return redirect('classroom:index')
 
-
-def show(request, id_class):
-    pass
+    return render(request, 'classroom/edit.html', {
+        'form': ClassroomForm(instance=classrooms),
+        'title': 'Editar'
+    })
 
 
 def delete(request, id_class):
