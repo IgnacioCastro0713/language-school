@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from apps.classroom.models import Classroom
 from apps.classroom.form import ClassroomForm
+from django.core.paginator import Paginator
 from django.db.models import Q
 from sweetify import *
 
