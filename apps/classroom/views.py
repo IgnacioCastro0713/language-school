@@ -18,6 +18,11 @@ def create(request):
         success(request, 'Aula guardada correctamente!', toast=True, position='top', timer=2000)
         return redirect('classroom:index')
 
+    return render(request, 'classroom/create.html', {
+        'form': ClassroomForm,
+        'title': 'Registrar'
+    })
+
 
 def edit(request, id_class):
     pass
