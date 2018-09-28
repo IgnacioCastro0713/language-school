@@ -30,3 +30,14 @@ def edit(request, id_class):
 
 def show(request, id_class):
     pass
+
+
+def delete(request, id_class):
+    Classroom.objects.get(pk=id_class).delete()
+    return render(request, 'classroom/table.html')
+
+
+def table(request):
+    classrooms = Classroom.objects.all()
+    return render(request, 'classroom/table.html', {'object_list': classrooms})
+
