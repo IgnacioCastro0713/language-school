@@ -1,6 +1,6 @@
 function changePage(obj, e) {
     e.preventDefault();
-    let page = $(obj).attr('href').split('page=')[1];
+    let page = $(obj).attr('href').split('?page=')[1];
     $.ajax({
         url : table+'?page='+page
     }).done(function (response) {

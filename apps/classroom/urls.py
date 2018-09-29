@@ -5,7 +5,7 @@ from apps.classroom.views import *
 app_name = 'classroom'
 
 urlpatterns = [
-    path(' /', auth(index), name='index'),
+    path('', auth(index), name='index'),
     path('create/', auth(create), name='create'),
     path('edit/<int:id_class>/', auth(edit), name='edit'),
     path('delete/<int:id_class>/', auth(delete), name='delete'),

@@ -1,30 +1,17 @@
 from django.shortcuts import render, redirect
 from apps.classroom.models import Classroom
 from apps.classroom.form import ClassroomForm
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from apps.home.pagination import paginate
 from django.db.models import Q
 from sweetify import *
 
 
 def index(request):
-    classrooms_list = Classroom.objects.all()
-    paginator = Paginator(classrooms_list, 2)
-    page = request.GET.get('page')
-    # classrooms = paginator.get_page(page)
-
-    try:
-        classrooms = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        classrooms = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        classrooms = paginator.page(paginator.num_pages)
-
+    classrooms = paginate(request, Classroom.objects.all(), 5)
     return render(request, 'classroom/index.html', {
-        'object_list': classrooms,
-        'title': 'Aulas',
-    })
+            'object_list': classrooms,
+            'title': 'Aulas',
+        })
 
 
 def create(request):
@@ -58,20 +45,7 @@ def delete(request, id_class):
 
 
 def table(request):
-    classrooms_list = Classroom.objects.all()
-    paginator = Paginator(classrooms_list, 2)
-    page = request.GET.get('page')
-    # classrooms = paginator.get_page(page)
-
-    try:
-        classrooms = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        classrooms = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        classrooms = paginator.page(paginator.num_pages)
-
+    classrooms = paginate(request, Classroom.objects.all(), 5)
     return render(request, 'classroom/table.html', {
         'object_list': classrooms,
     })
