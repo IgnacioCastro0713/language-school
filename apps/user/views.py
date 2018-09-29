@@ -7,7 +7,10 @@ from sweetify import *
 
 def index(request):
     user = User.objects.all()
-    return render(request, 'user/index.html', {'object_list': user})
+    return render(request, 'user/index.html', {
+        'object_list': user,
+        'title': 'Usuarios'
+    })
 
 
 def create(request):
@@ -17,7 +20,11 @@ def create(request):
         user.save()
         success(request, 'Usuario guardado correctamente!', toast=True, position='top', timer=2000)
         return redirect('user:index')
-    return render(request, 'user/create.html', {'form': UserForm})
+
+    return render(request, 'user/create.html', {
+        'form': UserForm,
+        'title': 'Registrar',
+    })
 
 
 def show(request, code):
@@ -33,7 +40,11 @@ def edit(request, code):
         user.save()
         success(request, 'Editado correctamente!', toast=True, position='top', timer=2000)
         return redirect('user:index')
-    return render(request, 'user/edit.html', {'form': UserForm(instance=user)})
+
+    return render(request, 'user/edit.html', {
+        'form': UserForm(instance=user),
+        'title': 'Editar',
+    })
 
 
 def delete(request, code):

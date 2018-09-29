@@ -22,7 +22,7 @@ def create(request):
 
     return render(request, 'classroom/create.html', {
         'form': ClassroomForm,
-        'title': 'Registrar'
+        'title': 'Registrar',
     })
 
 
@@ -35,7 +35,7 @@ def edit(request, id_class):
 
     return render(request, 'classroom/edit.html', {
         'form': ClassroomForm(instance=classrooms),
-        'title': 'Editar'
+        'title': 'Editar',
     })
 
 

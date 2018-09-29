@@ -1,6 +1,6 @@
 {% extends 'base/main.html' %}
 {% load staticfiles %}
-{% block title %} Editar {% endblock %}
+{% block title %} {{ title }} {% endblock %}
 {% block type %} profile-page sidebar-collapse {% endblock %}
 {% block content %}
     <div class="page-header page-header-small clear-filter" filter-color="orange">
@@ -18,7 +18,7 @@
             <div class="card card-contact card-raised">
                 <form role="form" id="contact-form1" method="post">
                     {% csrf_token %}
-                    <div class="card-header text-center"><h4 class="card-title" style="color: #e8833b">Editar usuario</h4></div>
+                    <div class="card-header text-center"><h4 class="card-title" style="color: #e8833b">{{ title }} usuario</h4></div>
                     <div class="card-body text-left">
                         <p class="text-primary">Datos usuario</p>
                         <div class="row">

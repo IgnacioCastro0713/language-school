@@ -1,6 +1,6 @@
 {% extends 'base/main.html' %}
 {% load staticfiles %}
-{% block title %} Usuarios {% endblock %}
+{% block title %} {{ title }} {% endblock %}
 {% block type %} landing-page sidebar-collapse {% endblock %}
 {% block content %}
     <script type="text/javascript">
@@ -13,7 +13,7 @@
             <div class="container text-left"><br>
                 <h1 class="title">Administración.</h1>
                 <div class="text-left">
-                    <h3>Usuarios.</h3>
+                    <h3>{{ title }}.</h3>
                 </div>
             </div>
         </div>
