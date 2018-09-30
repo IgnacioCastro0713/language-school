@@ -3,10 +3,11 @@ from apps.course.models import Course
 from apps.course.form import CourseForm
 from django.db.models import Q
 from sweetify import *
+from apps.home.pagination import paginate
 
 
 def index(request):
-    courses = Course.objects.all()
+    courses = paginate(request, Course.objects.all(), 5)
     return render(request, 'course/index.html', {
         'object_list': courses,
         'title': 'Cursos',
@@ -49,11 +50,12 @@ def delete(request, id_course):
 
 
 def table(request):
-    courses = Course.objects.all()
+    courses = paginate(request, Course.objects.all(), 5)
     return render(request, 'course/table.html', {'object_list': courses})
 
 
 def search(request, find):
-    courses = Course.objects.filter(
+    courses_list = Course.objects.filter(
         Q(name__icontains=find))
+    courses = paginate(request, courses_list, 5)
     return render(request, 'course/table.html', {'object_list': courses})

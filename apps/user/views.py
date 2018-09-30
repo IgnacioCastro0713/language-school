@@ -3,10 +3,11 @@ from apps.user.models import User
 from apps.user.form import UserForm
 from django.db.models import Q
 from sweetify import *
+from apps.home.pagination import paginate
 
 
 def index(request):
-    user = User.objects.all()
+    user = paginate(request, User.objects.all(), 5)
     return render(request, 'user/index.html', {
         'object_list': user,
         'title': 'Usuarios'
@@ -53,15 +54,16 @@ def delete(request, code):
 
 
 def table(request):
-    user = User.objects.all()
+    user = paginate(request, User.objects.all(), 5)
     return render(request, 'user/table.html', {'object_list': user})
 
 
 def search(request, find):
-    users = User.objects.filter(
+    users_list = User.objects.filter(
         Q(code__icontains=find) |
         Q(first_name__icontains=find) |
         Q(last_name__icontains=find) |
         Q(second_last_name__icontains=find) |
         Q(role__nombre__icontains=find))
+    users = paginate(request, users_list, 5)
     return render(request, 'user/table.html', {'object_list': users})
