@@ -8,6 +8,7 @@ from sweetify import *
 
 def index(request):
     classrooms = paginate(request, Classroom.objects.all(), 5)
+
     return render(request, 'classroom/index.html', {
             'object_list': classrooms,
             'title': 'Aulas',
@@ -46,13 +47,15 @@ def delete(request, id_class):
 
 def table(request):
     classrooms = paginate(request, Classroom.objects.all(), 5)
+
     return render(request, 'classroom/table.html', {
         'object_list': classrooms,
     })
 
 
 def search(request, find):
-    classrooms = Classroom.objects.filter(
+    classrooms_list = Classroom.objects.filter(
         Q(name__icontains=find) |
         Q(building__icontains=find))
+    classrooms = paginate(request, classrooms_list, 5)
     return render(request, 'classroom/table.html', {'object_list': classrooms})
