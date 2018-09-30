@@ -1,6 +1,5 @@
-solicitaste restablecimiento de contreseña.
-click en el enlace para crear nueva contraseña.
+Solicitaste restablecimiento de contreseña.
+Click en el enlace para crear nueva contraseña.
 {% block link %}
 {{ protocol }}://{{ domain }}{% url 'home:password_reset_confirm' uidb64=uid token=token %}
 {% endblock %}
-Codigo: {{ user.get_code }}
