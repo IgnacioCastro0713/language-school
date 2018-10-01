@@ -1,19 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{% if validlink %}
-    <h1>Nueva contraseña</h1>
-    <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Cambiar contraseña">
-    </form>
-{% else %}
-    <h1 class="text-center"> Enlace invalido: Este ya ha sido utilizado</h1>
-{% endif %}
-</body>
-</html>
+{% extends 'base/main.html' %}
+{% load staticfiles %}
+{% block type %} login-page sidebar-collapse {% endblock %}
+{% block title %} Cambiar contraseña {% endblock %}
+{% block content %}
+    <div class="page-header clear-filter" filter-color="orange">
+        <div class="page-header-image" style="background-image:url({% static 'img/login.jpg' %})"></div>
+        <div class="content">
+            <div class="container">
+                <div class="col-md-4 ml-auto mr-auto">
+                    <div class="card card-login card-plain">
+                        <form class="form" method="POST">
+                            {% csrf_token %}
+                            <div class="card-header text-center">
+                                <div class="logo-container">
+                                    <img src="{% static 'img/icons8-contraseña-240.png' %}" alt="">
+                                </div>
+                            </div>
+                            {% if validlink %}
+                                <div class="card-body">
+                                    <div class="input-group no-border input-lg">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                              <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                                            </span>
+                                        </div>
+                                        {{ form.new_password1 }}
+                                    </div>
+                                    <div class="input-group no-border input-lg">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                              <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                                            </span>
+                                        </div>
+                                        {{ form.new_password2 }}
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Cambiar contraseña</button>
+                                </div>
+                            {% else %}
+                                <h5 class="text-center text-primary"> Enlace invalido: Este ya ha sido utilizado</h5>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
