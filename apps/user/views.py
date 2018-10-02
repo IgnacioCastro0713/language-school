@@ -1,61 +1,78 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, HttpResponseRedirect, redirect
+from django.contrib.auth.views import reverse_lazy
 from apps.user.models import User
 from apps.user.form import UserForm
 from django.db.models import Q
+from sweetify.views import *
 from sweetify import *
 from apps.home.pagination import paginate
+from django.views.generic import (
+    ListView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+    TemplateView,
+    DetailView,
+)
 
 
-def index(request):
-    user = paginate(request, User.objects.all(), 5)
-    return render(request, 'user/index.html', {
-        'object_list': user,
+class Index(TemplateView):
+    template_name = 'user/index.html'
+    extra_context = {
+        'object_list': User.objects.all(),
         'title': 'Usuarios'
-    })
+    }
 
 
-def create(request):
-    if request.method == 'POST':
-        user = UserForm(request.POST).save()
-        user.set_password(request.POST['password'])
+class Create(SweetifySuccessMixin, CreateView):
+    model = User
+    form_class = UserForm
+    template_name = 'user/create.html'
+    extra_context = {'title': 'Registrar'}
+
+    def form_valid(self, form):
+        user = form.save(commit=False)
+        user.set_password(form.cleaned_data['password'])
         user.save()
-        success(request, 'Usuario guardado correctamente!', toast=True, position='top', timer=2000)
+        success(self.request, 'Usuario guardado correctamente!', toast=True, position='top', timer=2000)
         return redirect('user:index')
 
-    return render(request, 'user/create.html', {
-        'form': UserForm,
-        'title': 'Registrar',
-    })
+
+class Show(DetailView):
+    model = User
+
+    def get(self, request, *args, **kwargs):
+        user = self.get_object()
+        return render(self.request, 'user/show.html', {'object_list': user})
 
 
-def show(request, code):
-    user = User.objects.get(pk=code)
-    return render(request, 'user/show.html', {'object_list': user})
+class Edit(SweetifySuccessMixin, UpdateView):
+    model = User
+    form_class = UserForm
+    template_name = 'user/edit.html'
+    success_url = reverse_lazy('user:index')
+    extra_context = {'title': 'Editar'}
 
-
-def edit(request, code):
-    user = User.objects.get(pk=code)
-    if request.method == 'POST':
-        user = UserForm(request.POST, instance=user).save()
-        user.set_password(request.POST['password'])
+    def form_valid(self, form):
+        user = form.save(commit=False)
+        user.set_password(form.cleaned_data['password'])
         user.save()
-        success(request, 'Editado correctamente!', toast=True, position='top', timer=2000)
-        return redirect('user:index')
-
-    return render(request, 'user/edit.html', {
-        'form': UserForm(instance=user),
-        'title': 'Editar',
-    })
+        success(self.request, 'Editado correctamente!', toast=True, position='top', timer=2000)
+        return HttpResponseRedirect(self.get_success_url())
 
 
-def delete(request, code):
-    User.objects.get(pk=code).delete()
-    return render(request, 'user/table.html')
+class Delete(DeleteView):
+    model = User
+
+    def delete(self, request, *args, **kwargs):
+        user = self.get_object()
+        user.delete()
+        return render(self.request, 'user/table.html')
 
 
-def table(request):
-    user = paginate(request, User.objects.all(), 5)
-    return render(request, 'user/table.html', {'object_list': user})
+class Table(ListView):
+    model = User
+    template_name = 'user/table.html'
 
 
 def search(request, find):

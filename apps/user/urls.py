@@ -5,11 +5,11 @@ from apps.user.views import *
 app_name = 'user'
 
 urlpatterns = [
-    path('', auth(index), name='index'),
-    path('create/', auth(create), name='create'),
-    path('edit/<slug:code>/', auth(edit), name='edit'),
-    path('show/<slug:code>/', auth(show), name='show'),
-    path('delete/<slug:code>/', auth(delete), name='delete'),
+    path('', auth(Index.as_view()), name='index'),
+    path('create/', auth(Create.as_view()), name='create'),
+    path('edit/<pk>/', auth(Edit.as_view()), name='edit'),
+    path('show/<pk>/', auth(Show.as_view()), name='show'),
+    path('delete/<pk>/', auth(Delete.as_view()), name='delete'),
     path('search/<slug:find>/', auth(search), name='search'),
-    path('table/', auth(table), name='table'),
+    path('table/', auth(Table.as_view()), name='table'),
 ]

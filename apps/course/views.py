@@ -1,29 +1,37 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.views import reverse_lazy
 from apps.course.models import Course
 from apps.course.form import CourseForm
 from django.db.models import Q
 from sweetify import *
+from sweetify.views import *
 from apps.home.pagination import paginate
+from django.views.generic import (
+    ListView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+    TemplateView,
+    DetailView,
+)
 
 
-def index(request):
-    courses = paginate(request, Course.objects.all(), 5)
-    return render(request, 'course/index.html', {
-        'object_list': courses,
-        'title': 'Cursos',
-    })
+class Index(TemplateView):
+    template_name = 'course/index.html'
+    extra_context = {
+        'object_list': Course.objects.all(),
+        'title': 'Cursos'
+    }
 
 
-def create(request):
-    if request.method == 'POST':
-        CourseForm(request.POST).save()
-        success(request, 'Curso guardado correctamente!', toast=True, position='top', timer=2000)
-        return redirect('course:index')
-
-    return render(request, 'course/create.html', {
-        'form': CourseForm,
-        'title': 'Registrar',
-    })
+class Create(SweetifySuccessMixin, CreateView):
+    model = Course
+    form_class = CourseForm
+    template_name = 'user/create.html'
+    sweetify_options = {'toast': True, 'position': 'top', 'timer': 2000}
+    success_message = 'Curso guardado correctamente!'
+    success_url = reverse_lazy('course:index')
+    extra_context = {'title': 'Registrar'}
 
 
 def edit(request, id_course):
@@ -39,9 +47,12 @@ def edit(request, id_course):
     })
 
 
-def show(request, id_course):
-    course = Course.objects.get(pk=id_course)
-    return render(request, 'course/show.html', {'object_list': course})
+class Show(DetailView):
+    model = Course
+
+    def get(self, request, *args, **kwargs):
+        course = self.get_object()
+        return render(self.request, 'course/show.html', {'object_list': course})
 
 
 def delete(request, id_course):

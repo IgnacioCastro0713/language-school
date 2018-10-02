@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse
 from apps.user.backends import CustomBackendUser as Auth
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from apps.home.form import *
 from django.contrib.auth.views import (
     PasswordResetView,
@@ -35,7 +35,7 @@ def user_login(request):
 
 def user_logout(request):
     logout(request)
-    info(request, 'Se ha cerrado sesión', toast=True, position='top', timer=2000)
+    info(request, 'Se ha cerrado sesión!', toast=True, position='top', timer=2000)
     return HttpResponseRedirect(reverse('home:index'))
 
 
