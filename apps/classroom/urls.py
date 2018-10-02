@@ -5,10 +5,10 @@ from apps.classroom.views import *
 app_name = 'classroom'
 
 urlpatterns = [
-    path('', auth(index), name='index'),
-    path('create/', auth(create), name='create'),
-    path('edit/<int:id_class>/', auth(edit), name='edit'),
-    path('delete/<int:id_class>/', auth(delete), name='delete'),
+    path('', auth(Index.as_view()), name='index'),
+    path('create/', auth(Create.as_view()), name='create'),
+    path('edit/<int:id_class>/', auth(Edit.as_view()), name='edit'),
+    path('delete/<int:id_class>/', auth(Delete.as_view()), name='delete'),
     path('search/<slug:find>/', auth(search), name='search'),
-    path('table/', auth(table), name='table'),
+    path('table/', auth(Table.as_view()), name='table'),
 ]
