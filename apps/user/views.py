@@ -11,15 +11,14 @@ from django.views.generic import (
     CreateView,
     UpdateView,
     DeleteView,
-    TemplateView,
     DetailView,
 )
 
 
-class Index(TemplateView):
+class Index(ListView):
+    model = User
     template_name = 'user/index.html'
     extra_context = {
-        'object_list': User.objects.all(),
         'title': 'Usuarios'
     }
 
@@ -38,14 +37,6 @@ class Create(SweetifySuccessMixin, CreateView):
         return redirect('user:index')
 
 
-class Show(DetailView):
-    model = User
-
-    def get(self, request, *args, **kwargs):
-        user = self.get_object()
-        return render(self.request, 'user/show.html', {'object_list': user})
-
-
 class Edit(SweetifySuccessMixin, UpdateView):
     model = User
     form_class = UserForm
@@ -59,6 +50,14 @@ class Edit(SweetifySuccessMixin, UpdateView):
         user.save()
         success(self.request, 'Editado correctamente!', toast=True, position='top', timer=2000)
         return HttpResponseRedirect(self.get_success_url())
+
+
+class Show(DetailView):
+    model = User
+
+    def get(self, request, *args, **kwargs):
+        user = self.get_object()
+        return render(self.request, 'user/show.html', {'object_list': user})
 
 
 class Delete(DeleteView):

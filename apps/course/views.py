@@ -1,9 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib.auth.views import reverse_lazy
 from apps.course.models import Course
 from apps.course.form import CourseForm
 from django.db.models import Q
-from sweetify import *
 from sweetify.views import *
 from apps.home.pagination import paginate
 from django.views.generic import (
@@ -11,15 +10,14 @@ from django.views.generic import (
     CreateView,
     UpdateView,
     DeleteView,
-    TemplateView,
     DetailView,
 )
 
 
-class Index(TemplateView):
+class Index(ListView):
+    model = Course
     template_name = 'course/index.html'
     extra_context = {
-        'object_list': Course.objects.all(),
         'title': 'Cursos'
     }
 
@@ -27,24 +25,21 @@ class Index(TemplateView):
 class Create(SweetifySuccessMixin, CreateView):
     model = Course
     form_class = CourseForm
-    template_name = 'user/create.html'
+    template_name = 'course/create.html'
     sweetify_options = {'toast': True, 'position': 'top', 'timer': 2000}
     success_message = 'Curso guardado correctamente!'
     success_url = reverse_lazy('course:index')
     extra_context = {'title': 'Registrar'}
 
 
-def edit(request, id_course):
-    course = Course.objects.get(pk=id_course)
-    if request.method == 'POST':
-        CourseForm(request.POST, instance=course).save()
-        success(request, 'Editado correctamente!', toast=True, position='top', timer=2000)
-        return redirect('course:index')
-
-    return render(request, 'course/edit.html', {
-        'form': CourseForm(instance=course),
-        'title': 'Editar',
-    })
+class Edit(SweetifySuccessMixin, UpdateView):
+    model = Course
+    form_class = CourseForm
+    template_name = 'course/edit.html'
+    sweetify_options = {'toast': True, 'position': 'top', 'timer': 2000}
+    success_message = 'Editado correctamente!'
+    success_url = reverse_lazy('course:index')
+    extra_context = {'title': 'Editar'}
 
 
 class Show(DetailView):
@@ -55,14 +50,18 @@ class Show(DetailView):
         return render(self.request, 'course/show.html', {'object_list': course})
 
 
-def delete(request, id_course):
-    Course.objects.get(pk=id_course).delete()
-    return render(request, 'course/table.html')
+class Delete(DeleteView):
+    model = Course
+
+    def delete(self, request, *args, **kwargs):
+        course = self.get_object()
+        course.delete()
+        return render(self.request, 'course/table.html')
 
 
-def table(request):
-    courses = paginate(request, Course.objects.all(), 5)
-    return render(request, 'course/table.html', {'object_list': courses})
+class Table(ListView):
+    model = Course
+    template_name = 'course/table.html'
 
 
 def search(request, find):
