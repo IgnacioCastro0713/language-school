@@ -1,19 +1,20 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse
 from apps.user.backends import CustomBackendUser as Auth
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout
 from apps.home.form import *
 from django.contrib.auth.views import (
     PasswordResetView,
     PasswordResetDoneView,
     PasswordResetConfirmView,
     PasswordResetCompleteView,
+    TemplateView,
     reverse_lazy,
 )
 from sweetify import *
 
 
-def index(request):
-    return render(request, 'home/index.html')
+class Index(TemplateView):
+    template_name = 'home/index.html'
 
 
 def user_login(request):
