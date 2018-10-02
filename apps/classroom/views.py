@@ -16,6 +16,7 @@ from django.views.generic import (
 class Index(ListView):
     model = Classroom
     template_name = 'classroom/index.html'
+    paginate_by = 5
     extra_context = {
         'title': 'Aulas'
     }
@@ -52,6 +53,7 @@ class Delete(DeleteView):
 
 class Table(ListView):
     model = Classroom
+    paginate_by = 5
     template_name = 'classroom/table.html'
 
 
@@ -59,5 +61,5 @@ def search(request, find):
     classrooms_list = Classroom.objects.filter(
         Q(name__icontains=find) |
         Q(building__icontains=find))
-    classrooms = paginate(request, classrooms_list, 5)
+    classrooms = paginate(request, classrooms_list, 100)
     return render(request, 'classroom/table.html', {'object_list': classrooms})

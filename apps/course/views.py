@@ -17,6 +17,7 @@ from django.views.generic import (
 class Index(ListView):
     model = Course
     template_name = 'course/index.html'
+    paginate_by = 5
     extra_context = {
         'title': 'Cursos'
     }
@@ -62,6 +63,7 @@ class Delete(DeleteView):
 class Table(ListView):
     model = Course
     template_name = 'course/table.html'
+    paginate_by = 5
 
 
 def search(request, find):
