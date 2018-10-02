@@ -83,5 +83,5 @@ def search(request, find):
         Q(last_name__icontains=find) |
         Q(second_last_name__icontains=find) |
         Q(role__nombre__icontains=find))
-    users = paginate(request, users_list, 5)
+    users = paginate(request, users_list, 100)
     return render(request, 'user/table.html', {'object_list': users})
