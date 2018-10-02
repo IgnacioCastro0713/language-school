@@ -15,6 +15,9 @@ from sweetify import *
 
 class Index(TemplateView):
     template_name = 'home/index.html'
+    extra_context = {
+        'title': 'Inicio'
+    }
 
 
 def user_login(request):
