@@ -26,7 +26,7 @@ class Create(SweetifySuccessMixin, CreateView):
     form_class = ClassroomForm
     template_name = 'classroom/create.html'
     sweetify_options = {'toast': True, 'position': 'top', 'timer': 2000}
-    success_message = 'Aula guardado correctamente!'
+    success_message = 'Aula guardada correctamente!'
     success_url = reverse_lazy('classroom:index')
     extra_context = {'title': 'Registrar'}
 
