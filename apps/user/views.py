@@ -50,7 +50,7 @@ class Edit(SweetifySuccessMixin, UpdateView):
         user.set_password(form.cleaned_data['password'])
         user.save()
         success(self.request, 'Editado correctamente!', toast=True, position='top', timer=2000)
-        return HttpResponseRedirect(self.get_success_url())
+        return redirect('user:index')
 
 
 class Show(DetailView):
