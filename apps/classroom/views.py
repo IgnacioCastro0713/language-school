@@ -58,8 +58,6 @@ class Table(ListView):
 
 
 def search(request, find):
-    classrooms_list = Classroom.objects.filter(
-        Q(name__icontains=find) |
-        Q(building__icontains=find))
+    classrooms_list = Classroom.objects.filter(Q(name__icontains=find))
     classrooms = paginate(request, classrooms_list, 100)
     return render(request, 'classroom/table.html', {'object_list': classrooms})
