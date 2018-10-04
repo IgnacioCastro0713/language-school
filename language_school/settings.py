@@ -46,10 +46,9 @@ INSTALLED_APPS = [
 
 # Authentication
 
-AUTH_USER_MODEL = 'user.User'
-AUTHENTICATION_BACKENDS = ['apps.user.backends.CustomBackendUser', ]
-LOGIN_URL = '/login/'  # Render to the login if you haven't sing in session
 LOGIN_REDIRECT_URL = '/'
+AUTH_USER_MODEL = "user.User"
+SILENCED_SYSTEM_CHECKS = ['auth.E003', 'auth.W004']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

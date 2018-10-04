@@ -17,21 +17,21 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="input-group no-border input-lg {{ error }}">
+                                <div class="input-group no-border input-lg">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
                                           <i class="now-ui-icons users_circle-08"></i>
                                         </span>
                                     </div>
-                                    <input type="text" name="username" class="form-control" placeholder="Código..." required>
+                                    {{ form.username }}
                                 </div>
-                                <div class="input-group no-border input-lg {{ error }}">
+                                <div class="input-group no-border input-lg">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
                                           <i class="now-ui-icons ui-1_lock-circle-open"></i>
                                         </span>
                                     </div>
-                                    <input type="password" name="password1" placeholder="Contraseña..." class="form-control" required />
+                                    {{ form.password }}
                                 </div>
                             </div>
                             <div class="card-footer text-center">

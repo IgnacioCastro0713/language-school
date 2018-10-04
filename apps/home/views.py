@@ -1,8 +1,10 @@
-from django.shortcuts import render, HttpResponseRedirect, reverse
-from apps.user.backends import CustomBackendUser as Auth
+from django.shortcuts import HttpResponseRedirect
 from django.contrib.auth import login, logout
 from apps.home.form import *
+from sweetify import *
 from django.contrib.auth.views import (
+    LoginView,
+    LogoutView,
     PasswordResetView,
     PasswordResetDoneView,
     PasswordResetConfirmView,
@@ -10,7 +12,6 @@ from django.contrib.auth.views import (
     TemplateView,
     reverse_lazy,
 )
-from sweetify import *
 
 
 class Index(TemplateView):
@@ -20,27 +21,27 @@ class Index(TemplateView):
     }
 
 
-def user_login(request):
-    context = {}
-    if request.method == 'POST':
-        username = request.POST['username']
-        password1 = request.POST['password1']
-        user = Auth.authenticate(username=username, password=password1)
-        if user:
-            login(request, user)
-            info(request, 'Bienvenido(a) '+request.user.first_name+'!', toast=True, position='top', timer=2000)
-            return HttpResponseRedirect(reverse('home:index'))
-        else:
-            context['error'] = 'has-danger'
-            warning(request, 'Ingresar datos correctos!', toast=True, position='top', timer=2000)
-            return render(request, 'home/login.html', context)
-    return render(request, 'home/login.html')
+class Login(LoginView):
+    template_name = 'home/login.html'
+    form_class = LoginForm
+    success_url = reverse_lazy('home:index')
+
+    def form_valid(self, form):
+        login(self.request, form.get_user())
+        info(self.request, 'Bienvenido(a) '+self.request.user.first_name+'!', toast=True, position='top', timer=2000)
+        return HttpResponseRedirect(self.get_success_url())
 
 
-def user_logout(request):
-    logout(request)
-    info(request, 'Se ha cerrado sesión!', toast=True, position='top', timer=2000)
-    return HttpResponseRedirect(reverse('home:index'))
+class Logout(LogoutView):
+    success_url = reverse_lazy('home:login')
+
+    def dispatch(self, request, *args, **kwargs):
+        logout(request)
+        next_page = self.success_url
+        if next_page:
+            info(request, 'Se ha cerrado sesión!', toast=True, position='top', timer=2000)
+            return HttpResponseRedirect(next_page)
+        return super().dispatch(request, *args, **kwargs)
 
 
 class Reset(PasswordResetView):

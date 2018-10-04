@@ -1,6 +1,12 @@
 from django import forms
-from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 from django.contrib.auth import password_validation
+from apps.user.backends import CustomBackendUser as Auth
+from django.contrib.auth.forms import (
+    PasswordResetForm,
+    SetPasswordForm,
+    AuthenticationForm,
+    UsernameField,
+)
 
 
 class ResetForm(PasswordResetForm):
@@ -26,3 +32,30 @@ class ResetConfirmForm(SetPasswordForm):
             'placeholder': 'Confirmar contraseña'
         }),
     )
+
+
+class LoginForm(AuthenticationForm):
+    username = UsernameField(widget=forms.TextInput(attrs={
+        'autofocus': True,
+        'class': 'form-control',
+        'placeholder': 'Codigo...'
+    }))
+    password = forms.CharField(
+        strip=False,
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Nueva contraseña'
+        }))
+
+    def clean(self):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+
+        if username is not None and password:
+            self.user_cache = Auth.authenticate(username=username, password=password)
+            if self.user_cache is None:
+                raise self.get_invalid_login_error()
+            else:
+                self.confirm_login_allowed(self.user_cache)
+
+        return self.cleaned_data

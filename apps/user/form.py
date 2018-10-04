@@ -77,11 +77,11 @@ class UserForm(forms.ModelForm):
         if User.objects.filter(email=data['email']).exists():
             raise ValidationError("Ya existe un usuario con este correo electrónico")
         if not data['email']:
-            raise ValidationError('Este campo es obligatorio')
+            raise ValidationError('El campo correo electronico esta vacio')
         return data
 
     def clean_password(self):
         data = self.cleaned_data
         if not data['password']:
-            raise ValidationError('Este campo es obligatorio')
+            raise ValidationError('El campo contraseña esta vacio')
         return data
