@@ -17,7 +17,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="input-group no-border input-lg">
+                                <div class="input-group no-border input-lg {% if form.username.errors %}has-danger{% endif %}">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
                                           <i class="now-ui-icons users_circle-08"></i>
@@ -26,7 +26,7 @@
                                     {{ form.username }}
                                 </div>
                                 <small class="text-danger text-lg-left">{{ form.username.errors }}</small>
-                                <div class="input-group no-border input-lg">
+                                <div class="input-group no-border input-lg {% if form.password.errors %}has-danger{% endif %}">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
                                           <i class="now-ui-icons ui-1_lock-circle-open"></i>
