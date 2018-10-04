@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
 from apps.user.backends import CustomBackendUser as Auth
+from sweetify import warning
 from django.contrib.auth.forms import (
     PasswordResetForm,
     SetPasswordForm,
@@ -52,7 +53,7 @@ class LoginForm(AuthenticationForm):
         strip=False,
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Contraseña'
+            'placeholder': 'Contraseña...'
         }))
 
     def clean(self):
@@ -62,6 +63,7 @@ class LoginForm(AuthenticationForm):
         if username is not None and password:
             self.user_cache = Auth.authenticate(username=username, password=password)
             if self.user_cache is None:
+                warning(self.request, 'Credenciales incorrectas!', toast=True, position='top', timer=2000)
                 raise self.get_invalid_login_error()
             else:
                 self.confirm_login_allowed(self.user_cache)
