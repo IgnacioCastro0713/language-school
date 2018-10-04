@@ -1,9 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth.views import reverse_lazy
 from apps.user.models import User
 from apps.user.form import UserForm
 from django.db.models import Q
-from sweetify.views import *
 from sweetify import *
 from apps.home.pagination import paginate
 from django.views.generic import (
@@ -24,7 +23,7 @@ class Index(ListView):
     }
 
 
-class Create(SweetifySuccessMixin, CreateView):
+class Create(CreateView):
     model = User
     form_class = UserForm
     template_name = 'user/create.html'
@@ -38,7 +37,7 @@ class Create(SweetifySuccessMixin, CreateView):
         return redirect('user:index')
 
 
-class Edit(SweetifySuccessMixin, UpdateView):
+class Edit(UpdateView):
     model = User
     form_class = UserForm
     template_name = 'user/edit.html'
@@ -50,7 +49,7 @@ class Edit(SweetifySuccessMixin, UpdateView):
         user.set_password(form.cleaned_data['password'])
         user.save()
         success(self.request, 'Editado correctamente!', toast=True, position='top', timer=2000)
-        return redirect('user:index')
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class Show(DetailView):
