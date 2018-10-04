@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 # Authentication
 
 LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'
 AUTH_USER_MODEL = "user.User"
 SILENCED_SYSTEM_CHECKS = ['auth.E003', 'auth.W004']
 
