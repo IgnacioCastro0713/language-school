@@ -8,10 +8,12 @@ class UserForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(UserForm, self).__init__(*args, **kwargs)
+        self.fields['code'].required = False
         self.fields['email'].required = False
         self.fields['password'].required = False
 
     class Meta:
+
         model = User
 
         fields = [
@@ -72,16 +74,22 @@ class UserForm(forms.ModelForm):
             })
         }
 
+    def clean_code(self):
+        data = self.cleaned_data
+        if not data['code']:
+            raise ValidationError('El campo código esta vacio')
+        return data['code']
+
+    def clean_password(self):
+        data = self.cleaned_data
+        if not data['password']:
+            raise ValidationError('El campo contraseña esta vacio')
+        return data['password']
+
     def clean_email(self):
         data = self.cleaned_data
         if User.objects.filter(email=data['email']).exists():
             raise ValidationError("Ya existe un usuario con este correo electrónico")
         if not data['email']:
             raise ValidationError('El campo correo electronico esta vacio')
-        return data
-
-    def clean_password(self):
-        data = self.cleaned_data
-        if not data['password']:
-            raise ValidationError('El campo contraseña esta vacio')
-        return data
+        return data['email']

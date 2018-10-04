@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import password_validation
+from django.core.exceptions import ValidationError
 from apps.user.backends import CustomBackendUser as Auth
 from django.contrib.auth.forms import (
     PasswordResetForm,
@@ -35,16 +36,23 @@ class ResetConfirmForm(SetPasswordForm):
 
 
 class LoginForm(AuthenticationForm):
-    username = UsernameField(widget=forms.TextInput(attrs={
-        'autofocus': True,
-        'class': 'form-control',
-        'placeholder': 'Codigo...'
-    }))
+
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+        self.fields['username'].required = False
+        self.fields['password'].required = False
+
+    username = UsernameField(widget=forms.TextInput(
+        attrs={
+            'autofocus': True,
+            'class': 'form-control',
+            'placeholder': 'Codigo...'
+        }))
     password = forms.CharField(
         strip=False,
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Nueva contraseña'
+            'placeholder': 'Contraseña'
         }))
 
     def clean(self):
@@ -59,3 +67,15 @@ class LoginForm(AuthenticationForm):
                 self.confirm_login_allowed(self.user_cache)
 
         return self.cleaned_data
+
+    def clean_username(self):
+        data = self.cleaned_data
+        if not data['username']:
+            raise ValidationError('El campo código esta vacio')
+        return data['username']
+
+    def clean_password(self):
+        data = self.cleaned_data
+        if not data['password']:
+            raise ValidationError('El campo contraseña esta vacio')
+        return data['password']
