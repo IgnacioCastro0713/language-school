@@ -71,3 +71,4 @@ def search(request, find):
         Q(name__icontains=find))
     courses = paginate(request, courses_list, 100)
     return render(request, 'course/table.html', {'object_list': courses})
+

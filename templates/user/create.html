@@ -18,17 +18,20 @@
                                     <div class="form-group col-md-2 pl-2">
                                         <label for="txtcode" style="color: #1d2124">Código</label>
                                         {{ form.code }}
+                                        <small class="text-danger text-sm-left">{{ form.code.errors}}</small>
                                     </div>
                                     <div class="col-md-6 pl-2">
                                         <div class="form-group">
                                             <label for="txtemail" style="color: #1d2124">Correo electrónico</label>
                                             {{ form.email }}
+                                            <small class="text-danger text-sm-left">{{ form.email.errors}}</small>
                                         </div>
                                     </div>
                                     <div class="col-md-4 pl-2">
                                         <div class="form-group">
                                             <label for="txtpassword" style="color: #1d2124">Contraseña</label>
                                             {{ form.password }}
+                                            <small class="text-danger text-sm-left">{{ form.password.errors}}</small>
                                         </div>
                                     </div>
                                 </div>
@@ -50,30 +53,36 @@
                                         <div class="form-group">
                                             <label for="txtnombre" style="color: #1d2124">Nombre</label>
                                             {{ form.first_name }}
+                                            <small class="text-danger text-sm-left">{{ form.first_name.errors}}</small>
                                         </div>
                                     </div>
                                     <div class="col-md-4 pl-2">
                                         <div class="form-group">
                                             <label for="txtapaterno" style="color: #1d2124">Apellido paterno</label>
                                             {{ form.last_name }}
+                                            <small class="text-danger text-sm-left">{{ form.last_name.errors}}</small>
                                         </div>
                                     </div>
                                     <div class="col-md-4 pl-2">
                                         <div class="form-group">
                                             <label for="txtamaterno" style="color: #1d2124">Apellido materno</label>
                                             {{ form.second_last_name }}
+                                            <small class="text-danger text-sm-left">{{ form.last_name.errors}}</small>
                                         </div>
                                     </div>
                                     <div class="col-md-7 pl-2">
                                         <div class="form-group">
                                             <label for="txtaddress" style="color: #1d2124">Dirección</label>
                                             {{ form.address }}
+                                            <small class="text-danger text-sm-left">{{ form.address.errors}}</small>
+
                                         </div>
                                     </div>
                                     <div class="col-md-5 pl-2">
                                         <div class="form-group">
                                             <label for="txtphone" style="color: #1d2124">Telefono</label>
                                             {{ form.phone }}
+                                            <small class="text-danger text-sm-left">{{ form.phone.errors}}</small>
                                         </div>
                                     </div>
                                 </div>

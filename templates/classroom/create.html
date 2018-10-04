@@ -19,12 +19,14 @@
                                         <div class="form-group">
                                             <label for="txtnombre" style="color: #1d2124">Nombre</label>
                                             {{ form.name }}
+                                            <small class="text-danger text-sm-left">{{ form.name.errors}}</small>
                                         </div>
                                     </div>
                                     <div class="col-md-6 pl-2">
                                         <div class="form-group">
                                             <label for="txtaula" style="color: #1d2124">Edificio</label>
                                             {{ form.building }}
+                                            <small class="text-danger text-sm-left">{{ form.building.errors}}</small>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-lg  btn-primary btn-round pull-right">Registrar</button>

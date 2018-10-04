@@ -18,17 +18,21 @@
                                     <div class="form-group col-md-4 pl-2">
                                         <label for="txtname" style="color: #1d2124">Nombre del curso</label>
                                         {{ form.name }}
+                                        <small class="text-danger text-sm-left">{{ form.name.errors}}</small>
+
                                     </div>
                                     <div class="col-md-4 pl-2">
                                         <div class="form-group">
                                             <label for="selectlanguage" style="color: #1d2124">Idioma y Nivel</label>
                                             {{ form.lan }}
+                                            <small class="text-danger text-sm-left">{{ form.lan.errors}}</small>
                                         </div>
                                     </div>
                                     <div class="col-md-4 pl-2">
                                         <div class="form-group">
                                             <label for="selectprof" style="color: #1d2124">Profesor(es)</label>
                                             {{ form.user }}
+                                            <small class="text-danger text-sm-left">{{ form.user.errors}}</small>
                                         </div>
                                     </div>
                                 </div>
@@ -38,30 +42,35 @@
                                         <div class="form-group">
                                             <label for="selectdia" style="color: #1d2124">Día</label>
                                             {{ form.day }}
+                                            <small class="text-danger text-sm-left">{{ form.day.errors}}</small>
                                         </div>
                                     </div>
                                     <div class="col-md-2 pl-2">
                                         <div class="form-group">
                                             <label for="selectstar" style="color: #1d2124">Hora de inicio</label>
                                             {{ form.start }}
+                                            <small class="text-danger text-sm-left">{{ form.start.errors}}</small>
                                         </div>
                                     </div>
                                     <div class="col-md-2 pl-2">
                                         <div class="form-group">
                                             <label for="selectend" style="color: #1d2124">Hora de fin</label>
                                             {{ form.end }}
+                                            <small class="text-danger text-sm-left">{{ form.end.errors}}</small>
                                         </div>
                                     </div>
                                     <div class="col-md-4 pl-2">
                                         <div class="form-group">
                                             <label for="selectclassroom" style="color: #1d2124">Salón de clases</label>
                                             {{ form.classroom }}
+                                            <small class="text-danger text-sm-left">{{ form.classroom.errors}}</small>
                                         </div>
                                     </div>
                                     <div class="col-md-12 pl-2">
                                         <div class="form-group">
                                             <label for="txtdescription" style="color: #1d2124">Descripción</label>
                                             {{ form.description }}
+                                            <small class="text-danger text-sm-left">{{ form.description.errors}}</small>
                                         </div>
                                     </div>
                                 </div>
