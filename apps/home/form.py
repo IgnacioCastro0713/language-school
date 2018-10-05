@@ -47,7 +47,7 @@ class LoginForm(AuthenticationForm):
         attrs={
             'autofocus': True,
             'class': 'form-control',
-            'placeholder': 'Codigo...'
+            'placeholder': 'Código...'
         }))
     password = forms.CharField(
         strip=False,
