@@ -36,6 +36,10 @@ class Create(CreateView):
         success(self.request, 'Usuario guardado correctamente!', toast=True, position='top', timer=2500)
         return redirect('user:index')
 
+    def form_invalid(self, form):
+        warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
+        return self.render_to_response(self.get_context_data(form=form))
+
 
 class Edit(UpdateView):
     model = User
@@ -50,6 +54,10 @@ class Edit(UpdateView):
         user.save()
         success(self.request, 'Editado correctamente!', toast=True, position='top', timer=2500)
         return HttpResponseRedirect(self.get_success_url())
+
+    def form_invalid(self, form):
+        warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
+        return self.render_to_response(self.get_context_data(form=form))
 
 
 class Show(DetailView):

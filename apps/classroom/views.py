@@ -5,6 +5,7 @@ from apps.classroom.form import ClassroomForm
 from apps.home.pagination import paginate
 from django.db.models import Q
 from sweetify.views import SweetifySuccessMixin
+from sweetify import *
 from django.views.generic import (
     ListView,
     CreateView,
@@ -31,6 +32,10 @@ class Create(SweetifySuccessMixin, CreateView):
     success_url = reverse_lazy('classroom:index')
     extra_context = {'title': 'Registrar'}
 
+    def form_invalid(self, form):
+        warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
+        return self.render_to_response(self.get_context_data(form=form))
+
 
 class Edit(SweetifySuccessMixin, UpdateView):
     model = Classroom
@@ -40,6 +45,10 @@ class Edit(SweetifySuccessMixin, UpdateView):
     success_message = 'Editado correctamente!'
     success_url = reverse_lazy('classroom:index')
     extra_context = {'title': 'Editar'}
+
+    def form_invalid(self, form):
+        warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
+        return self.render_to_response(self.get_context_data(form=form))
 
 
 class Delete(DeleteView):
