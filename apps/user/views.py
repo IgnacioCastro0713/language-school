@@ -33,7 +33,7 @@ class Create(CreateView):
         user = form.save(commit=False)
         user.set_password(form.cleaned_data['password'])
         user.save()
-        success(self.request, 'Usuario guardado correctamente!', toast=True, position='top', timer=2000)
+        success(self.request, 'Usuario guardado correctamente!', toast=True, position='top', timer=2500)
         return redirect('user:index')
 
 
@@ -48,7 +48,7 @@ class Edit(UpdateView):
         user = form.save(commit=False)
         user.set_password(form.cleaned_data['password'])
         user.save()
-        success(self.request, 'Editado correctamente!', toast=True, position='top', timer=2000)
+        success(self.request, 'Editado correctamente!', toast=True, position='top', timer=2500)
         return HttpResponseRedirect(self.get_success_url())
 
 

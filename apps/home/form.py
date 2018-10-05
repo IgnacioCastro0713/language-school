@@ -63,7 +63,7 @@ class LoginForm(AuthenticationForm):
         if username is not None and password:
             self.user_cache = Auth.authenticate(username=username, password=password)
             if self.user_cache is None:
-                warning(self.request, 'Credenciales incorrectas!', toast=True, position='top', timer=2000)
+                warning(self.request, 'Credenciales incorrectas!', toast=True, position='top', timer=2500)
                 raise self.get_invalid_login_error()
             else:
                 self.confirm_login_allowed(self.user_cache)

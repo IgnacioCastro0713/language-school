@@ -1,6 +1,6 @@
 from django.shortcuts import HttpResponseRedirect
 from django.contrib.auth import login, logout
-from apps.home.form import *
+from apps.home.form import LoginForm, ResetForm, ResetConfirmForm
 from sweetify import *
 from django.contrib.auth.views import (
     LoginView,
@@ -28,7 +28,7 @@ class Login(LoginView):
 
     def form_valid(self, form):
         login(self.request, form.get_user())
-        info(self.request, 'Bienvenido(a) '+self.request.user.first_name+'!', toast=True, position='top', timer=2000)
+        info(self.request, 'Bienvenido(a) '+self.request.user.first_name+'!', toast=True, position='top', timer=2500)
         return HttpResponseRedirect(self.get_success_url())
 
 
@@ -39,7 +39,7 @@ class Logout(LogoutView):
         logout(request)
         next_page = self.success_url
         if next_page:
-            info(request, 'Se ha cerrado sesión!', toast=True, position='top', timer=2000)
+            info(request, 'Se ha cerrado sesión!', toast=True, position='top', timer=2500)
             return HttpResponseRedirect(next_page)
         return super().dispatch(request, *args, **kwargs)
 
