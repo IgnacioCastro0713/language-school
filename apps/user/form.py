@@ -88,8 +88,6 @@ class UserForm(forms.ModelForm):
 
     def clean_email(self):
         data = self.cleaned_data
-        if User.objects.filter(email=data['email']).exists():
-            raise ValidationError("Ya existe un usuario con este correo electrónico")
         if not data['email']:
             raise ValidationError('El campo correo electronico esta vacio')
         return data['email']

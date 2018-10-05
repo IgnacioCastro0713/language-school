@@ -28,7 +28,8 @@ class Login(LoginView):
 
     def form_valid(self, form):
         login(self.request, form.get_user())
-        info(self.request, 'Bienvenido(a) '+self.request.user.first_name+'!', toast=True, position='top', timer=2500)
+        info(self.request, 'Bienvenido(a) '+str(self.request.user.first_name).capitalize()+'!', toast=True,
+             position='top', timer=2500)
         return HttpResponseRedirect(self.get_success_url())
 
 

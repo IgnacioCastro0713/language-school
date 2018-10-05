@@ -25,11 +25,13 @@
                             <div class="form-group col-md-2 pl-2">
                                 <label for="txtcode" style="color: #1d2124">Código</label><br>
                                 {{ form.code }}
+                                <small class="text-danger text-sm-left">{{ form.code.errors}}</small>
                             </div>
                             <div class="col-md-6 pl-2">
                                 <div class="form-group">
                                     <label for="txtemail" style="color: #1d2124">Correo electrónico</label>
                                     {{ form.email }}
+                                    <small class="text-danger text-sm-left">{{ form.email.errors}}</small>
                                 </div>
                             </div>
                             <div class="col-md-4 pl-2">
