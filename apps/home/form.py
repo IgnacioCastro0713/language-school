@@ -73,11 +73,11 @@ class LoginForm(AuthenticationForm):
     def clean_username(self):
         data = self.cleaned_data
         if not data['username']:
-            raise ValidationError('El campo código esta vacio')
+            raise ValidationError('El campo código esta vació')
         return data['username']
 
     def clean_password(self):
         data = self.cleaned_data
         if not data['password']:
-            raise ValidationError('El campo contraseña esta vacio')
+            raise ValidationError('El campo contraseña esta vació')
         return data['password']

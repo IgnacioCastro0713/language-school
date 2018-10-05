@@ -26,6 +26,7 @@
                                         </div>
                                         {{ form.new_password1 }}
                                     </div>
+                                    <small class="text-danger text-lg-left">{{ form.new_password1.errors }}</small>
                                     <div class="input-group no-border input-lg">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
@@ -34,6 +35,7 @@
                                         </div>
                                         {{ form.new_password2 }}
                                     </div>
+                                    <small class="text-danger text-lg-left">{{ form.new_password2.errors }}</small>
                                     <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Cambiar contraseña</button>
                                 </div>
                             {% else %}

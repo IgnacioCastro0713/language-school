@@ -63,4 +63,3 @@ class ResetConfirm(PasswordResetConfirmView):
 
 class ResetComplete(PasswordResetCompleteView):
     template_name = "home/password_reset/complete.html"
-
