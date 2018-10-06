@@ -32,6 +32,10 @@ class Login(LoginView):
              position='top', timer=2500)
         return HttpResponseRedirect(self.get_success_url())
 
+    def form_invalid(self, form):
+        warning(self.request, 'Verifique la información ingresada.!', toast=True, position='top', timer=2500)
+        return self.render_to_response(self.get_context_data(form=form))
+
 
 class Logout(LogoutView):
     success_url = reverse_lazy('home:login')
