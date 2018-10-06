@@ -2,6 +2,7 @@ from django.shortcuts import HttpResponseRedirect
 from django.contrib.auth import login, logout
 from apps.home.form import LoginForm, ResetForm, ResetConfirmForm
 from sweetify import *
+from sweetify.views import SweetifySuccessMixin
 from django.contrib.auth.views import (
     LoginView,
     LogoutView,
@@ -49,10 +50,12 @@ class Logout(LogoutView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class Reset(PasswordResetView):
+class Reset(SweetifySuccessMixin, PasswordResetView):
     template_name = "home/password_reset/form.html"
     email_template_name = "home/password_reset/email.html"
     form_class = ResetForm
+    sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
+    success_message = 'Correo enviado correctamente.!'
     success_url = reverse_lazy('home:password_reset_done')
 
 
@@ -60,9 +63,11 @@ class ResetDone(PasswordResetDoneView):
     template_name = "home/password_reset/done.html"
 
 
-class ResetConfirm(PasswordResetConfirmView):
+class ResetConfirm(SweetifySuccessMixin, PasswordResetConfirmView):
     template_name = "home/password_reset/confirm.html"
     form_class = ResetConfirmForm
+    sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
+    success_message = 'Contraseña restablecida correctamente!'
     success_url = reverse_lazy('home:password_reset_complete')
 
 
