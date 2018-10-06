@@ -13,7 +13,7 @@
                 <h3 class="title">{{ object_list.first_name }} {{ object_list.last_name }} {{ object_list.second_last_name }}</h3>
                 <p class="category">{{ object_list.role.nombre }}</p>
                 <h6>Código:</h6>
-                <p>{{ object_list.code }}</p>
+                <p>{{ object_list.id }}</p>
             </div>
         </div>
         <div class="section">
@@ -31,13 +31,13 @@
                     <p>{{ object_list.phone }}</p>
                     <h6 style="color: #3C4858;">Creación de usuario:</h6>
                     <p>{{ object_list.date_joined|date:"D, d M, Y"}}</p>
-                    <a href="{% url 'user:edit' object_list.code %}">
+                    <a href="{% url 'user:edit' object_list.id %}">
                         <button type="submit" class="btn btn-lg btn-success">
                             <i class="now-ui-icons ui-2_settings-90"></i>  Editar
                         </button>
                     </a>
-                    {% if user.code != object_list.code %}
-                        <a onclick="deleteInShow(event, '{{ object_list.nombre }}', '{% url 'user:delete' object_list.code %}', '{% url 'user:index' %}')">
+                    {% if user.id != object_list.id %}
+                        <a onclick="deleteInShow(event, '{{ object_list.nombre }}', '{% url 'user:delete' object_list.id %}', '{% url 'user:index' %}')">
                             <button type="submit" class="btn btn-lg btn-danger">
                                 <i class="now-ui-icons ui-1_simple-remove"></i> Eliminar
                             </button>

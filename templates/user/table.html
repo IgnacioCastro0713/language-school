@@ -24,17 +24,17 @@
                         <td>{{ users.address }}</td>
                         <td>{{ users.role.nombre }}</td>
                         <td class="td-actions text-center">
-                            <a href="{% url 'user:show' users.code %}">
+                            <a href="{% url 'user:show' users.id %}">
                                 <button type="button" rel="tooltip" class="btn btn-info btn-icon" title="Detalles">
                                     <i class="now-ui-icons text_align-center"></i>
                                 </button>
                             </a>
-                            <a href="{% url 'user:edit' users.code %}">
+                            <a href="{% url 'user:edit' users.id %}">
                                 <button type="button" rel="tooltip" class="btn btn-success btn-icon" title="Editar">
                                     <i class="now-ui-icons ui-2_settings-90"></i>
                                 </button>
                             </a>
-                            {% if user.code != users.code %}
+                            {% if user.id != users.id %}
                             <button title="Eliminar" onclick="confirmDelete(event, '{{ users.first_name }}' ,'{% url 'user:delete' users.code %}')" type="button" rel="tooltip" class="btn btn-danger btn-icon">
                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                             </button>
