@@ -22,6 +22,9 @@ psycopg2 instalable
 * **José Ignacio Menchaca Castro** - *Developer* - [IgnacioCastro0713](https://github.com/IgnacioCastro0713)
 * **Miriam Grizel Gozález Sandoval** - *Developer* - [GrizelGonzalez](https://github.com/GrizelGonzalez)
 
+## TEMPLATE
+
+This project integrates Now UI Kit [TEMPLATE.md](TEMPLATE.md) file for details
 ## License
 
 This project is licensed under the DynaDevs License
