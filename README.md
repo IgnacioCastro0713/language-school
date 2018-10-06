@@ -1,7 +1,7 @@
 # language_school
 Mini proyecto sobre una escuela de lenguas realizado en Django
 
-####required install:
+#### required install:
 
 ```
 pip install --upgrade sweetify
