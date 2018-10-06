@@ -8,9 +8,17 @@ class UserForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(UserForm, self).__init__(*args, **kwargs)
+        self.fields['role'].empty_label = None
+
         self.fields['code'].required = False
-        self.fields['email'].required = False
         self.fields['password'].required = False
+        self.fields['first_name'].required = False
+        self.fields['last_name'].required = False
+        self.fields['second_last_name'].required = False
+        self.fields['email'].required = False
+        self.fields['address'].required = False
+        self.fields['phone'].required = False
+        self.fields['role'].required = False
 
     class Meta:
 

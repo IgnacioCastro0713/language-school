@@ -44,12 +44,9 @@
                         <label style="color: #1d2124">Tipo de usuario</label>
                         <div class="form-check form-check-radio">
                             {% for rol in form.role %}
-                                {% if rol.choice_label != '---------' %}
-                                    <label class="form-check-label" style="color: #1d2124">
-                                        {{ rol.tag }}
-                                        <span class="form-check-sign"></span>{{ rol.choice_label }}
-                                    </label>
-                                {% endif %}
+                                <label class="form-check-label" style="color: #1d2124">
+                                    {{ rol.tag }}<span class="form-check-sign"></span>{{ rol.choice_label }}
+                                </label>
                             {% endfor %}
                         </div>
                         <br>
