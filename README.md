@@ -15,7 +15,7 @@ psycopg2 instalable
 
 * [IgnacioCastro0713/language_school](https://github.com/IgnacioCastro0713/language_school) - Principal repository
 
-* [Atrox/sweetify-django](https://github.com/Atrox/sweetify-django) - SweetAlert integration for Django
+* [Atrox/sweetify-django](https://github.com/Atrox/sweetify-django) - SweetAlert integration for Django (Credits to Atrox)
 
 ## Authors
 
