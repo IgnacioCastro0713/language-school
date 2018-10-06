@@ -12,13 +12,13 @@ class Role(models.Model):
 
 
 class User(AbstractUser):
-    code = models.CharField(max_length=10)
+    code = models.CharField(max_length=10, unique=True)
     username = models.CharField(max_length=150, unique=False)
     first_name = models.CharField(max_length=45)
     password = models.CharField(max_length=128)
     last_name = models.CharField(max_length=25)
     second_last_name = models.CharField(max_length=25)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     address = models.CharField(max_length=45)
     phone = models.CharField(max_length=15)
     role = models.ForeignKey(Role, null=True, blank=True, on_delete=models.CASCADE)

@@ -35,7 +35,7 @@
                                 </button>
                             </a>
                             {% if user.id != users.id %}
-                            <button title="Eliminar" onclick="confirmDelete(event, '{{ users.first_name }}' ,'{% url 'user:delete' users.code %}')" type="button" rel="tooltip" class="btn btn-danger btn-icon">
+                            <button title="Eliminar" onclick="confirmDelete(event, '{{ users.first_name }}' ,'{% url 'user:delete' users.id %}')" type="button" rel="tooltip" class="btn btn-danger btn-icon">
                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                             </button>
                             {% endif %}
