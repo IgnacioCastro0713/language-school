@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect
-from django.contrib.auth.views import reverse_lazy
+from django.shortcuts import render, redirect
+from django.contrib.auth.views import reverse_lazy, PasswordChangeView
 from apps.user.models import User
-from apps.user.form import UserForm
+from apps.user.form import UserForm, UserFormEdit, PasswordForm
 from django.db.models import Q
 from sweetify import *
+from sweetify.views import SweetifySuccessMixin
 from apps.home.pagination import paginate
 from django.views.generic import (
     ListView,
@@ -41,19 +42,27 @@ class Create(CreateView):
         return self.render_to_response(self.get_context_data(form=form))
 
 
-class Edit(UpdateView):
+class Edit(SweetifySuccessMixin, UpdateView):
     model = User
-    form_class = UserForm
+    form_class = UserFormEdit
     template_name = 'user/edit.html'
     success_url = reverse_lazy('user:index')
+    sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
+    success_message = 'Editado correctamente!'
     extra_context = {'title': 'Editar'}
 
-    def form_valid(self, form):
-        user = form.save(commit=False)
-        user.set_password(form.cleaned_data['password'])
-        user.save()
-        success(self.request, 'Editado correctamente!', toast=True, position='top', timer=2500)
-        return HttpResponseRedirect(self.get_success_url())
+    def form_invalid(self, form):
+        warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
+        return self.render_to_response(self.get_context_data(form=form))
+
+
+class ChangePassword(SweetifySuccessMixin, PasswordChangeView):
+    template_name = 'user/change_password.html'
+    form_class = PasswordForm
+    sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
+    success_message = 'Contraseña editada correctamente!'
+    success_url = reverse_lazy('user:index')
+    extra_context = {'title': 'Cambiar contraseña'}
 
     def form_invalid(self, form):
         warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)

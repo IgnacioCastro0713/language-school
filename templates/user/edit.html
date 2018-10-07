@@ -10,7 +10,7 @@
             <div class="photo-container">
                 <img src="{% static 'img/ryan.jpg' %}" alt="">
             </div>
-            <h3 class="title">{{ form.nombre.value }} {{ form.apaterno.value }} {{ form.amaterno.value }}</h3>
+            <h3 class="title">{{ form.first_name.value }} {{ form.last_name.value }} {{ form.second_last_name.value }}</h3>
         </div>
     </div>
     <div class="section" style="margin-top: -100px; padding-top: 30px">
@@ -22,14 +22,14 @@
                     <div class="card-body text-left">
                         <p class="text-primary">Datos usuario</p>
                         <div class="row">
-                            <div class="col-md-2 pl-2">
+                            <div class="col-md-4 pl-2">
                                 <label for="txtcode" style="color: #1d2124">Código</label>
                                 <div class="form-group {% if form.code.errors %}has-danger{% endif %}">
                                     {{ form.code }}
                                     <small class="text-danger text-sm-left">{{ form.code.errors}}</small>
                                 </div>
                             </div>
-                            <div class="col-md-6 pl-2">
+                            <div class="col-md-4 pl-2">
                                 <label for="txtemail" style="color: #1d2124">Correo electrónico</label>
                                 <div class="form-group {% if form.email.errors %}has-danger{% endif %}">
                                     {{ form.email }}
@@ -37,23 +37,18 @@
                                 </div>
                             </div>
                             <div class="col-md-4 pl-2">
-                                <label for="txtpassword" style="color: #1d2124">Contraseña</label>
-                                <div class="form-group {% if form.password.errors %}has-danger{% endif %}">
-                                    {{ form.password }}
-                                    <small class="text-danger text-sm-left">{{ form.password.errors}}</small>
-                                </div>
+                            <label style="color: #1d2124">Tipo de usuario</label>
+                            <div class="form-check form-check-radio">
+                                {% for rol in form.role %}
+                                    <label class="form-check-label" style="color: #1d2124">
+                                        {{ rol.tag }}<span class="form-check-sign"></span>{{ rol.choice_label }}
+                                    </label>
+                                {% endfor %}
                             </div>
+                            </div>
+                            <small class="text-danger text-sm-left">{{ form.role.errors}}</small>
                         </div>
-                        <label style="color: #1d2124">Tipo de usuario</label>
-                        <div class="form-check form-check-radio">
-                            {% for rol in form.role %}
-                                <label class="form-check-label" style="color: #1d2124">
-                                    {{ rol.tag }}<span class="form-check-sign"></span>{{ rol.choice_label }}
-                                </label>
-                            {% endfor %}
-                        </div>
-                        <small class="text-danger text-sm-left">{{ form.role.errors}}</small>
-                        <br>
+
                         <p class="text-primary">Datos personales</p>
                         <div class="row">
                             <div class="col-md-4 pl-2">
