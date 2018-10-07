@@ -129,8 +129,6 @@ class CourseForm(forms.ModelForm):
 
     def clean_end(self):
         data = self.cleaned_data
-        # end = str(data['end']).replace('0', '').replace(':', '')
-
         if not data['end']:
             raise ValidationError('Selecciona hora de fin')
         return data['end']
