@@ -12,7 +12,7 @@
 
         <li class="page-item {% if not page_obj.has_previous %} disabled {% endif %}">
             {% if page_obj.has_previous %}
-                <a class="page-link" onclick="changePage(this, event)" href="?page={{ page_obj.previous_page_number }}"tabindex="-1">
+                <a class="page-link" onclick="changePage(this, event)" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">
                     <i class="fa fa-angle-left"></i><span class="sr-only">Anterior</span>
                 </a>
             {% endif %}
