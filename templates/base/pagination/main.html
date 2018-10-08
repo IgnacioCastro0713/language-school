@@ -1,0 +1,49 @@
+{% if is_paginated %}
+<nav>
+    <ul class="pagination justify-content-center pagination-primary">
+
+        <li class="page-item {% if not page_obj.has_previous %} disabled {% endif %}">
+            {% if page_obj.has_previous %}
+                <a class="page-link" href="?page=1" aria-label="Previous" onclick="changePage(this, event)" title="Inicio">
+                    <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+                </a>
+            {% endif %}
+        </li>
+
+        <li class="page-item {% if not page_obj.has_previous %} disabled {% endif %}">
+            {% if page_obj.has_previous %}
+                <a class="page-link" onclick="changePage(this, event)" href="?page={{ page_obj.previous_page_number }}"tabindex="-1">
+                    <i class="fa fa-angle-left"></i><span class="sr-only">Anterior</span>
+                </a>
+            {% endif %}
+        </li>
+
+        {% for pg in page_obj.paginator.page_range %}
+            {% if page_obj.number <= 7 %}
+                {% include "base/pagination/number.html" with pg=pg first=0 last=14 %}
+            {% elif page_obj.number >= page_obj.paginator.num_pages|add:-6 %}
+                {% include "base/pagination/number.html" with pg=pg first=page_obj.paginator.num_pages|add:-13 last=page_obj.paginator.num_pages|add:1 %}
+            {% else %}
+                {% include "base/pagination/number.html" with pg=pg first=page_obj.number|add:-7 last=page_obj.number|add:7 %}
+            {% endif %}
+        {% endfor %}
+
+        <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+            {% if page_obj.has_next %}
+                <a class="page-link" onclick="changePage(this, event)"href="?page={{ page_obj.next_page_number }}">
+                    <i class="fa fa-angle-right"></i><span class="sr-only">Siguiente</span>
+                </a>
+            {% endif %}
+        </li>
+
+        <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+            {% if page_obj.has_next %}
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Next" onclick="changePage(this, event)" title="Final">
+                    <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+                </a>
+            {% endif %}
+        </li>
+
+    </ul>
+</nav>
+{% endif %}

@@ -1,0 +1,11 @@
+{% if first < pg and pg < last %}
+    {% if page_obj.number == pg %}
+        <li class="page-item active">
+            <a class="page-link" href="?page={{ pg }}" onclick="changePage(this, event)">{{ pg }} <span class="sr-only">(current)</span></a>
+        </li>
+    {% else %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ pg }}" onclick="changePage(this, event)">{{ pg }}</a>
+        </li>
+    {% endif %}
+{% endif %}
