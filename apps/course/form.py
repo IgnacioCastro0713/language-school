@@ -13,10 +13,13 @@ class CourseForm(forms.ModelForm):
         self.fields['classroom'].empty_label = '-- Seleciona aula --'
         # required fields false
         self.fields['name'].required = False
-        self.fields['description'].required = False
         self.fields['day'].required = False
         self.fields['start'].required = False
         self.fields['end'].required = False
+        self.fields['description'].required = False
+        self.fields['user'].required = False
+        self.fields['classroom'].required = False
+        self.fields['lan'].required = False
 
     class Meta:
         model = Course
