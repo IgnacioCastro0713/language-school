@@ -62,7 +62,7 @@ class ChangePassword(SweetifySuccessMixin, PasswordChangeView):
     sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
     success_message = 'Contraseña editada correctamente!'
     success_url = reverse_lazy('user:index')
-    extra_context = {'title': 'Cambiar contraseña'}
+    extra_context = {'title': 'Cambiar contraseña de usuario'}
 
     def form_invalid(self, form):
         warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)

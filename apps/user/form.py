@@ -131,7 +131,6 @@ class UserFormCreate(UserFormEdit):
         super(UserFormCreate, self).__init__(*args, **kwargs)
         self.fields['password'].widget = forms.PasswordInput(
             attrs={'class': 'form-control', 'placeholder': 'Contraseña'})
-
         self.fields['password'].required = False
 
     class Meta(UserFormEdit.Meta):
@@ -160,7 +159,11 @@ class UserFormCreate(UserFormEdit):
 class PasswordForm(PasswordChangeForm):
     old_password = forms.CharField(
         strip=False,
-        widget=forms.PasswordInput(attrs={'autofocus': True, 'class': 'form-control'}),
+        widget=forms.PasswordInput(attrs={
+            'autofocus': True,
+            'class': 'form-control',
+            'placeholder': 'Contraseña actual'
+        }),
     )
     field_order = ['old_password', 'new_password1', 'new_password2']
 
