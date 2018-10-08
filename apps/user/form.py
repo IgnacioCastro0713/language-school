@@ -129,9 +129,8 @@ class UserFormCreate(UserFormEdit):
 
     def __init__(self, *args, **kwargs):
         super(UserFormCreate, self).__init__(*args, **kwargs)
-        self.fields['password'].widget = forms.PasswordInput(attrs={
-            'class': 'form-control', 'placeholder': 'Contraseña'
-        })
+        self.fields['password'].widget = forms.PasswordInput(
+            attrs={'class': 'form-control', 'placeholder': 'Contraseña'})
 
         self.fields['password'].required = False
 
