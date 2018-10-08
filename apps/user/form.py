@@ -125,10 +125,10 @@ class UserFormEdit(forms.ModelForm):
         return data['role']
 
 
-class UserForm(UserFormEdit):
+class UserFormCreate(UserFormEdit):
 
     def __init__(self, *args, **kwargs):
-        super(UserForm, self).__init__(*args, **kwargs)
+        super(UserFormCreate, self).__init__(*args, **kwargs)
         self.fields['password'].widget = forms.PasswordInput(attrs={
             'class': 'form-control', 'placeholder': 'Contraseña'
         })

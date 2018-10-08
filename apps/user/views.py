@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import reverse_lazy, PasswordChangeView
 from apps.user.models import User
-from apps.user.form import UserForm, UserFormEdit, PasswordForm
+from apps.user.form import UserFormCreate, UserFormEdit, PasswordForm
 from django.db.models import Q
 from sweetify import *
 from sweetify.views import SweetifySuccessMixin
@@ -26,7 +26,7 @@ class Index(ListView):
 
 class Create(CreateView):
     model = User
-    form_class = UserForm
+    form_class = UserFormCreate
     template_name = 'user/create.html'
     extra_context = {'title': 'Registrar'}
 
