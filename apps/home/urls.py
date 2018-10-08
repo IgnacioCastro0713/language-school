@@ -1,6 +1,7 @@
 from django.urls import path
-from apps.home.views import *
 from django.contrib.auth.decorators import login_required as auth
+from apps.home.views import (Index, Login, Logout, Reset, ResetDone, ResetConfirm, ResetComplete)
+
 
 app_name = 'home'
 

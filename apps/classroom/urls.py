@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required as auth
-from apps.classroom.views import *
+from apps.classroom.views import (Index, Create, Edit, Delete, search, Table)
 
 app_name = 'classroom'
 
