@@ -12,8 +12,8 @@
 
         <li class="page-item {% if not page_obj.has_previous %} disabled {% endif %}">
             {% if page_obj.has_previous %}
-                <a class="page-link" onclick="changePage(this, event)" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">
-                    <i class="fa fa-angle-left"></i><span class="sr-only">Anterior</span>
+                <a class="page-link" onclick="changePage(this, event)" href="?page={{ page_obj.previous_page_number }}" tabindex="-1" title="anterior">
+                    <i class="fa fa-angle-left"></i><span class="sr-only"></span>
                 </a>
             {% endif %}
         </li>
@@ -30,15 +30,15 @@
 
         <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
             {% if page_obj.has_next %}
-                <a class="page-link" onclick="changePage(this, event)"href="?page={{ page_obj.next_page_number }}">
-                    <i class="fa fa-angle-right"></i><span class="sr-only">Siguiente</span>
+                <a class="page-link" onclick="changePage(this, event)" href="?page={{ page_obj.next_page_number }}" title="siguiente">
+                    <i class="fa fa-angle-right"></i><span class="sr-only"></span>
                 </a>
             {% endif %}
         </li>
 
         <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
             {% if page_obj.has_next %}
-                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Next" onclick="changePage(this, event)" title="Final">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Next" onclick="changePage(this, event)"  title="Final">
                     <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
                 </a>
             {% endif %}
