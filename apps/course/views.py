@@ -3,8 +3,8 @@ from django.contrib.auth.views import reverse_lazy
 from apps.course.models import Course
 from apps.course.form import CourseForm
 from django.db.models import Q
-from sweetify.views import *
-from sweetify import *
+from sweetify.views import SweetifySuccessMixin
+from sweetify import warning
 from apps.home.pagination import paginate
 from django.views.generic import (
     ListView,
