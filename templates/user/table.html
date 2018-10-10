@@ -19,9 +19,9 @@
                 {% for users in object_list %}
                     <tr>
                         <td class="text-center">{{ users.code }}</td>
-                        <td>{{ users.first_name}} {{users.last_name}} {{users.second_last_name }}</td>
+                        <td>{{ users.first_name.capitalize}} {{users.last_name.capitalize}} {{users.second_last_name.capitalize }}</td>
                         <td>{{ users.email }}</td>
-                        <td>{{ users.address }}</td>
+                        <td>{{ users.address.capitalize }}</td>
                         <td>{{ users.role.nombre }}</td>
                         <td class="td-actions text-center">
                             <a href="{% url 'user:show' users.id %}">

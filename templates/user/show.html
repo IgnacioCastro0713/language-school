@@ -10,7 +10,7 @@
                 <div class="photo-container">
                     <img src="{% static 'img/avatar.jpg' %}" alt="">
                 </div>
-                <h3 class="title">{{ object_list.first_name }} {{ object_list.last_name }} {{ object_list.second_last_name }}</h3>
+                <h3 class="title">{{ object_list.first_name.capitalize }} {{ object_list.last_name.capitalize }} {{ object_list.second_last_name.capitalize }}</h3>
                 <p class="category">{{ object_list.role.nombre }}</p>
                 <h6>Código:</h6>
                 <p>{{ object_list.code }}</p>
@@ -26,7 +26,7 @@
                 <br>
                 <div class="description text-center">
                     <h6 style="color: #3C4858;">Dirección:</h6>
-                    <p>{{ object_list.address }}</p>
+                    <p>{{ object_list.address.capitalize }}</p>
                     <h6 style="color: #3C4858;">Telefono:</h6>
                     <p>{{ object_list.phone }}</p>
                     <h6 style="color: #3C4858;">Creación de usuario:</h6>

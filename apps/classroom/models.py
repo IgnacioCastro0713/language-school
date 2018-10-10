@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Classroom(models.Model):
-    name = models.CharField(max_length=25)
+    name = models.CharField(max_length=25, unique=True)
     building = models.CharField(max_length=45)
 
     def __str__(self):

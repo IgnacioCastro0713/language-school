@@ -17,8 +17,8 @@
                 {% for class in object_list %}
                     <tr>
                         <td class="text-center">{{ class.id }}</td>
-                        <td>{{ class.name }}</td>
-                        <td>{{ class.building }}</td>
+                        <td>{{ class.name.capitalize }}</td>
+                        <td>{{ class.building.capitalize }}</td>
                         <td class="td-actions text-center">
                             <a href="{% url 'classroom:edit' class.id %}">
                                 <button type="button" rel="tooltip" class="btn btn-success btn-icon" title="Editar">

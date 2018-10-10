@@ -20,7 +20,7 @@
                 {% for course in object_list %}
                     <tr>
                         <td class="text-center">{{ course.id}}</td>
-                        <td>{{ course.name}}</td>
+                        <td>{{ course.name.capitalize}}</td>
                         <td>{{ course.day }}</td>
                         <td>{{ course.start|time:"g:i A" }}</td>
                         <td>{{ course.end|time:"g:i A" }}</td>
