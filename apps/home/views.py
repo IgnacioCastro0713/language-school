@@ -34,7 +34,7 @@ class Login(LoginView):
         return HttpResponseRedirect(self.get_success_url())
 
     def form_invalid(self, form):
-        warning(self.request, 'Verifique la información ingresada.!', toast=True, position='top', timer=2500)
+        warning(self.request, '¡Verifique la información ingresada!', toast=True, position='top', timer=2500)
         return self.render_to_response(self.get_context_data(form=form))
 
 
@@ -45,7 +45,7 @@ class Logout(LogoutView):
         logout(request)
         next_page = self.success_url
         if next_page:
-            info(request, 'Se ha cerrado sesión!', toast=True, position='top', timer=2500)
+            info(request, '¡Se ha cerrado sesión!', toast=True, position='top', timer=2500)
             return HttpResponseRedirect(next_page)
         return super().dispatch(request, *args, **kwargs)
 
@@ -55,7 +55,7 @@ class Reset(SweetifySuccessMixin, PasswordResetView):
     email_template_name = "home/password_reset/email.html"
     form_class = ResetForm
     sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
-    success_message = 'Correo enviado correctamente.!'
+    success_message = '¡Correo enviado correctamente!'
     success_url = reverse_lazy('home:password_reset_done')
 
 
@@ -67,7 +67,7 @@ class ResetConfirm(SweetifySuccessMixin, PasswordResetConfirmView):
     template_name = "home/password_reset/confirm.html"
     form_class = ResetConfirmForm
     sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
-    success_message = 'Contraseña restablecida correctamente!'
+    success_message = '¡Contraseña restablecida correctamente!'
     success_url = reverse_lazy('home:password_reset_complete')
 
 

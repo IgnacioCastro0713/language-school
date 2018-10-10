@@ -28,7 +28,7 @@ class Create(SweetifySuccessMixin, CreateView):
     form_class = ClassroomForm
     template_name = 'classroom/create.html'
     sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
-    success_message = 'Aula guardada correctamente!'
+    success_message = '¡Aula guardada correctamente!'
     success_url = reverse_lazy('classroom:index')
     extra_context = {'title': 'Registrar'}
 
@@ -42,7 +42,7 @@ class Edit(SweetifySuccessMixin, UpdateView):
     form_class = ClassroomForm
     template_name = 'classroom/edit.html'
     sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
-    success_message = 'Editado correctamente!'
+    success_message = '¡Editado correctamente!'
     success_url = reverse_lazy('classroom:index')
     extra_context = {'title': 'Editar'}
 

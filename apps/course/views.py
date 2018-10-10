@@ -29,12 +29,12 @@ class Create(SweetifySuccessMixin, CreateView):
     form_class = CourseForm
     template_name = 'course/create.html'
     sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
-    success_message = 'Curso guardado correctamente!'
+    success_message = '¡Curso guardado correctamente!'
     success_url = reverse_lazy('course:index')
     extra_context = {'title': 'Registrar'}
 
     def form_invalid(self, form):
-        warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
+        warning(self.request, '¡Verifique la información ingresada!', toast=True, position='top', timer=3000)
         return self.render_to_response(self.get_context_data(form=form))
 
 
@@ -43,12 +43,12 @@ class Edit(SweetifySuccessMixin, UpdateView):
     form_class = CourseForm
     template_name = 'course/edit.html'
     sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
-    success_message = 'Editado correctamente!'
+    success_message = '¡Editado correctamente!'
     success_url = reverse_lazy('course:index')
     extra_context = {'title': 'Editar'}
 
     def form_invalid(self, form):
-        warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
+        warning(self.request, '¡Verifique la información ingresada!', toast=True, position='top', timer=3000)
         return self.render_to_response(self.get_context_data(form=form))
 
 

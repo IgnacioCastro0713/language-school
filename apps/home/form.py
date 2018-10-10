@@ -2,7 +2,6 @@ from django import forms
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
 from apps.user.backends import CustomBackendUser as Auth
-from sweetify import warning
 from django.contrib.auth.forms import (
     PasswordResetForm,
     SetPasswordForm,
