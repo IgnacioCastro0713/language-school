@@ -31,6 +31,8 @@
                     <p>{{ object_list.phone }}</p>
                     <h6 style="color: #3C4858;">Creación de usuario:</h6>
                     <p>{{ object_list.date_joined|date:"D, d M, Y"}}</p>
+                    <h6 style="color: #3C4858;">Ultimo inicio de sesión:</h6>
+                    <p>{{ object_list.last_login|date:"D, d M, Y"}}</p>
                     <a href="{% url 'user:edit' object_list.id %}">
                         <button type="submit" class="btn btn-lg btn-success">
                             <i class="now-ui-icons ui-2_settings-90"></i>  Editar perfil
