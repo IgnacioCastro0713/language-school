@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from twilio.rest import Client
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -143,3 +144,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'jose.menchaca@alumnos.udg.mx'
 EMAIL_HOST_PASSWORD = 'monster666'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# SMS
+account_sid = 'AC0f9bd514e0811478049599b973833444'
+auth_token = '9302ea971a98066b6f32bf4518891e46'
+sms = Client(account_sid, auth_token)
