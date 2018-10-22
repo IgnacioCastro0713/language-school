@@ -23,24 +23,24 @@
                         <p class="text-primary">Datos usuario</p>
                         <div class="row">
                             <div class="col-md-4 pl-2">
-                                <label for="txtcode" style="color: #1d2124">Código</label>
+                                <label for="txtcode" class="text-black">Código</label>
                                 <div class="form-group {% if form.code.errors %}has-danger{% endif %}">
                                     {{ form.code }}
                                     <small class="text-danger text-sm-left">{{ form.code.errors}}</small>
                                 </div>
                             </div>
                             <div class="col-md-4 pl-2">
-                                <label for="txtemail" style="color: #1d2124">Correo electrónico</label>
+                                <label for="txtemail" class="text-black">Correo electrónico</label>
                                 <div class="form-group {% if form.email.errors %}has-danger{% endif %}">
                                     {{ form.email }}
                                     <small class="text-danger text-sm-left">{{ form.email.errors}}</small>
                                 </div>
                             </div>
                             <div class="col-md-4 pl-2">
-                            <label style="color: #1d2124">Tipo de usuario</label>
+                            <label class="text-black">Tipo de usuario</label>
                             <div class="form-check form-check-radio">
                                 {% for rol in form.role %}
-                                    <label class="form-check-label" style="color: #1d2124">
+                                    <label class="form-check-label text-black">
                                         {{ rol.tag }}<span class="form-check-sign"></span>{{ rol.choice_label }}
                                     </label>
                                 {% endfor %}
@@ -52,35 +52,35 @@
                         <p class="text-primary">Datos personales</p>
                         <div class="row">
                             <div class="col-md-4 pl-2">
-                                <label for="txtnombre" style="color: #1d2124">Nombre</label>
+                                <label for="txtnombre" class="text-black">Nombre</label>
                                 <div class="form-group {% if form.first_name.errors %}has-danger{% endif %}">
                                     {{ form.first_name }}
                                     <small class="text-danger text-sm-left">{{ form.first_name.errors}}</small>
                                 </div>
                             </div>
                             <div class="col-md-4 pl-2">
-                                <label for="txtapaterno" style="color: #1d2124">Apellido paterno</label>
+                                <label for="txtapaterno" class="text-black">Apellido paterno</label>
                                 <div class="form-group {% if form.last_name.errors %}has-danger{% endif %}">
                                     {{ form.last_name }}
                                     <small class="text-danger text-sm-left">{{ form.last_name.errors}}</small>
                                 </div>
                             </div>
                             <div class="col-md-4 pl-2">
-                                <label for="txtamaterno" style="color: #1d2124">Apellido materno</label>
+                                <label for="txtamaterno" class="text-black">Apellido materno</label>
                                 <div class="form-group {% if form.second_last_name.errors %}has-danger{% endif %}">
                                     {{ form.second_last_name }}
                                     <small class="text-danger text-sm-left">{{ form.second_last_name.errors}}</small>
                                 </div>
                             </div>
                             <div class="col-md-7 pl-2">
-                                <label for="txtaddress" style="color: #1d2124">Dirección</label>
+                                <label for="txtaddress"class="text-black">Dirección</label>
                                 <div class="form-group {% if form.address.errors %}has-danger{% endif %}">
                                     {{ form.address }}
                                     <small class="text-danger text-sm-left">{{ form.address.errors}}</small>
                                 </div>
                             </div>
                             <div class="col-md-5 pl-2">
-                                <label for="txtphone" style="color: #1d2124">Telefono</label>
+                                <label for="txtphone" class="text-black">Telefono</label>
                                 <div class="form-group {% if form.phone.errors %}has-danger{% endif %}">
                                     {{ form.phone }}
                                     <small class="text-danger text-sm-left">{{ form.phone.errors}}</small>
