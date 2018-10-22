@@ -26,19 +26,22 @@
                         <td>{{ course.end|time:"g:i A" }}</td>
                         <td>{{ course.lan.name }}</td>
                         <td class="td-actions text-center">
-                            <a href="{% url 'course:show' course.id %}">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-icon" title="Detalles">
-                                    <i class="now-ui-icons text_align-center"></i>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="now-ui-icons design_bullet-list-67"></i>
                                 </button>
-                            </a>
-                            <a href="{% url 'course:edit' course.id %}">
-                                <button type="button" rel="tooltip" class="btn btn-success btn-icon" title="Editar">
-                                    <i class="now-ui-icons ui-2_settings-90"></i>
-                                </button>
-                            </a>
-                            <button title="Eliminar" onclick="confirmDelete(event, '{{ course.name }}' ,'{% url 'course:delete' course.id %}')" type="button" rel="tooltip" class="btn btn-danger btn-icon">
-                                <i class="now-ui-icons ui-1_simple-remove"></i>
-                            </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item text-info" href="{% url 'course:show' course.id %}">
+                                        <i class="now-ui-icons travel_info"></i>Detalles
+                                    </a>
+                                    <a class="dropdown-item text-success" href="{% url 'course:edit' course.id %}">
+                                        <i class="now-ui-icons ui-2_settings-90"></i>Editar
+                                    </a>
+                                    <a class="dropdown-item text-danger" href="" onclick="confirmDelete(event, '{{ course.name }}' ,'{% url 'course:delete' course.id %}')">
+                                        <i class="now-ui-icons ui-1_simple-remove"></i>Eliminar
+                                    </a>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 {% endfor %}

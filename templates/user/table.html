@@ -24,21 +24,24 @@
                         <td>{{ users.address.capitalize }}</td>
                         <td>{{ users.role.nombre }}</td>
                         <td class="td-actions text-center">
-                            <a href="{% url 'user:show' users.id %}">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-icon" title="Detalles">
-                                    <i class="now-ui-icons text_align-center"></i>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="now-ui-icons design_bullet-list-67"></i>
                                 </button>
-                            </a>
-                            <a href="{% url 'user:edit' users.id %}">
-                                <button type="button" rel="tooltip" class="btn btn-success btn-icon" title="Editar">
-                                    <i class="now-ui-icons ui-2_settings-90"></i>
-                                </button>
-                            </a>
-                            {% if user.id != users.id %}
-                            <button title="Eliminar" onclick="confirmDelete(event, '{{ users.first_name }}' ,'{% url 'user:delete' users.id %}')" type="button" rel="tooltip" class="btn btn-danger btn-icon">
-                                <i class="now-ui-icons ui-1_simple-remove"></i>
-                            </button>
-                            {% endif %}
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item text-info" href="{% url 'user:show' users.id %}">
+                                        <i class="now-ui-icons travel_info"></i>Detalles
+                                    </a>
+                                    <a class="dropdown-item text-success" href="{% url 'user:edit' users.id %}">
+                                        <i class="now-ui-icons ui-2_settings-90"></i>Editar
+                                    </a>
+                                    {% if user.id != users.id %}
+                                    <a class="dropdown-item text-danger" href="" onclick="confirmDelete(event, '{{ users.first_name }}' ,'{% url 'user:delete' users.id %}')">
+                                        <i class="now-ui-icons ui-1_simple-remove"></i>Eliminar
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 {% endfor %}
