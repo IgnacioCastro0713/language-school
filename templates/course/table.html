@@ -49,7 +49,7 @@
                 <td class="text-danger"><strong> No hay registros de cursos. </strong></td>
             {% endif %}
             </tbody>
-            <tfoot>{{ is_paginated }}
+            <tfoot>
             <tr>
                 <td colspan="7">
                     {% include 'base/pagination/main.html' with page_obj=page_obj %}
