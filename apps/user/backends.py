@@ -1,5 +1,4 @@
-from django.contrib.auth.forms import *
-
+from django.contrib.auth.forms import get_user_model
 User = get_user_model()
 
 

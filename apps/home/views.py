@@ -30,17 +30,16 @@ class Login(LoginView):
 
     def form_valid(self, form):
         login(self.request, form.get_user())
-        info(self.request, 'Bienvenido(a) {}!'.format(self.request.user.first_name),
-             toast=True,
-             position='top',
-             timer=2500
-             )
+        info(self.request, 'Bienvenido(a) {}!'.format(self.request.user.first_name), toast=True, position='top',
+             timer=2500)
         sms.messages.create(
-            body="{} Ha inicio sesión en language school.".format(self.request.user.first_name),
+            body="{} {} {} ha inicio sesión en language school.".format(
+                self.request.user.first_name,
+                self.request.user.last_name,
+                self.request.user.second_last_name
+            ),
             from_='+13204293498',
-            to='+523841086233'
-        )
-
+            to='+523841086233')
         return HttpResponseRedirect(self.get_success_url())
 
     def form_invalid(self, form):
