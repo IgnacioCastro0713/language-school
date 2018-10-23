@@ -5,7 +5,6 @@ from django.contrib.auth.views import reverse_lazy, PasswordChangeView
 from sweetify import success, warning
 from sweetify.views import SweetifySuccessMixin
 from django.db.models import Q
-from apps.home.pagination import paginate
 from django.views.generic import (
     ListView,
     CreateView,
