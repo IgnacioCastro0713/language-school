@@ -62,14 +62,14 @@ class Delete(DeleteView):
 
 class Table(ListView):
     model = Classroom
-    paginate_by = 5
     template_name = 'classroom/table.html'
+    paginate_by = 5
 
 
 class Search(ListView):
     model = Classroom
-    paginate_by = 5
     template_name = 'classroom/table.html'
+    paginate_by = 5
 
     def get_queryset(self):
         find = self.kwargs['find']

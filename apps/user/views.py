@@ -93,8 +93,8 @@ class Table(ListView):
 
 class Search(ListView):
     model = User
-    paginate_by = 5
     template_name = 'user/table.html'
+    paginate_by = 5
 
     def get_queryset(self):
         find = self.kwargs['find']

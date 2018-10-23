@@ -77,8 +77,8 @@ class Table(ListView):
 
 class Search(ListView):
     model = Course
-    paginate_by = 5
     template_name = 'course/table.html'
+    paginate_by = 5
 
     def get_queryset(self):
         find = self.kwargs['find']
