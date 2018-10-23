@@ -66,7 +66,11 @@ class Table(ListView):
     template_name = 'classroom/table.html'
 
 
-def search(request, find):
-    classrooms_list = Classroom.objects.filter(Q(name__icontains=find))
-    classrooms = paginate(request, classrooms_list, 100)
-    return render(request, 'classroom/table.html', {'object_list': classrooms})
+class Search(ListView):
+    model = Classroom
+    paginate_by = 5
+    template_name = 'classroom/table.html'
+
+    def get_queryset(self):
+        find = self.kwargs['find']
+        return self.model.objects.filter(Q(name__icontains=find))

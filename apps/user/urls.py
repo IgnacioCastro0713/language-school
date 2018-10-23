@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required as auth
-from apps.user.views import (Index, Create, Edit, ChangePassword, Show, Delete, search, Table)
+from apps.user.views import (Index, Create, Edit, ChangePassword, Show, Delete, Search, Table)
 
 app_name = 'user'
 
@@ -11,6 +11,6 @@ urlpatterns = [
     path('password/', auth(ChangePassword.as_view()), name='password'),
     path('show/<pk>/', auth(Show.as_view()), name='show'),
     path('delete/<pk>/', auth(Delete.as_view()), name='delete'),
-    path('search/<slug:find>/', auth(search), name='search'),
+    path('search/<slug:find>/', auth(Search.as_view()), name='search'),
     path('table/', auth(Table.as_view()), name='table'),
 ]

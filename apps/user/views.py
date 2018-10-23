@@ -92,12 +92,15 @@ class Table(ListView):
     paginate_by = 5
 
 
-def search(request, find):
-    users_list = User.objects.filter(
-        Q(code__icontains=find) |
-        Q(first_name__icontains=find) |
-        Q(last_name__icontains=find) |
-        Q(second_last_name__icontains=find) |
-        Q(role__nombre__icontains=find))
-    users = paginate(request, users_list, 100)
-    return render(request, 'user/table.html', {'object_list': users})
+class Search(ListView):
+    model = User
+    paginate_by = 5
+    template_name = 'user/table.html'
+
+    def get_queryset(self):
+        find = self.kwargs['find']
+        return self.model.objects.filter(Q(code__icontains=find) |
+                                         Q(first_name__icontains=find) |
+                                         Q(last_name__icontains=find) |
+                                         Q(second_last_name__icontains=find) |
+                                         Q(role__nombre__icontains=find))

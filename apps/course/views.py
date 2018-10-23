@@ -75,9 +75,12 @@ class Table(ListView):
     paginate_by = 5
 
 
-def search(request, find):
-    courses_list = Course.objects.filter(
-        Q(name__icontains=find))
-    courses = paginate(request, courses_list, 100)
-    return render(request, 'course/table.html', {'object_list': courses})
+class Search(ListView):
+    model = Course
+    paginate_by = 5
+    template_name = 'course/table.html'
 
+    def get_queryset(self):
+        find = self.kwargs['find']
+        return self.model.objects.filter(Q(name__icontains=find) |
+                                         Q(day__icontains=find))
