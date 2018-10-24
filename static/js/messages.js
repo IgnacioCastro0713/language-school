@@ -9,7 +9,7 @@ const toast = swal.mixin({
     position: 'top',
     showConfirmButton: false,
     timer: 3000,
-    showCloseButton: true
+    showCloseButton: false
 });
 
 function confirmDelete(e, name, url) {
@@ -71,9 +71,4 @@ function deleteElement(name, url, done, fail) {
             }).done(done).fail(fail)
         }
     })
-}
-
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
 }
