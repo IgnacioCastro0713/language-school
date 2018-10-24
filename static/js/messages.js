@@ -9,7 +9,7 @@ const toast = swal.mixin({
     position: 'top',
     showConfirmButton: false,
     timer: 3000,
-    showCloseButton: true
+    showCloseButton: false
 });
 
 function confirmDelete(e, name, url) {
@@ -56,11 +56,6 @@ function deleteElement(name, url, done, fail) {
         cancelButtonText: '<i class="now-ui-icons ui-1_simple-remove"></i>  Cancelar',
     }).then((result) => {
         if (result.value) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $("[name=csrfmiddlewaretoken]").val()
-                }
-            });
             $.ajax({
                 data: {
                     '_method' : 'DELETE',
@@ -71,9 +66,4 @@ function deleteElement(name, url, done, fail) {
             }).done(done).fail(fail)
         }
     })
-}
-
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
 }
