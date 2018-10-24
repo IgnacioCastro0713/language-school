@@ -5,7 +5,6 @@ from apps.course.form import CourseForm
 from django.db.models import Q
 from sweetify.views import SweetifySuccessMixin
 from sweetify import warning
-from apps.home.pagination import paginate
 from django.views.generic import (
     ListView,
     CreateView,
