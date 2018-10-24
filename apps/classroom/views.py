@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.contrib.auth.views import reverse_lazy
 from apps.classroom.models import Classroom
 from apps.classroom.form import ClassroomForm
-from apps.home.pagination import paginate
 from django.db.models import Q
 from sweetify.views import SweetifySuccessMixin
 from sweetify import warning
