@@ -56,11 +56,6 @@ function deleteElement(name, url, done, fail) {
         cancelButtonText: '<i class="now-ui-icons ui-1_simple-remove"></i>  Cancelar',
     }).then((result) => {
         if (result.value) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $("[name=csrfmiddlewaretoken]").val()
-                }
-            });
             $.ajax({
                 data: {
                     '_method' : 'DELETE',

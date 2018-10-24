@@ -6,7 +6,7 @@ function changePage(obj, e) {
     }).done(function (response) {
         $('#content').html(response);
         location.hash = page;
-        $('html, body').animate({
+        $('html, body').stop().animate({
             scrollTop: $("#top").offset().top
         }, 250)
     })
@@ -21,11 +21,6 @@ function loadTable(e, doSearch) {
         currentUrl = search +'/'+param + '/';
     else
         currentUrl = table;
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $("[name=csrfmiddlewaretoken]").val(),
-        }
-    });
     $.ajax({
         url : currentUrl,
         method : 'get',
