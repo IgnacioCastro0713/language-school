@@ -1,8 +1,9 @@
+var opcUrl = table;
+
 function changePage(obj, e) {
     e.preventDefault();
     let page = $(obj).attr('href').split('?page=')[1];
     let param = $('#search').val();
-    var opcUrl = "";
     if (param !== "")
         opcUrl = search+'/'+param+'/';
     else
