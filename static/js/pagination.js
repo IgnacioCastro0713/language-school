@@ -1,10 +1,10 @@
 function changePage(obj, e) {
     e.preventDefault();
     let page = $(obj).attr('href').split('?page=')[1];
-    let param = $("#search").val();
+    let param = $('#search').val();
     var opcUrl = "";
-    if (param !=="")
-        opcUrl = search+'/'+param+'';
+    if (param !== "")
+        opcUrl = search+'/'+param+'/';
     else
         opcUrl = table;
     $.ajax({
@@ -24,7 +24,7 @@ function loadTable(e, doSearch) {
     e.preventDefault();
     let param = $('#search').val();
     if (doSearch && param !== "")
-        currentUrl = search+'/'+param+'';
+        currentUrl = search+'/'+param+'/';
     else
         currentUrl = table;
     $.ajax({
