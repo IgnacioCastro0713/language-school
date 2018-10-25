@@ -19,7 +19,9 @@ from django.contrib.auth.views import (
 class Index(TemplateView):
     template_name = 'home/index.html'
     extra_context = {
-        'title': 'Inicio'
+        'title': 'Inicio',
+        'project_name': 'Language School.',
+        'description': 'Project made in Django.',
     }
 
 
@@ -30,17 +32,16 @@ class Login(LoginView):
 
     def form_valid(self, form):
         login(self.request, form.get_user())
-        info(self.request, 'Bienvenido(a) {}!'.format(self.request.user.first_name),
-             toast=True,
-             position='top',
-             timer=2500
-             )
+        info(self.request, '¡Bienvenido(a) {}!'.format(self.request.user.first_name), toast=True, position='top',
+             timer=2500)
         sms.messages.create(
-            body="{} ha inicio sesión en language school.".format(self.request.user.first_name),
+            body="{} {} {} ha inicio sesión en language school.".format(
+                self.request.user.first_name,
+                self.request.user.last_name,
+                self.request.user.second_last_name
+            ),
             from_='+13204293498',
-            to='+523841086233'
-        )
-
+            to='+523841086233')
         return HttpResponseRedirect(self.get_success_url())
 
     def form_invalid(self, form):
@@ -61,8 +62,8 @@ class Logout(LogoutView):
 
 
 class Reset(SweetifySuccessMixin, PasswordResetView):
-    template_name = "home/password_reset/form.html"
-    email_template_name = "home/password_reset/email.html"
+    template_name = 'home/password_reset/form.html'
+    email_template_name = 'home/password_reset/email.html'
     form_class = ResetForm
     sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
     success_message = '¡Correo enviado correctamente!'
@@ -70,11 +71,11 @@ class Reset(SweetifySuccessMixin, PasswordResetView):
 
 
 class ResetDone(PasswordResetDoneView):
-    template_name = "home/password_reset/done.html"
+    template_name = 'home/password_reset/done.html'
 
 
 class ResetConfirm(SweetifySuccessMixin, PasswordResetConfirmView):
-    template_name = "home/password_reset/confirm.html"
+    template_name = 'home/password_reset/confirm.html'
     form_class = ResetConfirmForm
     sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
     success_message = '¡Contraseña restablecida correctamente!'
@@ -82,4 +83,4 @@ class ResetConfirm(SweetifySuccessMixin, PasswordResetConfirmView):
 
 
 class ResetComplete(PasswordResetCompleteView):
-    template_name = "home/password_reset/complete.html"
+    template_name = 'home/password_reset/complete.html'
