@@ -35,7 +35,7 @@ class Login(LoginView):
         info(self.request, '¡Bienvenido(a) {}!'.format(self.request.user.first_name), toast=True, position='top',
              timer=2500)
         sms.messages.create(
-            body="{} {} {} ha inicio sesión en language school.".format(
+            body="{} {} {} ha iniciado sesión en language school.".format(
                 self.request.user.first_name,
                 self.request.user.last_name,
                 self.request.user.second_last_name
@@ -56,7 +56,7 @@ class Logout(LogoutView):
         logout(request)
         next_page = self.success_url
         if next_page:
-            info(request, '¡Se ha cerrado sesión!', toast=True, position='top', timer=2500)
+            info(request, '¡Se ha cerrado la sesión!', toast=True, position='top', timer=2500)
             return HttpResponseRedirect(next_page)
         return super().dispatch(request, *args, **kwargs)
 
