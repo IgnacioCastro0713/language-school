@@ -1,8 +1,14 @@
 function changePage(obj, e) {
     e.preventDefault();
     let page = $(obj).attr('href').split('?page=')[1];
+    let param = $("#search").val();
+    var opcUrl = "";
+    if (param !=="")
+        opcUrl = search+'/'+param+'';
+    else
+        opcUrl = table;
     $.ajax({
-        url : table+'?page='+page
+        url : opcUrl+'?page='+page
     }).done(function (response) {
         $('#content').html(response);
         location.hash = page;
@@ -16,9 +22,9 @@ var currentUrl = table;
 
 function loadTable(e, doSearch) {
     e.preventDefault();
-    var param = $('#search').val();
+    let param = $('#search').val();
     if (doSearch && param !== "")
-        currentUrl = search +'/'+param + '/';
+        currentUrl = search+'/'+param+'';
     else
         currentUrl = table;
     $.ajax({

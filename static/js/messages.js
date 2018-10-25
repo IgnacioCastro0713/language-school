@@ -20,8 +20,7 @@ function confirmDelete(e, name, url) {
             type: 'success'
         });
         loadTable(e, false);
-    },
-        function () {
+    }, function () {
         toast({
             title: 'No se ha podido eliminar el elemento.',
             type: 'error'
