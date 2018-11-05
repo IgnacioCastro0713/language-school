@@ -1,6 +1,9 @@
+import os
+from language_school.settings import MEDIA_ROOT
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from apps.user.models import User
-from apps.user.form import UserFormCreate, UserFormEdit, PasswordForm
+from apps.user.form import UserFormCreate, UserFormEdit, PasswordForm, UpdateImage
 from django.contrib.auth.views import reverse_lazy, PasswordChangeView
 from sweetify import success, warning
 from sweetify.views import SweetifySuccessMixin
@@ -68,12 +71,26 @@ class ChangePassword(SweetifySuccessMixin, PasswordChangeView):
         return self.render_to_response(self.get_context_data(form=form))
 
 
-class Show(DetailView):
+class Show(DetailView, UpdateView):
     model = User
+    form_class = UpdateImage
+    template_name = 'user/show.html'
 
     def get(self, request, *args, **kwargs):
         user = self.get_object()
-        return render(self.request, 'user/show.html', {'object_list': user})
+        form = self.get_form()
+        return render(self.request, 'user/show.html', {'object_list': user, 'form': form})
+
+    def post(self, request, *args, **kwargs):
+        id_user = kwargs['pk']
+        user = self.model.objects.get(id=id_user)
+        image = str(user.filename)
+        form = self.form_class(request.POST, request.FILES, instance=user)
+        if image != "no.jpg":
+            os.remove(os.path.join(MEDIA_ROOT+'/{}'.format(image)))
+        form.save()
+        success(self.request, '¡Imagen actualizada!', toast=True, position='top', timer=2500)
+        return HttpResponseRedirect(reverse_lazy('user:show', kwargs={'pk': id_user}))
 
 
 class Delete(DeleteView):

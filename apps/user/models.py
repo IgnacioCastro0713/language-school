@@ -21,6 +21,7 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     address = models.CharField(max_length=45)
     phone = models.CharField(max_length=15)
+    filename = models.FileField(upload_to='', default='no.jpg')
     role = models.ForeignKey(Role, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):

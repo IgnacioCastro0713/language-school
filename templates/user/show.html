@@ -8,9 +8,13 @@
             <div class="page-header-image" data-parallax="true" style="background-image:url({% static 'img/bg5.jpg' %});"></div>
             <div class="container">
                 <div class="photo-container">
-                    <img src="{% static 'img/avatar.jpg' %}" alt="">
+                    <img src="{% static 'img/users'%}/{{ object_list.filename }}" alt="" >
                 </div>
-                <h3 class="title">{{ object_list.first_name.capitalize }} {{ object_list.last_name.capitalize }} {{ object_list.second_last_name.capitalize }}</h3>
+                <h3 class="title" style="padding-bottom: -100px">
+                    {{ object_list.first_name.capitalize }}
+                    {{ object_list.last_name.capitalize }}
+                    {{ object_list.second_last_name.capitalize }}
+                </h3>
                 <p class="category">{{ object_list.role.nombre }}</p>
                 <h6>Código:</h6>
                 <p>{{ object_list.code }}</p>
@@ -18,20 +22,26 @@
         </div>
         <div class="section">
             <div class="container">
-                <div class="button-container">
-                    <a href="#" class="btn btn-primary btn-round btn-lg" rel="tooltip" title="Contacto">
-                        <i class="now-ui-icons ui-1_email-85"></i> {{ object_list.email }}
-                    </a>
-                </div>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="fileinput fileinput-new text-center button-container" data-provides="fileinput">
+                            <span class="btn btn-raised btn-round btn-default btn-file">
+                                {{ form.filename }}
+                            </span>
+                        <button type="submit" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-image"></i> Cambiar imagen</button>
+                    </div>
+                </form>
                 <br>
                 <div class="description text-center">
-                    <h6 style="color: #3C4858;">Dirección:</h6>
+                    <h6 class="text-black">Correo electrónico:</h6>
+                    <p>{{ object_list.email }}</p>
+                    <h6 class="text-black">Dirección:</h6>
                     <p>{{ object_list.address.capitalize }}</p>
-                    <h6 style="color: #3C4858;">Telefono:</h6>
+                    <h6 class="text-black">Telefono:</h6>
                     <p>{{ object_list.phone }}</p>
-                    <h6 style="color: #3C4858;">Creación de usuario:</h6>
+                    <h6 class="text-black">Creación de usuario:</h6>
                     <p>{{ object_list.date_joined|date:"D, d M, Y"}}</p>
-                    <h6 style="color: #3C4858;">Ultimo inicio de sesión:</h6>
+                    <h6 class="text-black">Ultimo inicio de sesión:</h6>
                     <p>{{ object_list.last_login|date:"D, d M, Y"}}</p>
                     <a href="{% url 'user:edit' object_list.id %}">
                         <button type="submit" class="btn btn-lg btn-success">

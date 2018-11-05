@@ -182,3 +182,11 @@ class PasswordForm(PasswordChangeForm):
             'placeholder': 'Confirmar contraseña'
         }),
     )
+
+
+class UpdateImage(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ['filename', ]
+        widgets = {'filename': forms.FileInput(attrs={'class': ''}), }

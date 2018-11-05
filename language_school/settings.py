@@ -135,6 +135,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+# For images
+MEDIA_ROOT = (os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'img', 'users'))
 
 # Password reset
 
