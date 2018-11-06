@@ -4,12 +4,8 @@
 {% block type %} profile-page sidebar-collapse {% endblock %}
 {% block content %}
     <div class="page-header page-header-small clear-filter" filter-color="orange">
-        <div class="page-header-image" data-parallax="true" style="background-image:url('{% static 'img/bg5.jpg' %}');">
-        </div>
+        <div class="page-header-image" data-parallax="true" style="background-image:url('{% static 'img/bg5.jpg' %}');"></div>
         <div class="container">
-            <div class="photo-container">
-                <img src="{% static 'img/ryan.jpg' %}" alt="">
-            </div>
             <h3 class="title">{{ form.first_name.value }} {{ form.last_name.value }} {{ form.second_last_name.value }}</h3>
         </div>
     </div>

@@ -25,10 +25,12 @@
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="fileinput fileinput-new text-center button-container" data-provides="fileinput">
-                            <span class="btn btn-raised btn-round btn-default btn-file">
+                        <span class="btn btn-raised btn-round btn-default btn-file">
                                 {{ form.filename }}
-                            </span>
-                        <button type="submit" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-image"></i> Cambiar imagen</button>
+                        </span>
+                        <button type="submit" class="btn btn-danger btn-round" data-dismiss="fileinput">
+                            <i class="fa fa-image"></i> Cambiar imagen
+                        </button>
                     </div>
                 </form>
                 <br>
