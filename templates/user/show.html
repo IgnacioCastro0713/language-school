@@ -25,9 +25,9 @@
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="fileinput fileinput-new text-center button-container" data-provides="fileinput">
-                        <span class="btn btn-raised btn-round btn-default btn-file">
+                        <a class="btn btn-raised btn-round btn-default btn-file">
                                 {{ form.filename }}
-                        </span>
+                        </a>
                         <button type="submit" class="btn btn-danger btn-round" data-dismiss="fileinput">
                             <i class="fa fa-image"></i> Cambiar imagen
                         </button>
@@ -50,7 +50,7 @@
                             <i class="now-ui-icons ui-2_settings-90"></i>  Editar perfil
                         </button>
                     </a>
-                    {% if user.id == object_list.id%}
+                    {% if request.user.id == object_list.id%}
                         <a href="{% url 'user:password' %}">
                             <button type="submit" class="btn btn-lg btn-info">
                                 <i class="now-ui-icons objects_key-25"></i> Cambiar contraseña
