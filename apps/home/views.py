@@ -39,9 +39,7 @@ class Login(LoginView):
                 self.request.user.first_name,
                 self.request.user.last_name,
                 self.request.user.second_last_name
-            ),
-            from_='+13204293498',
-            to='+523841086233')'''
+            ), from_='+13204293498', to='+523841086233')'''
         return HttpResponseRedirect(self.get_success_url())
 
     def form_invalid(self, form):

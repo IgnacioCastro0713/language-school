@@ -189,4 +189,4 @@ class UpdateImage(forms.ModelForm):
     class Meta:
         model = User
         fields = ['filename', ]
-        widgets = {'filename': forms.FileInput(attrs={'class': 'custom-file-input'}), }
+        widgets = {'filename': forms.FileInput(attrs={'class': ''}), }
