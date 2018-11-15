@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'apps.course',
     'apps.classroom',
     'apps.home',
+    'apps.language',
     'sweetify',
 ]
 

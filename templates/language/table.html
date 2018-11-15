@@ -1,0 +1,54 @@
+<div class="card card-blog col-lg-12 ml-auto mr-auto">
+    <div class="card-body">
+        <h6 class="text-info text-center">
+            Se ha(n) obtenido {{ page_obj.paginator.count }} resultado(s).
+        </h6>
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th>Idioma</th>
+                <th>Nivel</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if object_list %}
+                {% for lan in object_list %}
+                    <tr>
+                        <td class="text-center">{{ lan.id }}</td>
+                        <td>{{ lan.name.capitalize }}</td>
+                        <td>{{ lan.level.capitalize }}</td>
+                        <td class="td-actions text-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="now-ui-icons design_bullet-list-67"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <h6 class="dropdown-header text-secondary">Acciones</h6>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-success" href="{% url 'language:edit' lan.id %}">
+                                        <i class="now-ui-icons ui-2_settings-90"></i>Editar
+                                    </a>
+                                    <a class="dropdown-item text-danger" href="" onclick="confirmDelete(event, '{{ lan.name }}' ,'{% url 'language:delete' lan.id %}')">
+                                        <i class="now-ui-icons ui-1_simple-remove"></i>Eliminar
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <td class="text-danger"><strong> No hay registros de idiomas. </strong></td>
+            {% endif %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="4">
+                    {% include 'base/pagination/main.html' with page_obj=page_obj %}
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

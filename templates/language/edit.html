@@ -11,23 +11,23 @@
                     <div class="card card-contact card-raised">
                         <form role="form" id="contact-form1" method="post">
                             {% csrf_token %}
-                            <div class="card-header text-center"><h4 class="card-title" style="color: #e8833b">{{ title }} Aula.</h4></div>
+                            <div class="card-header text-center"><h4 class="card-title" style="color: #e8833b">{{ title }} Idioma.</h4></div>
                             <div class="card-body text-left">
-                                <p class="text-primary">Datos del aula</p>
+                                <p class="text-primary">Datos de Idioma</p>
                                 <div class="row justify-content-center">
                                     <div class="col-md-6 pl-2">
-                                        <label for="txtnombre" class="text-black">Nombre</label>
+                                        <label for="txtnombre" class="text-black">Idioma</label>
                                         <div class="form-group {% if form.name.errors %}has-danger{% endif %}">
                                             {{ form.name }}
                                         </div>
                                         <small class="text-danger text-lg-left">{{ form.name.errors}}</small>
                                     </div>
                                     <div class="col-md-6 pl-2">
-                                        <label for="txtaula" class="text-black">Edificio</label>
-                                        <div class="form-group {% if form.building.errors %}has-danger{% endif %}">
-                                            {{ form.building }}
+                                        <label for="txtaula" class="text-black">Nivel</label>
+                                        <div class="form-group {% if form.level.errors %}has-danger{% endif %}">
+                                            {{ form.level }}
+                                            <small class="text-danger text-lg-left">{{ form.level.errors}}</small>
                                         </div>
-                                        <small class="text-danger text-lg-left">{{ form.building.errors}}</small>
                                     </div>
                                     <button type="submit" class="btn btn-lg  btn-primary btn-round pull-right">Editar</button>
                                 </div>

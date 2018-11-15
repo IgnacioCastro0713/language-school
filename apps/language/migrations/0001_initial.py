@@ -12,11 +12,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Classroom',
+            name='Language',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=25, unique=True)),
-                ('building', models.CharField(max_length=45)),
+                ('name', models.CharField(max_length=25)),
+                ('level', models.CharField(max_length=25)),
             ],
         ),
     ]
