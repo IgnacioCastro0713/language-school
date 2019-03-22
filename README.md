@@ -1,4 +1,4 @@
-# language_school
+# language school
 Mini proyecto sobre una escuela de lenguas realizado en Django
 
 #### required install:
@@ -19,7 +19,7 @@ psycopg2 instalable
 
 ## Authors
 
-* **José Ignacio Menchaca Castro** - *Developer* - [IgnacioCastro0713](https://github.com/IgnacioCastro0713)
+* **José Ignacio Menchaca Castro** - *Maintainer and Developer* - [IgnacioCastro0713](https://github.com/IgnacioCastro0713)
 * **Miriam Grizel Gozález Sandoval** - *Developer* - [GrizelGonzalez](https://github.com/GrizelGonzalez)
 
 ## TEMPLATE

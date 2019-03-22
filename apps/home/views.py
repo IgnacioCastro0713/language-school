@@ -3,7 +3,7 @@ from django.contrib.auth import login, logout
 from apps.home.form import LoginForm, ResetForm, ResetConfirmForm
 from sweetify import info, warning
 from sweetify.views import SweetifySuccessMixin
-from language_school.settings import sms
+# from language_school.settings import sms
 from django.contrib.auth.views import (
     LoginView,
     LogoutView,

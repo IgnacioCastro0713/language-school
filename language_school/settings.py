@@ -136,7 +136,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
 # For images
+
 MEDIA_ROOT = (os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'img', 'users'))
 
 # Password reset
@@ -149,6 +151,6 @@ EMAIL_HOST_PASSWORD = 'monster666'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # SMS
-account_sid = 'AC0f9bd514e0811478049599b973833444'
-auth_token = '9302ea971a98066b6f32bf4518891e46'
-sms = Client(account_sid, auth_token)
+# account_sid = 'AC0f9bd514e0811478049599b973833444'
+# auth_token = '9302ea971a98066b6f32bf4518891e46'
+# sms = Client(account_sid, auth_token)
