@@ -8,7 +8,7 @@ pip install --upgrade sweetify
 
 pip install django 2.1
 
-psycopg2 instalable
+pip install pymysql
 ```
 
 ## Repositories
