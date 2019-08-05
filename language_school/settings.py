@@ -149,8 +149,3 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'usar correo que lo enviará'
 EMAIL_HOST_PASSWORD = 'contraseña del correo'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-# SMS
-# account_sid = 'AC0f9bd514e0811478049599b973833444'
-# auth_token = '9302ea971a98066b6f32bf4518891e46'
-# sms = Client(account_sid, auth_token)
