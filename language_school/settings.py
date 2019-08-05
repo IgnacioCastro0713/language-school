@@ -146,8 +146,8 @@ MEDIA_ROOT = (os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static',
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'jose.menchaca@alumnos.udg.mx'
-EMAIL_HOST_PASSWORD = 'monster666'
+EMAIL_HOST_USER = 'usar correo que lo enviará'
+EMAIL_HOST_PASSWORD = 'contraseña del correo'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # SMS
