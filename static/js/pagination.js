@@ -1,6 +1,6 @@
 var opcUrl = table;
 
-function changePage(obj, e) {
+const changePage = (obj, e) => {
     e.preventDefault();
     let page = $(obj).attr('href').split('?page=')[1];
     let param = $('#search').val();
@@ -17,11 +17,11 @@ function changePage(obj, e) {
             scrollTop: $("#top").offset().top
         }, 250)
     })
-}
+};
 
 var currentUrl = table;
 
-function loadTable(e, doSearch) {
+const loadTable = (e, doSearch) => {
     e.preventDefault();
     let param = $('#search').val();
     if (doSearch && param !== "")
@@ -38,4 +38,4 @@ function loadTable(e, doSearch) {
         if (doSearch)
             location.hash = $('#search').val();
     })
-}
+};

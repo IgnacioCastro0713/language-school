@@ -12,7 +12,7 @@ const toast = swal.mixin({
     showCloseButton: false
 });
 
-function confirmDelete(e, name, url) {
+const confirmDelete = (e, name, url) => {
     e.preventDefault();
     deleteElement(name, url, function () {
         toast({
@@ -27,9 +27,9 @@ function confirmDelete(e, name, url) {
         });
         loadTable(e, false);
     });
-}
+};
 
-function deleteInShow(e, name, url, index) {
+const deleteInShow = (e, name, url, index) => {
     e.preventDefault();
     deleteElement(name, url, function () {
         toast({
@@ -43,9 +43,9 @@ function deleteInShow(e, name, url, index) {
             type: 'error'
         });
     });
-}
+};
 
-function deleteElement(name, url, done, fail) {
+const deleteElement = (name, url, done, fail) => {
     swalMaterial({
         title: '¿Desea eliminar el elemento?',
         text: "Está apunto de eliminar el registro de "+name+".",
@@ -65,4 +65,4 @@ function deleteElement(name, url, done, fail) {
             }).done(done).fail(fail)
         }
     })
-}
+};
