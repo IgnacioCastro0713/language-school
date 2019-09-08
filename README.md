@@ -1,12 +1,20 @@
 # language school
 Mini proyecto sobre una escuela de lenguas realizado en Django
 
-#### required install:
+#### required install Windows:
 
 ```
 pip install django==2.1
 pip install --upgrade sweetify
 pip install pymysql
+```
+
+#### required install Linux:
+
+```
+pip3 install django==2.1
+pip3 install --upgrade sweetify
+pip3 install pymysql
 ```
 
 ## Repositories
