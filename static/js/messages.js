@@ -1,3 +1,5 @@
+import swal from 'sweetalert2';
+
 const swalMaterial = swal.mixin({
     confirmButtonClass: 'btn btn-success',
     cancelButtonClass: 'btn btn-danger',
@@ -65,4 +67,12 @@ const deleteElement = (name, url, done, fail) => {
             }).done(done).fail(fail)
         }
     })
+};
+
+export default {
+    toast:         window.toast = toast,
+    swalMaterial:  window.swalMaterial = swalMaterial,
+    confirmDelete: window.confirmDelete = confirmDelete,
+    deleteInShow:  window.deleteInShow = deleteInShow,
+    deleteElement: window.deleteElement = deleteElement
 };
