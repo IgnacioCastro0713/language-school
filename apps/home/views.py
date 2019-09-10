@@ -1,6 +1,8 @@
 from django.shortcuts import HttpResponseRedirect
 from django.contrib.auth import login, logout
-from apps.home.form import LoginForm, ResetForm, ResetConfirmForm
+from django.views.generic import CreateView
+from apps.user.models import User
+from .form import LoginForm, ResetForm, ResetConfirmForm, RegisterForm
 from sweetify import info, warning
 from sweetify.views import SweetifySuccessMixin
 from django.contrib.auth.views import (
@@ -22,6 +24,19 @@ class Index(TemplateView):
         'project_name': 'Language School.',
         'description': 'Project made in Django.',
     }
+
+
+class Register(SweetifySuccessMixin, CreateView):
+    template_name = 'home/register.html'
+    form_class = RegisterForm
+    model = User
+    sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
+    success_message = 'Resgistrado correctamente.'
+    success_url = reverse_lazy('home:login')
+
+    def form_invalid(self, form):
+        warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
+        return self.render_to_response(self.get_context_data(form=form))
 
 
 class Login(LoginView):

@@ -15,13 +15,6 @@
                             <div class="card-body text-left">
                                 <p class="text-primary">Datos usuario</p>
                                 <div class="row">
-                                    <div class="col-md-2 pl-2">
-                                        <label for="txtcode" class="text-black">Código</label>
-                                        <div class="form-group  {{ form.code.errors|yesno:'has-danger, ' }}">
-                                            {{ form.code }}
-                                            <small class="text-danger text-sm-left">{{ form.code.errors}}</small>
-                                        </div>
-                                    </div>
                                     <div class="col-md-6 pl-2">
                                         <label for="txtemail" class="text-black">Correo electrónico</label>
                                         <div class="form-group {{ form.email.errors|yesno:'has-danger, ' }}">
@@ -29,7 +22,7 @@
                                             <small class="text-danger text-sm-left">{{ form.email.errors}}</small>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 pl-2">
+                                    <div class="col-md-6 pl-2">
                                         <label for="txtpassword" class="text-black">Contraseña</label>
                                         <div class="form-group {{ form.password.errors|yesno:'has-danger, ' }}">
                                             {{ form.password }}

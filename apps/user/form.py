@@ -10,8 +10,6 @@ class UserFormEdit(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(UserFormEdit, self).__init__(*args, **kwargs)
         self.fields['role'].empty_label = None
-
-        self.fields['code'].required = False
         self.fields['first_name'].required = False
         self.fields['last_name'].required = False
         self.fields['second_last_name'].required = False
@@ -25,7 +23,6 @@ class UserFormEdit(forms.ModelForm):
         model = User
 
         fields = [
-            'code',
             'first_name',
             'last_name',
             'second_last_name',
@@ -35,11 +32,6 @@ class UserFormEdit(forms.ModelForm):
             'role',
         ]
         widgets = {
-            'code': forms.TextInput(attrs={
-                'class': 'form-control',
-                'id': 'txtcode',
-                'placeholder': 'Código',
-            }),
             'first_name': forms.TextInput(attrs={
                 'class': 'form-control',
                 'id': 'txtnombre',
@@ -75,12 +67,6 @@ class UserFormEdit(forms.ModelForm):
                 'id': 'role',
             })
         }
-
-    def clean_code(self):
-        data = self.cleaned_data
-        if not data['code']:
-            raise ValidationError('El campo código esta vació')
-        return data['code']
 
     def clean_first_name(self):
         data = self.cleaned_data
@@ -138,7 +124,6 @@ class UserFormCreate(UserFormEdit):
         model = User
 
         fields = [
-            'code',
             'password',
             'first_name',
             'last_name',

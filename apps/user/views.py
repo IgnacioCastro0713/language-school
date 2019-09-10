@@ -115,8 +115,7 @@ class Search(ListView):
 
     def get_queryset(self):
         find = self.kwargs['find']
-        return self.model.objects.filter(Q(code__icontains=find) |
-                                         Q(first_name__icontains=find) |
+        return self.model.objects.filter(Q(first_name__icontains=find) |
                                          Q(last_name__icontains=find) |
                                          Q(second_last_name__icontains=find) |
                                          Q(role__nombre__icontains=find))

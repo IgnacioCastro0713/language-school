@@ -12,8 +12,7 @@ class Role(models.Model):
 
 
 class User(AbstractUser):
-    code = models.CharField(max_length=10, unique=True)
-    username = models.CharField(max_length=150, unique=False)
+    username = models.CharField(max_length=150, unique=True)
     first_name = models.CharField(max_length=45)
     password = models.CharField(max_length=128)
     last_name = models.CharField(max_length=25)

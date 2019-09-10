@@ -25,11 +25,14 @@ class Index(ListView):
 class Create(SweetifySuccessMixin, CreateView):
     model = Classroom
     form_class = ClassroomForm
-    template_name = 'classroom/create.html'
+    template_name = 'classroom/form.html'
     sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
     success_message = '¡Aula guardada correctamente!'
     success_url = reverse_lazy('classroom:index')
-    extra_context = {'title': 'Registrar'}
+    extra_context = {
+        'title': 'Registrar',
+        'titleButton': 'Guardar'
+    }
 
     def form_invalid(self, form):
         warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
@@ -39,11 +42,14 @@ class Create(SweetifySuccessMixin, CreateView):
 class Edit(SweetifySuccessMixin, UpdateView):
     model = Classroom
     form_class = ClassroomForm
-    template_name = 'classroom/edit.html'
+    template_name = 'classroom/form.html'
     sweetify_options = {'toast': True, 'position': 'top', 'timer': 2500}
     success_message = '¡Editado correctamente!'
     success_url = reverse_lazy('classroom:index')
-    extra_context = {'title': 'Editar'}
+    extra_context = {
+        'title': 'Editar',
+        'titleButton': 'Actualizar'
+    }
 
     def form_invalid(self, form):
         warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)

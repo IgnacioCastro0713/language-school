@@ -2,11 +2,13 @@ from django import forms
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
 from apps.user.backends import CustomBackendUser as Auth
+from apps.user.models import User
 from django.contrib.auth.forms import (
     PasswordResetForm,
     SetPasswordForm,
     AuthenticationForm,
     UsernameField,
+    UserCreationForm
 )
 
 
@@ -46,7 +48,7 @@ class LoginForm(AuthenticationForm):
         attrs={
             'autofocus': True,
             'class': 'form-control',
-            'placeholder': 'Código...'
+            'placeholder': 'Correo electrónico...'
         }))
     password = forms.CharField(
         strip=False,
@@ -79,3 +81,61 @@ class LoginForm(AuthenticationForm):
         if not data['password']:
             raise ValidationError('El campo contraseña esta vació')
         return data['password']
+
+
+class RegisterForm(UserCreationForm):
+
+    password1 = forms.CharField(
+        strip=False,
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Contraseña'
+        }),
+        help_text=password_validation.password_validators_help_text_html(),
+    )
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Confirmar contraseña'
+        }),
+        strip=False,
+    )
+
+    class Meta:
+        model = User
+        fields = (
+            'username',
+            'first_name',
+            'email',
+        )
+
+        widgets = {
+            'username': forms.TextInput(
+                attrs={
+                    'autofocus': True,
+                    'class': 'form-control',
+                    'placeholder': 'Usuario'
+                },
+            ),
+            'first_name': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Nombre',
+                }
+            ),
+            'email': forms.EmailInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Correo electrónico',
+                }
+            ),
+        }
+
+    def save(self, commit=True):
+        user = super(RegisterForm, self).save(commit=False)
+        user.first_name = self.cleaned_data['first_name']
+        user.email = self.cleaned_data['email']
+
+        if commit:
+            user.save()
+        return user
