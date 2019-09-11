@@ -3,69 +3,70 @@
 {% block title %} Detalles {% endblock %}
 {% block type %} profile-page sidebar-collapse {% endblock %}
 {% block content %}
-    <div class="wrapper">
-        <div class="page-header page-header-small clear-filter" filter-color="orange">
-            <div class="page-header-image" data-parallax="true" style="background-image:url({% static 'img/bg5.jpg' %});"></div>
-            <div class="container">
-                <div class="photo-container">
-                    <img src="{% static 'img/users'%}/{{ object_list.filename }}" alt="" >
-                </div>
-                <h3 class="title" style="padding-bottom: -100px">
-                    {{ object_list.first_name.capitalize }}
-                    {{ object_list.last_name.capitalize }}
-                    {{ object_list.second_last_name.capitalize }}
-                </h3>
-                <p class="category">{{ object_list.role.nombre }}</p>
-                <h6>Código:</h6>
-                <p>{{ object_list.code }}</p>
-            </div>
+  <div class="wrapper">
+    <div class="page-header page-header-small clear-filter" filter-color="orange">
+      <div class="page-header-image" data-parallax="true"
+           style="background-image:url({% static 'img/bg5.jpg' %});"></div>
+      <div class="container">
+        <div class="photo-container">
+          <img src="{% static 'img/users' %}/{{ object_list.filename }}" alt="">
         </div>
-        <div class="section">
-            <div class="container">
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <div class="fileinput fileinput-new text-center button-container" data-provides="fileinput">
-                        <a class="btn btn-raised btn-round btn-default btn-file">
-                                {{ form.filename }}
-                        </a>
-                        <button type="submit" class="btn btn-danger btn-round" data-dismiss="fileinput">
-                            <i class="fa fa-image"></i> Cambiar imagen
-                        </button>
-                    </div>
-                </form>
-                <br>
-                <div class="description text-center">
-                    <h6 class="text-black">Correo electrónico:</h6>
-                    <p>{{ object_list.email }}</p>
-                    <h6 class="text-black">Dirección:</h6>
-                    <p>{{ object_list.address.capitalize }}</p>
-                    <h6 class="text-black">Telefono:</h6>
-                    <p>{{ object_list.phone }}</p>
-                    <h6 class="text-black">Creación de usuario:</h6>
-                    <p>{{ object_list.date_joined|date:"D, d M, Y"}}</p>
-                    <h6 class="text-black">Ultimo inicio de sesión:</h6>
-                    <p>{{ object_list.last_login|date:"D, d M, Y"}}</p>
-                    <a href="{% url 'user:edit' object_list.id %}">
-                        <button type="submit" class="btn btn-lg btn-success">
-                            <i class="now-ui-icons ui-2_settings-90"></i>  Editar perfil
-                        </button>
-                    </a>
-                    {% if request.user.id == object_list.id%}
-                        <a href="{% url 'user:password' %}">
-                            <button type="submit" class="btn btn-lg btn-info">
-                                <i class="now-ui-icons objects_key-25"></i> Cambiar contraseña
-                            </button>
-                        </a>
-                    {% endif %}
-                    {% if user.id != object_list.id %}
-                        <a onclick="deleteInShow(event, '{{ object_list.nombre }}', '{% url 'user:delete' object_list.id %}', '{% url 'user:index' %}')">
-                            <button type="submit" class="btn btn-lg btn-danger">
-                                <i class="now-ui-icons ui-1_simple-remove"></i> Eliminar
-                            </button>
-                        </a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
+        <h3 class="title" style="padding-bottom: -100px">
+          {{ object_list.first_name.capitalize }}
+          {{ object_list.last_name.capitalize }}
+          {{ object_list.second_last_name.capitalize }}
+        </h3>
+        <p class="category">{{ object_list.role.nombre }}</p>
+        <h6>Código:</h6>
+        <p>{{ object_list.code }}</p>
+      </div>
     </div>
+    <div class="section">
+      <div class="container">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="fileinput fileinput-new text-center button-container" data-provides="fileinput">
+            <a class="btn btn-raised btn-round btn-default btn-file">
+              {{ form.filename }}
+            </a>
+            <button type="submit" class="btn btn-danger btn-round" data-dismiss="fileinput">
+              <i class="fa fa-image"></i> Cambiar imagen
+            </button>
+          </div>
+        </form>
+        <br>
+        <div class="description text-center">
+          <h6 class="text-black">Correo electrónico:</h6>
+          <p>{{ object_list.email }}</p>
+          <h6 class="text-black">Dirección:</h6>
+          <p>{{ object_list.address.capitalize }}</p>
+          <h6 class="text-black">Telefono:</h6>
+          <p>{{ object_list.phone }}</p>
+          <h6 class="text-black">Creación de usuario:</h6>
+          <p>{{ object_list.date_joined|date:"D, d M, Y" }}</p>
+          <h6 class="text-black">Ultimo inicio de sesión:</h6>
+          <p>{{ object_list.last_login|date:"D, d M, Y" }}</p>
+          <a href="{% url 'user:edit' object_list.id %}">
+            <button type="submit" class="btn btn-lg btn-success">
+              <i class="now-ui-icons ui-2_settings-90"></i> Editar perfil
+            </button>
+          </a>
+          {% if request.user.id == object_list.id %}
+            <a href="{% url 'user:password' %}">
+              <button type="submit" class="btn btn-lg btn-info">
+                <i class="now-ui-icons objects_key-25"></i> Cambiar contraseña
+              </button>
+            </a>
+          {% endif %}
+          {% if user.id != object_list.id %}
+            <a onclick="deleteInShow(event, '{{ object_list.nombre }}', '{% url 'user:delete' object_list.id %}', '{% url 'user:index' %}')">
+              <button type="submit" class="btn btn-lg btn-danger">
+                <i class="now-ui-icons ui-1_simple-remove"></i> Eliminar
+              </button>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

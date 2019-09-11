@@ -3,75 +3,75 @@
 {% block type %} signup-page sidebar-collapse {% endblock %}
 {% block title %} Registarme {% endblock %}
 {% block content %}
-    <div class="section section-signup"
-         style="background-image:url({% static 'img/bg8.jpg' %}); background-size: cover; background-position: top center; min-height: 700px;">
-        <div class="container">
-            <div class="row">
-                <div class="card card-signup" data-background-color="orange">
-                    <form class="form" method="POST" action="">
-                        {% csrf_token %}
-                        <div class="card-header text-center">
-                            <h3 class="card-title title-up">Crear cuenta</h3>
-                        </div>
-                        <div class="card-body">
+  <div class="section section-signup"
+       style="background-image:url({% static 'img/bg8.jpg' %}); background-size: cover; background-position: top center; min-height: 700px;">
+    <div class="container">
+      <div class="row">
+        <div class="card card-signup" data-background-color="orange">
+          <form class="form" method="POST" action="">
+            {% csrf_token %}
+            <div class="card-header text-center">
+              <h3 class="card-title title-up">Crear cuenta</h3>
+            </div>
+            <div class="card-body">
 
-                            <div class="input-group no-border">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                    <i class="now-ui-icons users_circle-08"></i>
-                                  </span>
-                                </div>
-                                {{form.username}}
-                            </div>
-                            <small class="text-white text-sm-left">{{ form.username.errors }}</small>
-                            <div class="input-group no-border">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                    <i class="now-ui-icons text_caps-small"></i>
-                                  </span>
-                                </div>
-                                {{form.first_name}}
-                            </div>
-                            <small class="text-white text-sm-left">{{ form.first_name.errors }}</small>
-                            <div class="input-group no-border">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                    <i class="now-ui-icons ui-1_email-85"></i>
-                                  </span>
-                                </div>
-                                {{form.email}}
-                            </div>
-                            <small class="text-white text-sm-left">{{ form.email.errors }}</small>
-                            <div class="input-group no-border">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                    <i class="now-ui-icons objects_key-25"></i>
-                                  </span>
-                                </div>
-                                {{form.password1}}
-                            </div>
-                            <small class="text-white text-sm-left">{{ form.password1.errors }}</small>
-                            <div class="input-group no-border">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                    <i class="now-ui-icons objects_key-25"></i>
-                                  </span>
-                                </div>
-                                {{form.password2}}
-                            </div>
-                            <small class="text-white text-sm-left">{{ form.password2.errors }}</small>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="submit" class="btn btn-neutral btn-round btn-lg">Registrarme</button>
-                        </div>
-                    </form>
+              <div class="input-group no-border">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="now-ui-icons users_circle-08"></i>
+                  </span>
                 </div>
+                {{ form.username }}
+              </div>
+              <small class="text-white text-sm-left">{{ form.username.errors }}</small>
+              <div class="input-group no-border">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="now-ui-icons text_caps-small"></i>
+                  </span>
+                </div>
+                {{ form.first_name }}
+              </div>
+              <small class="text-white text-sm-left">{{ form.first_name.errors }}</small>
+              <div class="input-group no-border">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="now-ui-icons ui-1_email-85"></i>
+                  </span>
+                </div>
+                {{ form.email }}
+              </div>
+              <small class="text-white text-sm-left">{{ form.email.errors }}</small>
+              <div class="input-group no-border">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="now-ui-icons objects_key-25"></i>
+                  </span>
+                </div>
+                {{ form.password1 }}
+              </div>
+              <small class="text-white text-sm-left">{{ form.password1.errors }}</small>
+              <div class="input-group no-border">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="now-ui-icons objects_key-25"></i>
+                  </span>
+                </div>
+                {{ form.password2 }}
+              </div>
+              <small class="text-white text-sm-left">{{ form.password2.errors }}</small>
             </div>
-            <div class="col text-center">
-                <a href="{% url 'home:login' %}" class="btn btn-outline-default btn-round btn-white btn-lg">
-                    Iniciar sesión
-                </a>
+            <div class="card-footer text-center">
+              <button type="submit" class="btn btn-neutral btn-round btn-lg">Registrarme</button>
             </div>
+          </form>
         </div>
+      </div>
+      <div class="col text-center">
+        <a href="{% url 'home:login' %}" class="btn btn-outline-default btn-round btn-white btn-lg">
+          Iniciar sesión
+        </a>
+      </div>
     </div>
+  </div>
 {% endblock %}

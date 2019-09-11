@@ -3,85 +3,86 @@
 {% block title %} {{ title }} {% endblock %}
 {% block type %} signup-page sidebar-collapse {% endblock %}
 {% block content %}
-    <div class="page-header header-filter" >
-        <div class="page-header-image" style="background-image:url({% static 'img/bg8.jpg' %})"></div>
-        <div class="content">
-            <div class="container">
-                <div class="col-md-10 ml-auto mr-auto">
-                    <div class="card card-contact card-raised">
-                        <form role="form" id="contact-form1" method="post">
-                            {% csrf_token %}
-                            <div class="card-header text-center"><h4 class="card-title" style="color: #e8833b">{{ title }} curso</h4></div>
-                            <div class="card-body text-left">
-                                <p class="text-primary">Datos del curso</p>
-                                <div class="row">
-                                    <div class="col-md-4 pl-2">
-                                        <label for="txtname" class="text-black">Nombre del curso</label>
-                                        <div class="form-group {% if form.name.errors %}has-danger{% endif %}">
-                                            {{ form.name }}
-                                            <small class="text-danger text-sm-left">{{ form.name.errors}}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 pl-2">
-                                        <label for="selectlanguage" class="text-black">Idioma y Nivel</label>
-                                        <div class="form-group {% if form.lan.errors %}has-danger{% endif %}">
-                                            {{ form.lan }}
-                                            <small class="text-danger text-sm-left">{{ form.lan.errors}}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 pl-2">
-                                        <label for="selectprof" class="text-black">Profesor(es)</label>
-                                        <div class="form-group {% if form.user.errors %}has-danger{% endif %}">
-                                            {{ form.user }}
-                                            <small class="text-danger text-sm-left">{{ form.user.errors}}</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 pl-2">
-                                        <label for="selectdia" class="text-black">Día</label>
-                                        <div class="form-group {% if form.day.errors %}has-danger{% endif %}">
-                                            {{ form.day }}
-                                            <small class="text-danger text-sm-left">{{ form.day.errors}}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 pl-2">
-                                        <label for="selectstar" class="text-black">Hora de inicio</label>
-                                        <div class="form-group {% if form.start.errors %}has-danger{% endif %}">
-                                            {{ form.start }}
-                                            <small class="text-danger text-sm-left">{{ form.start.errors}}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 pl-2">
-                                        <label for="selectend" class="text-black">Hora de fin</label>
-                                        <div class="form-group {% if form.end.errors %}has-danger{% endif %}">
-                                            {{ form.end }}
-                                            <small class="text-danger text-sm-left">{{ form.end.errors}}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 pl-2">
-                                        <label for="selectclassroom" class="text-black">Salón de clases</label>
-                                        <div class="form-group {% if form.classroom.errors %}has-danger{% endif %}">
-                                            {{ form.classroom }}
-                                            <small class="text-danger text-sm-left">{{ form.classroom.errors}}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 pl-2">
-                                        <label for="txtdescription" class="text-black">Descripción</label>
-                                        <div class="form-group {% if form.description.errors %}has-danger{% endif %}">
-                                            {{ form.description }}
-                                            <small class="text-danger text-sm-left">{{ form.description.errors}}</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <button type="submit" class="btn btn-lg  btn-primary btn-round pull-right">Registrar</button>
-                            </div>
-                        </form>
+  <div class="page-header header-filter">
+    <div class="page-header-image" style="background-image:url({% static 'img/bg8.jpg' %})"></div>
+    <div class="content">
+      <div class="container">
+        <div class="col-md-10 ml-auto mr-auto">
+          <div class="card card-contact card-raised">
+            <form role="form" id="contact-form1" method="post">
+              {% csrf_token %}
+              <div class="card-header text-center"><h4 class="card-title" style="color: #e8833b">{{ title }} curso</h4>
+              </div>
+              <div class="card-body text-left">
+                <p class="text-primary">Datos del curso</p>
+                <div class="row">
+                  <div class="col-md-4 pl-2">
+                    <label for="txtname" class="text-black">Nombre del curso</label>
+                    <div class="form-group {% if form.name.errors %}has-danger{% endif %}">
+                      {{ form.name }}
+                      <small class="text-danger text-sm-left">{{ form.name.errors }}</small>
                     </div>
+                  </div>
+                  <div class="col-md-4 pl-2">
+                    <label for="selectlanguage" class="text-black">Idioma y Nivel</label>
+                    <div class="form-group {% if form.lan.errors %}has-danger{% endif %}">
+                      {{ form.lan }}
+                      <small class="text-danger text-sm-left">{{ form.lan.errors }}</small>
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-2">
+                    <label for="selectprof" class="text-black">Profesor(es)</label>
+                    <div class="form-group {% if form.user.errors %}has-danger{% endif %}">
+                      {{ form.user }}
+                      <small class="text-danger text-sm-left">{{ form.user.errors }}</small>
+                    </div>
+                  </div>
                 </div>
-            </div>
+                <div class="row">
+                  <div class="col-md-4 pl-2">
+                    <label for="selectdia" class="text-black">Día</label>
+                    <div class="form-group {% if form.day.errors %}has-danger{% endif %}">
+                      {{ form.day }}
+                      <small class="text-danger text-sm-left">{{ form.day.errors }}</small>
+                    </div>
+                  </div>
+                  <div class="col-md-2 pl-2">
+                    <label for="selectstar" class="text-black">Hora de inicio</label>
+                    <div class="form-group {% if form.start.errors %}has-danger{% endif %}">
+                      {{ form.start }}
+                      <small class="text-danger text-sm-left">{{ form.start.errors }}</small>
+                    </div>
+                  </div>
+                  <div class="col-md-2 pl-2">
+                    <label for="selectend" class="text-black">Hora de fin</label>
+                    <div class="form-group {% if form.end.errors %}has-danger{% endif %}">
+                      {{ form.end }}
+                      <small class="text-danger text-sm-left">{{ form.end.errors }}</small>
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-2">
+                    <label for="selectclassroom" class="text-black">Salón de clases</label>
+                    <div class="form-group {% if form.classroom.errors %}has-danger{% endif %}">
+                      {{ form.classroom }}
+                      <small class="text-danger text-sm-left">{{ form.classroom.errors }}</small>
+                    </div>
+                  </div>
+                  <div class="col-md-12 pl-2">
+                    <label for="txtdescription" class="text-black">Descripción</label>
+                    <div class="form-group {% if form.description.errors %}has-danger{% endif %}">
+                      {{ form.description }}
+                      <small class="text-danger text-sm-left">{{ form.description.errors }}</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <button type="submit" class="btn btn-lg  btn-primary btn-round pull-right">Registrar</button>
+              </div>
+            </form>
+          </div>
         </div>
-        <br>
+      </div>
+    </div>
+    <br>
 {% endblock %}

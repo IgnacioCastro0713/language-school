@@ -3,39 +3,40 @@
 {% block title %} {{ title }} {% endblock %}
 {% block type %} signup-page sidebar-collapse {% endblock %}
 {% block content %}
-    <div class="page-header header-filter" >
-        <div class="page-header-image" style="background-image:url({% static 'img/bg8.jpg' %})"></div>
-        <div class="content">
-            <div class="container">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <div class="card card-contact card-raised">
-                        <form role="form" id="contact-form1" method="post">
-                            {% csrf_token %}
-                            <div class="card-header text-center"><h4 class="card-title" style="color: #e8833b">{{ title }} Aula.</h4></div>
-                            <div class="card-body text-left">
-                                <p class="text-primary">Datos del aula</p>
-                                <div class="row justify-content-center">
-                                    <div class="col-md-6 pl-2">
-                                        <label for="txtnombre" class="text-black">Nombre</label>
-                                        <div class="form-group {% if form.name.errors %}has-danger{% endif %}">
-                                            {{ form.name }}
-                                        </div>
-                                        <small class="text-danger text-lg-left">{{ form.name.errors}}</small>
-                                    </div>
-                                    <div class="col-md-6 pl-2">
-                                        <label for="txtaula" class="text-black">Edificio</label>
-                                        <div class="form-group {% if form.building.errors %}has-danger{% endif %}">
-                                            {{ form.building }}
-                                        </div>
-                                        <small class="text-danger text-lg-left">{{ form.building.errors}}</small>
-                                    </div>
-                                    <button type="submit" class="btn btn-lg  btn-primary btn-round pull-right">Registrar</button>
-                                </div>
-                            </div>
-                        </form>
+  <div class="page-header header-filter">
+    <div class="page-header-image" style="background-image:url({% static 'img/bg8.jpg' %})"></div>
+    <div class="content">
+      <div class="container">
+        <div class="col-md-8 ml-auto mr-auto">
+          <div class="card card-contact card-raised">
+            <form role="form" id="contact-form1" method="post">
+              {% csrf_token %}
+              <div class="card-header text-center"><h4 class="card-title" style="color: #e8833b">{{ title }} Aula.</h4>
+              </div>
+              <div class="card-body text-left">
+                <p class="text-primary">Datos del aula</p>
+                <div class="row justify-content-center">
+                  <div class="col-md-6 pl-2">
+                    <label for="txtnombre" class="text-black">Nombre</label>
+                    <div class="form-group {% if form.name.errors %}has-danger{% endif %}">
+                      {{ form.name }}
                     </div>
+                    <small class="text-danger text-lg-left">{{ form.name.errors }}</small>
+                  </div>
+                  <div class="col-md-6 pl-2">
+                    <label for="txtaula" class="text-black">Edificio</label>
+                    <div class="form-group {% if form.building.errors %}has-danger{% endif %}">
+                      {{ form.building }}
+                    </div>
+                    <small class="text-danger text-lg-left">{{ form.building.errors }}</small>
+                  </div>
+                  <button type="submit" class="btn btn-lg  btn-primary btn-round pull-right">Registrar</button>
                 </div>
-            </div>
+              </div>
+            </form>
+          </div>
         </div>
-        <br>
+      </div>
+    </div>
+    <br>
 {% endblock %}

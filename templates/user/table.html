@@ -1,63 +1,65 @@
 <div class="card card-blog col-lg-12 ml-auto mr-auto">
-    <div class="card-body">
-        <h6 class="text-info text-center">
-            Se ha(n) obtenido {{ page_obj.paginator.count }} resultado(s).
-        </h6>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Código</th>
-                <th>Nombre completo</th>
-                <th>Correo electrónico</th>
-                <th>Dirección</th>
-                <th>Tipo de usuario</th>
-                <th class="text-center">Acciones</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% if object_list %}
-                {% for users in object_list %}
-                    <tr>
-                        <td class="text-center">{{ users.code }}</td>
-                        <td>{{ users.first_name.capitalize}} {{users.last_name.capitalize}} {{users.second_last_name.capitalize }}</td>
-                        <td>{{ users.email }}</td>
-                        <td>{{ users.address.capitalize }}</td>
-                        <td>{{ users.role.nombre }}</td>
-                        <td class="td-actions text-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="now-ui-icons design_bullet-list-67"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <h6 class="dropdown-header text-secondary">Acciones</h6>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-info" href="{% url 'user:show' users.id %}">
-                                        <i class="now-ui-icons travel_info"></i>Detalles
-                                    </a>
-                                    <a class="dropdown-item text-success" href="{% url 'user:edit' users.id %}">
-                                        <i class="now-ui-icons ui-2_settings-90"></i>Editar
-                                    </a>
-                                    {% if user.id != users.id %}
-                                    <a class="dropdown-item text-danger" href="" onclick="confirmDelete(event, '{{ users.first_name }}' ,'{% url 'user:delete' users.id %}')">
-                                        <i class="now-ui-icons ui-1_simple-remove"></i>Eliminar
-                                    </a>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                {% endfor %}
-            {% else %}
-                <td class="text-danger"><strong> No hay registros de usuario. </strong></td>
-            {% endif %}
-            </tbody>
-            <tfoot>
-            <tr>
-                <td colspan="6">
-                    {% include 'base/pagination/main.html' with page_obj=page_obj %}
-                </td>
-            </tr>
-            </tfoot>
-        </table>
-    </div>
+  <div class="card-body">
+    <h6 class="text-info text-center">
+      Se ha(n) obtenido {{ page_obj.paginator.count }} resultado(s).
+    </h6>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nombre completo</th>
+        <th>Correo electrónico</th>
+        <th>Dirección</th>
+        <th>Tipo de usuario</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% if object_list %}
+        {% for users in object_list %}
+          <tr>
+            <td class="text-center">{{ users.code }}</td>
+            <td>{{ users.first_name.capitalize }} {{ users.last_name.capitalize }} {{ users.second_last_name.capitalize }}</td>
+            <td>{{ users.email }}</td>
+            <td>{{ users.address.capitalize }}</td>
+            <td>{{ users.role.nombre }}</td>
+            <td class="td-actions text-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                  <i class="now-ui-icons design_bullet-list-67"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <h6 class="dropdown-header text-secondary">Acciones</h6>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item text-info" href="{% url 'user:show' users.id %}">
+                    <i class="now-ui-icons travel_info"></i>Detalles
+                  </a>
+                  <a class="dropdown-item text-success" href="{% url 'user:edit' users.id %}">
+                    <i class="now-ui-icons ui-2_settings-90"></i>Editar
+                  </a>
+                  {% if user.id != users.id %}
+                    <a class="dropdown-item text-danger" href=""
+                       onclick="confirmDelete(event, '{{ users.first_name }}' ,'{% url 'user:delete' users.id %}')">
+                      <i class="now-ui-icons ui-1_simple-remove"></i>Eliminar
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      {% else %}
+        <td class="text-danger"><strong> No hay registros de usuario. </strong></td>
+      {% endif %}
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="6">
+          {% include 'base/pagination/main.html' with page_obj=page_obj %}
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
 </div>

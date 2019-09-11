@@ -3,90 +3,90 @@
 {% block title %} {{ title }} {% endblock %}
 {% block type %} signup-page sidebar-collapse {% endblock %}
 {% block content %}
-    <div class="page-header header-filter" >
-        <div class="page-header-image" style="background-image:url({% static 'img/bg8.jpg' %})"></div>
-        <div class="content">
-            <div class="container">
-                <div class="col-md-10 ml-auto mr-auto">
-                    <div class="card card-contact card-raised">
-                        <form role="form" id="contact-form1" method="post">
-                            {% csrf_token %}
-                            <div class="card-header text-center"><h4 class="card-title" style="color: #e8833b">{{ title }} usuario.</h4></div>
-                            <div class="card-body text-left">
-                                <p class="text-primary">Datos usuario</p>
-                                <div class="row">
-                                    <div class="col-md-6 pl-2">
-                                        <label for="txtemail" class="text-black">Correo electrónico</label>
-                                        <div class="form-group {{ form.email.errors|yesno:'has-danger, ' }}">
-                                            {{ form.email }}
-                                            <small class="text-danger text-sm-left">{{ form.email.errors}}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 pl-2">
-                                        <label for="txtpassword" class="text-black">Contraseña</label>
-                                        <div class="form-group {{ form.password.errors|yesno:'has-danger, ' }}">
-                                            {{ form.password }}
-                                            <small class="text-danger text-sm-left">{{ form.password.errors}}</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <label style="color: #1d2124">Tipo de usuario</label>
-                                <div class="form-check form-check-radio">
-                                    {% for rol in form.role %}
-                                        <label class="form-check-label text-black">
-                                            {{ rol.tag }}<span class="form-check-sign"></span>{{ rol.choice_label }}
-                                        </label>
-                                    {% endfor %}
-                                </div>
-                                <small class="text-danger text-sm-left">{{ form.role.errors}}</small>
-                                <br>
-                                <p class="text-primary">Datos personales</p>
-                                <div class="row">
-                                    <div class="col-md-4 pl-2">
-                                        <label for="txtnombre" class="text-black">Nombre</label>
-                                        <div class="form-group {{ form.first_name.errors|yesno:'has-danger, ' }}">
-                                            {{ form.first_name }}
-                                            <small class="text-danger text-sm-left">{{ form.first_name.errors}}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 pl-2">
-                                        <label for="txtapaterno" class="text-black">Apellido paterno</label>
-                                        <div class="form-group {{ form.last_name.errors|yesno:'has-danger, ' }}">
-                                            {{ form.last_name }}
-                                            <small class="text-danger text-sm-left">{{ form.last_name.errors}}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 pl-2">
-                                        <label for="txtamaterno" class="text-black">Apellido materno</label>
-                                        <div class="form-group {{ form.second_last_name.errors|yesno:'has-danger, ' }}">
-                                            {{ form.second_last_name }}
-                                            <small class="text-danger text-sm-left">{{ form.second_last_name.errors}}</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 pl-2">
-                                        <label for="txtaddress" class="text-black">Dirección</label>
-                                        <div class="form-group {{ form.address.errors|yesno:'has-danger, ' }}">
-                                            {{ form.address }}
-                                            <small class="text-danger text-sm-left">{{ form.address.errors}}</small>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5 pl-2">
-                                        <label for="txtphone" class="text-black">Telefono</label>
-                                        <div class="form-group {{ form.phone.errors|yesno:'has-danger, ' }}">
-                                            {{ form.phone }}
-                                            <small class="text-danger text-sm-left">{{ form.phone.errors}}</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <button type="submit" class="btn btn-lg  btn-primary btn-round pull-right">Registrar</button>
-                            </div>
-                        </form>
+  <div class="page-header header-filter">
+    <div class="page-header-image" style="background-image:url({% static 'img/bg8.jpg' %})"></div>
+    <div class="content">
+      <div class="container">
+        <div class="col-md-10 ml-auto mr-auto">
+          <div class="card card-contact card-raised">
+            <form role="form" id="contact-form1" method="post">
+              {% csrf_token %}
+              <div class="card-header text-center"><h4 class="card-title" style="color: #e8833b">{{ title }} usuario.</h4></div>
+              <div class="card-body text-left">
+                <p class="text-primary">Datos usuario</p>
+                <div class="row">
+                  <div class="col-md-6 pl-2">
+                    <label for="txtemail" class="text-black">Correo electrónico</label>
+                    <div class="form-group {{ form.email.errors|yesno:'has-danger, ' }}">
+                      {{ form.email }}
+                      <small class="text-danger text-sm-left">{{ form.email.errors }}</small>
                     </div>
+                  </div>
+                  <div class="col-md-6 pl-2">
+                    <label for="txtpassword" class="text-black">Contraseña</label>
+                    <div class="form-group {{ form.password.errors|yesno:'has-danger, ' }}">
+                      {{ form.password }}
+                      <small class="text-danger text-sm-left">{{ form.password.errors }}</small>
+                    </div>
+                  </div>
                 </div>
-            </div>
+                <label style="color: #1d2124">Tipo de usuario</label>
+                <div class="form-check form-check-radio">
+                  {% for rol in form.role %}
+                    <label class="form-check-label text-black">
+                      {{ rol.tag }}<span class="form-check-sign"></span>{{ rol.choice_label }}
+                    </label>
+                  {% endfor %}
+                </div>
+                <small class="text-danger text-sm-left">{{ form.role.errors }}</small>
+                <br>
+                <p class="text-primary">Datos personales</p>
+                <div class="row">
+                  <div class="col-md-4 pl-2">
+                    <label for="txtnombre" class="text-black">Nombre</label>
+                    <div class="form-group {{ form.first_name.errors|yesno:'has-danger, ' }}">
+                      {{ form.first_name }}
+                      <small class="text-danger text-sm-left">{{ form.first_name.errors }}</small>
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-2">
+                    <label for="txtapaterno" class="text-black">Apellido paterno</label>
+                    <div class="form-group {{ form.last_name.errors|yesno:'has-danger, ' }}">
+                      {{ form.last_name }}
+                      <small class="text-danger text-sm-left">{{ form.last_name.errors }}</small>
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-2">
+                    <label for="txtamaterno" class="text-black">Apellido materno</label>
+                    <div class="form-group {{ form.second_last_name.errors|yesno:'has-danger, ' }}">
+                      {{ form.second_last_name }}
+                      <small class="text-danger text-sm-left">{{ form.second_last_name.errors }}</small>
+                    </div>
+                  </div>
+                  <div class="col-md-7 pl-2">
+                    <label for="txtaddress" class="text-black">Dirección</label>
+                    <div class="form-group {{ form.address.errors|yesno:'has-danger, ' }}">
+                      {{ form.address }}
+                      <small class="text-danger text-sm-left">{{ form.address.errors }}</small>
+
+                    </div>
+                  </div>
+                  <div class="col-md-5 pl-2">
+                    <label for="txtphone" class="text-black">Telefono</label>
+                    <div class="form-group {{ form.phone.errors|yesno:'has-danger, ' }}">
+                      {{ form.phone }}
+                      <small class="text-danger text-sm-left">{{ form.phone.errors }}</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <button type="submit" class="btn btn-lg  btn-primary btn-round pull-right">Registrar</button>
+              </div>
+            </form>
+          </div>
         </div>
-        <br>
+      </div>
+    </div>
+    <br>
 {% endblock %}

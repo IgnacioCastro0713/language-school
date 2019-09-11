@@ -1,54 +1,55 @@
 <div class="card card-blog col-lg-12 ml-auto mr-auto">
-    <div class="card-body">
-        <h6 class="text-info text-center">
-            Se ha(n) obtenido {{ page_obj.paginator.count }} resultado(s).
-        </h6>
-        <table class="table">
-            <thead>
-            <tr>
-                <th class="text-center">#</th>
-                <th>Aula</th>
-                <th>Edificio</th>
-                <th class="text-center">Acciones</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% if object_list %}
-                {% for class in object_list %}
-                    <tr>
-                        <td class="text-center">{{ class.id }}</td>
-                        <td>{{ class.name.capitalize }}</td>
-                        <td>{{ class.building.capitalize }}</td>
-                        <td class="td-actions text-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="now-ui-icons design_bullet-list-67"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <h6 class="dropdown-header text-secondary">Acciones</h6>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-success" href="{% url 'classroom:edit' class.id %}">
-                                        <i class="now-ui-icons ui-2_settings-90"></i>Editar
-                                    </a>
-                                    <a class="dropdown-item text-danger" href="" onclick="confirmDelete(event, '{{ class.name }}' ,'{% url 'classroom:delete' class.id %}')">
-                                        <i class="now-ui-icons ui-1_simple-remove"></i>Eliminar
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                {% endfor %}
-            {% else %}
-                <td class="text-danger"><strong> No hay registros de aulas. </strong></td>
-            {% endif %}
-            </tbody>
-            <tfoot>
-            <tr>
-                <td colspan="4">
-                    {% include 'base/pagination/main.html' with page_obj=page_obj %}
-                </td>
-            </tr>
-            </tfoot>
-        </table>
-    </div>
+  <div class="card-body">
+    <h6 class="text-info text-center">
+      Se ha(n) obtenido {{ page_obj.paginator.count }} resultado(s).
+    </h6>
+    <table class="table">
+      <thead>
+      <tr>
+        <th class="text-center">#</th>
+        <th>Aula</th>
+        <th>Edificio</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% if object_list %}
+        {% for class in object_list %}
+          <tr>
+            <td class="text-center">{{ class.id }}</td>
+            <td>{{ class.name.capitalize }}</td>
+            <td>{{ class.building.capitalize }}</td>
+            <td class="td-actions text-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="now-ui-icons design_bullet-list-67"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <h6 class="dropdown-header text-secondary">Acciones</h6>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item text-success" href="{% url 'classroom:edit' class.id %}">
+                    <i class="now-ui-icons ui-2_settings-90"></i>Editar
+                  </a>
+                  <a class="dropdown-item text-danger" href=""
+                     onclick="confirmDelete(event, '{{ class.name }}' ,'{% url 'classroom:delete' class.id %}')">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>Eliminar
+                  </a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      {% else %}
+        <td class="text-danger"><strong> No hay registros de aulas. </strong></td>
+      {% endif %}
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="4">
+          {% include 'base/pagination/main.html' with page_obj=page_obj %}
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
 </div>

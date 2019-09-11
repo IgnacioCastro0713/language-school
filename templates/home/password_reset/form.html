@@ -3,35 +3,35 @@
 {% block type %} login-page sidebar-collapse {% endblock %}
 {% block title %} Recuperar contraseña {% endblock %}
 {% block content %}
-    <div class="page-header clear-filter" filter-color="orange">
-        <div class="page-header-image" style="background-image:url({% static 'img/login.jpg' %})"></div>
-        <div class="content">
-            <div class="container">
-                <div class="col-md-4 ml-auto mr-auto">
-                    <div class="card card-login card-plain">
-                        <form class="form" method="POST">
-                            {% csrf_token %}
-                            <div class="card-header text-center">
-                                <div class="logo-container">
-                                    <img src="{% static 'img/icons8-mensaje-240.png' %}" alt="">
-                                </div>
-                            </div>
-                            <h5 class="text-center text-info">Ingrese correo electrónico</h5>
-                            <div class="card-body">
-                                <div class="input-group no-border input-lg">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                          <i class="now-ui-icons ui-1_email-85"></i>
-                                        </span>
-                                    </div>
-                                    {{ form.email }}
-                                </div>
-                                <small class="text-danger text-lg-left">{{ form.email.errors }}</small>
-                                <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Enviar</button>
-                            </div>
-                        </form>
-                    </div>
+  <div class="page-header clear-filter" filter-color="orange">
+    <div class="page-header-image" style="background-image:url({% static 'img/login.jpg' %})"></div>
+    <div class="content">
+      <div class="container">
+        <div class="col-md-4 ml-auto mr-auto">
+          <div class="card card-login card-plain">
+            <form class="form" method="POST">
+              {% csrf_token %}
+              <div class="card-header text-center">
+                <div class="logo-container">
+                  <img src="{% static 'img/icons8-mensaje-240.png' %}" alt="">
                 </div>
-            </div>
+              </div>
+              <h5 class="text-center text-info">Ingrese correo electrónico</h5>
+              <div class="card-body">
+                <div class="input-group no-border input-lg">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="now-ui-icons ui-1_email-85"></i>
+                    </span>
+                  </div>
+                  {{ form.email }}
+                </div>
+                <small class="text-danger text-lg-left">{{ form.email.errors }}</small>
+                <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Enviar</button>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
+    </div>
 {% endblock %}
