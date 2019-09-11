@@ -31,7 +31,7 @@ const loadTable = (e, doSearch) => {
     $.ajax({
         url : currentUrl,
         method : 'get',
-        csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+        csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val() || '',
     }).done(function (response) {
         currentUrl = search;
         $('#content').html(response);

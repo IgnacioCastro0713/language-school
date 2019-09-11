@@ -60,7 +60,7 @@ const deleteElement = (name, url, done, fail) => {
             $.ajax({
                 data: {
                     '_method' : 'DELETE',
-                    csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+                    csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val() || '',
                 },
                 type: 'post',
                 url: url,
