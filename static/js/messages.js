@@ -69,10 +69,8 @@ const deleteElement = (name, url, done, fail) => {
   })
 };
 
-export default {
-  toast: window.toast = toast,
-  swalMaterial: window.swalMaterial = swalMaterial,
-  confirmDelete: window.confirmDelete = confirmDelete,
-  deleteInShow: window.deleteInShow = deleteInShow,
-  deleteElement: window.deleteElement = deleteElement
-};
+window.toast = toast;
+window.swalMaterial = swalMaterial;
+window.confirmDelete = confirmDelete;
+window.deleteInShow = deleteInShow;
+window.deleteElement = deleteElement;
