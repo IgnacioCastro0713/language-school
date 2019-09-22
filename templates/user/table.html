@@ -15,43 +15,41 @@
       </tr>
       </thead>
       <tbody>
-      {% if object_list %}
-        {% for users in object_list %}
-          <tr>
-            <td class="text-center">{{ users.code }}</td>
-            <td>{{ users.first_name.capitalize }} {{ users.last_name.capitalize }} {{ users.second_last_name.capitalize }}</td>
-            <td>{{ users.email }}</td>
-            <td>{{ users.address.capitalize }}</td>
-            <td>{{ users.role.nombre }}</td>
-            <td class="td-actions text-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                  <i class="now-ui-icons design_bullet-list-67"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <h6 class="dropdown-header text-secondary">Acciones</h6>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item text-info" href="{% url 'user:show' users.id %}">
-                    <i class="now-ui-icons travel_info"></i>Detalles
+      {% for users in object_list %}
+        <tr>
+          <td class="text-center">{{ users.code }}</td>
+          <td>{{ users.first_name.capitalize }} {{ users.last_name.capitalize }} {{ users.second_last_name.capitalize }}</td>
+          <td>{{ users.email }}</td>
+          <td>{{ users.address.capitalize }}</td>
+          <td>{{ users.role.nombre }}</td>
+          <td class="td-actions text-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                <i class="now-ui-icons design_bullet-list-67"></i>
+              </button>
+              <div class="dropdown-menu">
+                <h6 class="dropdown-header text-secondary">Acciones</h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-info" href="{% url 'user:show' users.id %}">
+                  <i class="now-ui-icons travel_info"></i>Detalles
+                </a>
+                <a class="dropdown-item text-success" href="{% url 'user:edit' users.id %}">
+                  <i class="now-ui-icons ui-2_settings-90"></i>Editar
+                </a>
+                {% if user.id != users.id %}
+                  <a class="dropdown-item text-danger" href=""
+                     onclick="confirmDelete(event, '{{ users.first_name }}' ,'{% url 'user:delete' users.id %}')">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>Eliminar
                   </a>
-                  <a class="dropdown-item text-success" href="{% url 'user:edit' users.id %}">
-                    <i class="now-ui-icons ui-2_settings-90"></i>Editar
-                  </a>
-                  {% if user.id != users.id %}
-                    <a class="dropdown-item text-danger" href=""
-                       onclick="confirmDelete(event, '{{ users.first_name }}' ,'{% url 'user:delete' users.id %}')">
-                      <i class="now-ui-icons ui-1_simple-remove"></i>Eliminar
-                    </a>
-                  {% endif %}
-                </div>
+                {% endif %}
               </div>
-            </td>
-          </tr>
-        {% endfor %}
-      {% else %}
+            </div>
+          </td>
+        </tr>
+      {% empty %}
         <td class="text-danger"><strong> No hay registros de usuario. </strong></td>
-      {% endif %}
+      {% endfor %}
       </tbody>
       <tfoot>
       <tr>

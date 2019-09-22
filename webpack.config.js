@@ -1,5 +1,9 @@
 const path = require('path');
 
+/**
+ * for re compile javascript files run next command.
+ * run this -> npx webpack
+ */
 module.exports = {
   mode: 'production',
   entry: {

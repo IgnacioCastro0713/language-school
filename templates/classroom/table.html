@@ -13,35 +13,34 @@
       </tr>
       </thead>
       <tbody>
-      {% if object_list %}
-        {% for class in object_list %}
-          <tr>
-            <td class="text-center">{{ class.id }}</td>
-            <td>{{ class.name.capitalize }}</td>
-            <td>{{ class.building.capitalize }}</td>
-            <td class="td-actions text-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="now-ui-icons design_bullet-list-67"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <h6 class="dropdown-header text-secondary">Acciones</h6>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item text-success" href="{% url 'classroom:edit' class.id %}">
-                    <i class="now-ui-icons ui-2_settings-90"></i>Editar
-                  </a>
-                  <a class="dropdown-item text-danger" href=""
-                     onclick="confirmDelete(event, '{{ class.name }}' ,'{% url 'classroom:delete' class.id %}')">
-                    <i class="now-ui-icons ui-1_simple-remove"></i>Eliminar
-                  </a>
-                </div>
+      {% for class in object_list %}
+        <tr>
+          <td class="text-center">{{ class.id }}</td>
+          <td>{{ class.name.capitalize }}</td>
+          <td>{{ class.building.capitalize }}</td>
+          <td class="td-actions text-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">
+                <i class="now-ui-icons design_bullet-list-67"></i>
+              </button>
+              <div class="dropdown-menu">
+                <h6 class="dropdown-header text-secondary">Acciones</h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-success" href="{% url 'classroom:edit' class.id %}">
+                  <i class="now-ui-icons ui-2_settings-90"></i>Editar
+                </a>
+                <a class="dropdown-item text-danger" href=""
+                   onclick="confirmDelete(event, '{{ class.name }}' ,'{% url 'classroom:delete' class.id %}')">
+                  <i class="now-ui-icons ui-1_simple-remove"></i>Eliminar
+                </a>
               </div>
-            </td>
-          </tr>
-        {% endfor %}
-      {% else %}
+            </div>
+          </td>
+        </tr>
+      {% empty %}
         <td class="text-danger"><strong> No hay registros de aulas. </strong></td>
-      {% endif %}
+      {% endfor %}
       </tbody>
       <tfoot>
       <tr>

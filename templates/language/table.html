@@ -13,36 +13,34 @@
       </tr>
       </thead>
       <tbody>
-      {% if object_list %}
-        {% for lan in object_list %}
-          <tr>
-            <td class="text-center">{{ lan.id }}</td>
-            <td>{{ lan.name.capitalize }}</td>
-            <td>{{ lan.level.capitalize }}</td>
-            <td class="td-actions text-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                  <i class="now-ui-icons design_bullet-list-67"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <h6 class="dropdown-header text-secondary">Acciones</h6>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item text-success" href="{% url 'language:edit' lan.id %}">
-                    <i class="now-ui-icons ui-2_settings-90"></i>Editar
-                  </a>
-                  <a class="dropdown-item text-danger" href=""
-                     onclick="confirmDelete(event, '{{ lan.name }}' ,'{% url 'language:delete' lan.id %}')">
-                    <i class="now-ui-icons ui-1_simple-remove"></i>Eliminar
-                  </a>
-                </div>
+      {% for lan in object_list %}
+        <tr>
+          <td class="text-center">{{ lan.id }}</td>
+          <td>{{ lan.name.capitalize }}</td>
+          <td>{{ lan.level.capitalize }}</td>
+          <td class="td-actions text-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                <i class="now-ui-icons design_bullet-list-67"></i>
+              </button>
+              <div class="dropdown-menu">
+                <h6 class="dropdown-header text-secondary">Acciones</h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-success" href="{% url 'language:edit' lan.id %}">
+                  <i class="now-ui-icons ui-2_settings-90"></i>Editar
+                </a>
+                <a class="dropdown-item text-danger" href=""
+                   onclick="confirmDelete(event, '{{ lan.name }}' ,'{% url 'language:delete' lan.id %}')">
+                  <i class="now-ui-icons ui-1_simple-remove"></i>Eliminar
+                </a>
               </div>
-            </td>
-          </tr>
-        {% endfor %}
-      {% else %}
+            </div>
+          </td>
+        </tr>
+      {% empty %}
         <td class="text-danger"><strong> No hay registros de idiomas. </strong></td>
-      {% endif %}
+      {% endfor %}
       </tbody>
       <tfoot>
       <tr>
