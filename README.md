@@ -17,6 +17,12 @@ pip3 install --upgrade sweetify
 pip3 install pymysql
 ```
 
+#### compile assets:
+
+```
+npx webpack
+```
+
 ## Repositories
 
 * [IgnacioCastro0713/language_school](https://github.com/IgnacioCastro0713/language_school) - Principal repository
