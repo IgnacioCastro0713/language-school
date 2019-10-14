@@ -1,5 +1,5 @@
 # language school
-Mini proyecto sobre una escuela de lenguas realizado en Django
+Mini proyecto sobre una escuela de idiomas realizado en Django
 
 #### required install Windows:
 
