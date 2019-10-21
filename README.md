@@ -20,6 +20,7 @@ pip3 install pymysql
 #### compile assets:
 
 ```
+npm install
 npx webpack
 ```
 
