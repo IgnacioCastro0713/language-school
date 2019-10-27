@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.views import reverse_lazy
-from django.utils.decorators import method_decorator
-from .decorators import form_invalid_decorator
+from sweetify import warning
+
 from .models import Course
 from .form import CourseForm
 from django.db.models import Q
@@ -24,7 +24,6 @@ class Index(ListView):
     }
 
 
-@method_decorator(form_invalid_decorator, name='form_invalid')
 class Create(SweetifySuccessMixin, CreateView):
     model = Course
     form_class = CourseForm
@@ -37,8 +36,11 @@ class Create(SweetifySuccessMixin, CreateView):
         'titleButton': 'Guardar'
     }
 
+    def form_invalid(self, form):
+        warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
+        return super(Create, self).form_invalid(form)
 
-@method_decorator(form_invalid_decorator, name='form_invalid')
+
 class Edit(SweetifySuccessMixin, UpdateView):
     model = Course
     form_class = CourseForm
@@ -50,6 +52,10 @@ class Edit(SweetifySuccessMixin, UpdateView):
         'title': 'Editar',
         'titleButton': 'Actualizar'
     }
+
+    def form_invalid(self, form):
+        warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
+        return super(Edit, self).form_invalid(form)
 
 
 class Show(DetailView):

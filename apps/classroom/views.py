@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.views import reverse_lazy
 from django.utils.decorators import method_decorator
+from sweetify import warning
+
 from .decorators import form_invalid_decorator
 from .models import Classroom
 from .form import ClassroomForm
+
 from django.db.models import Q
 from sweetify.views import SweetifySuccessMixin
 from django.views.generic import (
@@ -23,7 +26,6 @@ class Index(ListView):
     }
 
 
-@method_decorator(form_invalid_decorator, name='form_invalid')
 class Create(SweetifySuccessMixin, CreateView):
     model = Classroom
     form_class = ClassroomForm
@@ -36,8 +38,11 @@ class Create(SweetifySuccessMixin, CreateView):
         'titleButton': 'Guardar'
     }
 
+    def form_invalid(self, form):
+        warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
+        return super(Create, self).form_invalid(form)
 
-@method_decorator(form_invalid_decorator, name='form_invalid')
+
 class Edit(SweetifySuccessMixin, UpdateView):
     model = Classroom
     form_class = ClassroomForm
@@ -49,6 +54,10 @@ class Edit(SweetifySuccessMixin, UpdateView):
         'title': 'Editar',
         'titleButton': 'Actualizar'
     }
+
+    def form_invalid(self, form):
+        warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
+        return super(Edit, self).form_invalid(form)
 
 
 class Delete(DeleteView):
