@@ -1,9 +1,11 @@
 from django.shortcuts import HttpResponseRedirect
 from django.contrib.auth import login, logout
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView
 from apps.user.models import User
+from .decorators import form_invalid_decorator
 from .form import LoginForm, ResetForm, ResetConfirmForm, RegisterForm
-from sweetify import info, warning
+from sweetify import info
 from sweetify.views import SweetifySuccessMixin
 from django.contrib.auth.views import (
     LoginView,
@@ -26,6 +28,7 @@ class Index(TemplateView):
     }
 
 
+@method_decorator(form_invalid_decorator, name='form_invalid')
 class Register(SweetifySuccessMixin, CreateView):
     template_name = 'home/register.html'
     form_class = RegisterForm
@@ -34,11 +37,8 @@ class Register(SweetifySuccessMixin, CreateView):
     success_message = 'Resgistrado correctamente.'
     success_url = reverse_lazy('home:login')
 
-    def form_invalid(self, form):
-        warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
-        return self.render_to_response(self.get_context_data(form=form))
 
-
+@method_decorator(form_invalid_decorator, name='form_invalid')
 class Login(LoginView):
     template_name = 'home/login.html'
     form_class = LoginForm
@@ -49,10 +49,6 @@ class Login(LoginView):
         info(self.request, '¡Bienvenido(a) {}!'.format(self.request.user.first_name), toast=True, position='top',
              timer=2500)
         return HttpResponseRedirect(self.get_success_url())
-
-    def form_invalid(self, form):
-        warning(self.request, '¡Verifique la información ingresada!', toast=True, position='top', timer=2500)
-        return self.render_to_response(self.get_context_data(form=form))
 
 
 class Logout(LogoutView):

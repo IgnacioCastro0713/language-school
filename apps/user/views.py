@@ -1,9 +1,11 @@
 import os
+from django.utils.decorators import method_decorator
 from language_school.settings import MEDIA_ROOT
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from apps.user.models import User
-from apps.user.form import UserFormCreate, UserFormEdit, PasswordForm, UpdateImage
+from .decorators import form_invalid_decorator
+from .models import User
+from .form import UserFormCreate, UserFormEdit, PasswordForm, UpdateImage
 from django.contrib.auth.views import reverse_lazy, PasswordChangeView
 from sweetify import success, warning
 from sweetify.views import SweetifySuccessMixin
@@ -26,6 +28,7 @@ class Index(ListView):
     }
 
 
+@method_decorator(form_invalid_decorator, name='form_invalid')
 class Create(CreateView):
     model = User
     form_class = UserFormCreate
@@ -39,11 +42,8 @@ class Create(CreateView):
         success(self.request, '¡Usuario guardado correctamente!', toast=True, position='top', timer=2500)
         return redirect('user:index')
 
-    def form_invalid(self, form):
-        warning(self.request, '¡Verifique la información ingresada!', toast=True, position='top', timer=3000)
-        return self.render_to_response(self.get_context_data(form=form))
 
-
+@method_decorator(form_invalid_decorator, name='form_invalid')
 class Edit(SweetifySuccessMixin, UpdateView):
     model = User
     form_class = UserFormEdit
@@ -53,11 +53,8 @@ class Edit(SweetifySuccessMixin, UpdateView):
     success_message = '¡Editado correctamente!'
     extra_context = {'title': 'Editar'}
 
-    def form_invalid(self, form):
-        warning(self.request, '¡Verifique la información ingresada!', toast=True, position='top', timer=3000)
-        return self.render_to_response(self.get_context_data(form=form))
 
-
+@method_decorator(form_invalid_decorator, name='form_invalid')
 class ChangePassword(SweetifySuccessMixin, PasswordChangeView):
     template_name = 'user/change_password.html'
     form_class = PasswordForm
@@ -65,10 +62,6 @@ class ChangePassword(SweetifySuccessMixin, PasswordChangeView):
     success_message = '¡Contraseña editada correctamente!'
     success_url = reverse_lazy('user:index')
     extra_context = {'title': 'Cambiar contraseña de usuario'}
-
-    def form_invalid(self, form):
-        warning(self.request, '¡Verifique la información ingresada!', toast=True, position='top', timer=3000)
-        return self.render_to_response(self.get_context_data(form=form))
 
 
 class Show(DetailView, UpdateView):

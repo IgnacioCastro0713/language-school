@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth.views import reverse_lazy
-from apps.language.models import Language
-from apps.language.form import LanguageForm
+from django.utils.decorators import method_decorator
+from .decorators import form_invalid_decorator
+from .models import Language
+from .form import LanguageForm
 from django.db.models import Q
 from sweetify.views import SweetifySuccessMixin
-from sweetify import warning
 from django.views.generic import (
     ListView,
     CreateView,
@@ -22,6 +23,7 @@ class Index(ListView):
     }
 
 
+@method_decorator(form_invalid_decorator, name='form_invalid')
 class Create(SweetifySuccessMixin, CreateView):
     model = Language
     form_class = LanguageForm
@@ -34,11 +36,8 @@ class Create(SweetifySuccessMixin, CreateView):
         'titleButton': 'Guardar'
     }
 
-    def form_invalid(self, form):
-        warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
-        return self.render_to_response(self.get_context_data(form=form))
 
-
+@method_decorator(form_invalid_decorator, name='form_invalid')
 class Edit(SweetifySuccessMixin, UpdateView):
     model = Language
     form_class = LanguageForm
@@ -50,10 +49,6 @@ class Edit(SweetifySuccessMixin, UpdateView):
         'title': 'Editar',
         'titleButton': 'Actualizar'
     }
-
-    def form_invalid(self, form):
-        warning(self.request, 'Verifique la información ingresada.', toast=True, position='top', timer=3000)
-        return self.render_to_response(self.get_context_data(form=form))
 
 
 class Delete(DeleteView):
