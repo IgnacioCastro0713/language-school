@@ -15,6 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
+from django.config import settings
+from django.config.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.home.urls'), name='home'),
@@ -22,4 +26,4 @@ urlpatterns = [
     path('course/', include('apps.course.urls'), name='course'),
     path('language/', include('apps.language.urls'), name='language'),
     path('classroom/', include('apps.classroom.urls'), name='classroom'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) # production
