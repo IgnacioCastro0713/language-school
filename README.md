@@ -1,5 +1,5 @@
 # language school
-Micro project for language school developed on Django Framework
+Micro project (school proyect) for language school developed on Django Framework
 
 #### required install Windows:
 
